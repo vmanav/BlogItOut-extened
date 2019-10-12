@@ -1,0 +1,25 @@
+{
+  "name": "blogitout-extened",
+  "version": "1.0.0",
+  "description": "Full-fledged Blog Website.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vmanav/BlogItOut-extened.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vmanav/BlogItOut-extened/issues"
+  },
+  "homepage": "https://github.com/vmanav/BlogItOut-extened#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.0.6",
+    "mongodb": "^3.3.2",
+    "startbootstrap-clean-blog": "^5.0.8"
+  }
+}
