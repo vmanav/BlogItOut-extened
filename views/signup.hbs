@@ -33,12 +33,19 @@
             scroll-behavior: smooth;
         }
 
-        .container1 {
-            background: url("/bg1.jpg");
-            height: 100vh;
+        .main {
+            background-color: #74776B;
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
+        }
+
+        .inside-main {
+            background-color: #EDF0DA;
+            color: black;
+            width: 95%;
+            min-height: 80%;
         }
     </style>
 
@@ -47,171 +54,97 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-custom bg-dark navbar-dark p-0" id="myNavbar">
-        <a class="navbar-brand ml-3" href="#">
-            <!-- <img src="" width="30" height="30" class="d-inline-block align-top" alt=""> -->
-            <b><i>B-I-O</i></b>
-        </a>
-        <div class="collapse navbar-collapse ">
-            <ul class="navbar-nav ml-3">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">All Posts</a>
-                </li>
-            </ul>
 
-            <ul class="navbar-nav ml-auto">
-                {{#if signup}}
+    {{> loginSignupNavbarPartial}}
 
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="/signup" id="singUp">
-                        <button type="button" class="btn text-light signupButton">Sign Up</button>
-                    </a>
-                </li>
-                {{/if}}
 
-                {{#if login}}
 
-                <li class="nav-item mx-2 loginClass">
-                    <a class="nav-link" href="/login" id="logIn">
-                        <button type="button" class="btn btn-light loginButton">Log In</button>
-                    </a>
-                </li>
-                {{/if}}
+    <div class="container-fluid main">
+        <div class="inside-main">
 
-            </ul>
+            <div class="heading">
+                Sign Up
+            </div>
+
+            <div class="container mt-1 pt-1">
+                <a href="/"> &lt; Back</a>
+            </div>
+
+            <div class="container mt-4">
+
+                <form action="/signup" method="POST">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter Your Full Name">
+                        <small class="form-text text-muted">This will be also be the Author name.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Body</label>
+                        <textarea type="text" class="form-control" name="body" placeholder="Enter blog body"
+                            rows="8"></textarea>
+                        <small class="form-text text-muted">This will be the content of your blog.</small>
+                    </div>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control">
+                    <small id="passwordHelp" class="form-text text-muted">
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain
+                        spaces, special characters, or emoji.
+                    </small>
+
+                    {{!-- field for password vrefication --}}
+                    <label for="passwordV">Re-enter Password</label>
+                    <input type="password" id="passwordVerify" class="form-control">
+                    <small id="passwordVHelp" class="form-text text-muted">
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain
+                        spaces, special characters, or emoji.
+                    </small>
+
+                    <button type="submit" class="btn btn-dark">Submit</button>
+
+                </form>
+
+            </div>
+
         </div>
-    </nav>
 
-    {{!-- Got-to-Top Button --}}
-    {{!-- <a href="#" id="uppar">
-        <div class="px-2 py-3 goToTopButton-hidden" id="goToTopButton">
-            <i class="fas fa-long-arrow-alt-up"></i>
-        </div>
-    </a> --}}
+        {{> gttButtonPartial}}
 
-
-    <div class="container">
-        Signup PAGE
-    </div>
-
-    {{> gttButtonPartial}}
-
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
+        <hr><br>
 
 
 
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-
-
-
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-
-
-
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-    <hr><br>
-
-
-
-
-    {{!-- Go-top-Top Button --}}
-    {{!-- <a href="#">
-        <div class="px-2 py-3 goToTopButton-hidden" id="goToTopButton">
-            <i class="fas fa-long-arrow-alt-up"></i>
-        </div>
-    </a> --}}
 </body>
 
 </html>
