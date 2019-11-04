@@ -1,17 +1,31 @@
 const express = require('express');
+const hbs = require('hbs')
 const app = express();
 
 app.use('/', express.static(__dirname + '/public'))
 app.use('/scripts', express.static(__dirname + '/scripts'))
 app.set('view engine', 'hbs')
 
-const hbs = require('hbs')
+// registering hbs partials
 hbs.registerPartials(__dirname + '/views/partials')
 
 app.get('/', (req, res) => {
+
+    res.render('index', {
+        title: "Homepage",
+        login: true,
+        signup: true,
+    })
+})
+
+app.get('/signup', (req, res) => {
     // res.send("Blog It Out REBORN")
 
-    res.render('index')
+    res.render('signup', {
+        title: "Sign Up",
+        login: true,
+        signup: true,
+    })
 })
 
 // Testing newFile fo hbs Partials
@@ -24,12 +38,6 @@ app.get('/newFile', (req, res) => {
     })
 })
 
-
-app.get('/signup', (req, res) => {
-    // res.send("Blog It Out REBORN")
-
-    res.render('signup')
-})
 
 app.get('/login', (req, res) => {
     // res.send("Blog It Out REBORN")

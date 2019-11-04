@@ -27,42 +27,6 @@
             scroll-behavior: smooth;
         }
 
-        /* << navbar CSS */
-
-        /* change the brand and text color */
-        .navbar-custom .navbar-brand {
-            color: rgba(255, 255, 255, .8);
-        }
-
-        /* change the link color */
-        .navbar-custom .navbar-nav .nav-link {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* change the color of active or hovered links */
-        .navbar-custom .nav-item.active .nav-link,
-        .navbar-custom .nav-item:hover .nav-link {
-            color: #ffffff;
-        }
-
-        .signupButton:hover {
-            border: 1px solid white;
-            /* background-color: #696773; */
-        }
-
-        .loginButton {
-            background-color: #01BAEF;
-            /* #FFFCF9;  */
-            border: 1px transparent solid;
-            /* color: #343A40; */
-            color: white;
-        }
-
-        .loginButton:hover {
-            background-color: #C7E8F3;
-            transition: 0.2s;
-            color: #005972;
-        }
 
         /* nav bar CSS >> */
 
@@ -113,44 +77,9 @@
             overflow: hidden;
             text-align: justify;
         }
-
-        #goToTopButton {
-            border: 2px solid #01161E;
-            background-color: #01161E;
-            color: #F7F3E3;
-            border-radius: 15px;
-            font-size: 1.2rem;
-        }
-
-        #goToTopButton a {
-            color: #F7F3E3;
-        }
-
-        #goToTopButton:hover {
-            border: 2px solid #01161E;
-            background-color: #F7F3E3;
-            color: #01161E;
-            transition: 0.4s;
-        }
-
-        #goToTopButton:hover a {
-            color: #01161E;
-        }
-
-        .goToTopButton-hidden {
-            position: fixed;
-            bottom: -100px;
-            right: 35px;
-            transition: 0.4s;
-        }
-
-        .goToTopButton-visible {
-            position: fixed;
-            bottom: 70px;
-            right: 35px;
-            transition: 0.8s;
-        }
     </style>
+
+    {{> navbarStyling}}
 </head>
 
 <body>
