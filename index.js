@@ -19,31 +19,33 @@ app.get('/', (req, res) => {
 })
 
 app.get('/signup', (req, res) => {
-    // res.send("Blog It Out REBORN")
 
     res.render('signup', {
         title: "Sign Up",
-        login: true,
-        signup: true,
+        signup: false,
+        login: true
     })
 })
+
+// app.get('/login', (req, res) => {
+
+//     res.render('login', {
+//         title: "Log In",
+//         login: true,
+//         signup: false
+//     })
+// })
 
 // Testing newFile fo hbs Partials
 app.get('/newFile', (req, res) => {
     // res.send("Blog It Out REBORN")
 
     res.render('newFile', {
-        login: false,
+        login: true,
         signup: true,
     })
 })
 
-
-app.get('/login', (req, res) => {
-    // res.send("Blog It Out REBORN")
-
-    res.render('login')
-})
 
 app.get('/about', (req, res) => {
     // res.send("Blog It Out REBORN")
