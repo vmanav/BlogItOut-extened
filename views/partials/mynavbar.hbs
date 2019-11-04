@@ -1,0 +1,48 @@
+{{!-- Navbar --}}
+<nav class="navbar navbar-expand-lg fixed-top navbar-custom p-0" id="myNavbar">
+    <a class="navbar-brand ml-3" href="#">
+        <!-- <img src="" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+        <b><i>B-I-O</i></b>
+    </a>
+    <div class="collapse navbar-collapse ">
+        <ul class="navbar-nav ml-3">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">All Posts</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            {{#if signup}}
+
+            <li class="nav-item mx-2">
+                <a class="nav-link" href="/signup" id="singUp">
+                    <button type="button" class="btn text-light signupButton">Sign Up</button>
+                </a>
+            </li>
+            {{/if}}
+
+            {{#if login}}
+
+            <li class="nav-item mx-2 loginClass">
+                <a class="nav-link" href="/login" id="logIn">
+                    <button type="button" class="btn btn-light loginButton">Log In</button>
+                </a>
+            </li>
+            {{/if}}
+
+        </ul>
+    </div>
+</nav>
+
+{{!-- Got-to-Top Button --}}
+<a href="#" id="uppar">
+    <div class="px-2 py-3 goToTopButton-hidden" id="goToTopButton">
+        <i class="fas fa-long-arrow-alt-up"></i>
+    </div>
+</a>

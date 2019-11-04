@@ -1,8 +1,11 @@
 $(() => {
 
-    window.onscroll = function () { scrollFunction() };
+    window.onscroll = function () {
+        scrollFunction()
+    };
+
     navbarHeight = $("#myNavbar").height();
-    console.log("Height of navbar :", navbarHeight)
+    // console.log("Height of navbar :", navbarHeight)
 
     function scrollFunction() {
 
