@@ -44,104 +44,272 @@
         .inside-main {
             background-color: #EDF0DA;
             color: black;
-            width: 95%;
-            min-height: 80%;
+            min-width: 100%;
+            position: relative;
+
+        }
+
+        /* Change The Colour of all links to black */
+        a {
+            color: black
+        }
+
+        a:visited {
+            color: black
+        }
+
+        a:hover,
+        a:active,
+        a:focus {
+            color: black
+        }
+
+        /* Signup Button at theend of form */
+        .signupButton {
+            background-color: #01BAEF;
+            /* #FFFCF9;  */
+            border: 1px transparent solid;
+            /* color: #343A40; */
+            color: white;
+        }
+
+        .signupButton:hover {
+            background-color: #C7E8F3;
+            transition: 0.2s;
+            color: #005972;
+        }
+
+
+        /* astersrik */
+        .form-group.required label:after {
+            content: "  *";
+            color: #dc3545;
         }
     </style>
 
-    {{> navbarStyling}}
     {{> gttButtonStyling}}
 </head>
 
 <body>
 
-    {{> loginSignupNavbarPartial}}
-
-
-
-    <div class="container-fluid main">
+    <div class="container-fluid main p-5">
         <div class="inside-main">
 
-            <div class="heading">
+            <div class="px-3 py-2"
+                style="color: black; background-color: white; position: absolute; top: -20px; left: -45px;">
+                <a href="/">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+
+            <div class="heading h2" style="background-color: burlywood; text-align: center">
                 Sign Up
             </div>
 
-            <div class="container mt-1 pt-1">
-                <a href="/"> &lt; Back</a>
-            </div>
 
-            <div class="container mt-4">
+            <div class="container p-4" style="background-color: lightseagreen">
 
                 <form action="/signup" method="POST">
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter Your Full Name">
+
+                    <div class="form-group required">
+                        <div class="form-row">
+                            <div class="col">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" name="fname" placeholder="Enter Your First Name"
+                                    required="true">
+                            </div>
+                            <div class="col">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" name="lname" placeholder="Enter Your Last Name"
+                                    required="true">
+                            </div>
+                        </div>
                         <small class="form-text text-muted">This will be also be the Author name.</small>
                     </div>
 
-                    <div class="form-group">
+
+                    {{!-- <label>Full Name</label> --}}
+                    {{!-- <input type="text" class="form-control" name="name" placeholder="Enter Your Full Name"> --}}
+                    {{!-- <small class="form-text text-muted">This will be also be the Author name.</small> --}}
+
+                    <div class="form-group required">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" required="true">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your Email with anyone
                             else.</small>
                     </div>
 
-                    <div class="form-group">
-                        <label>Body</label>
-                        <textarea type="text" class="form-control" name="body" placeholder="Enter blog body"
-                            rows="8"></textarea>
-                        <small class="form-text text-muted">This will be the content of your blog.</small>
+                    <div class="form-group required">
+                        <label>Contact Number</label>
+                        <input type="text" class="form-control" name="number" placeholder="Enter Your Contact Number">
+                        <small class="form-text text-muted">We'll never share your Contact Info with anyone
+                            else.</small>
                     </div>
 
-                    <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control">
-                    <small id="passwordHelp" class="form-text text-muted">
-                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain
-                        spaces, special characters, or emoji.
-                    </small>
 
-                    {{!-- field for password vrefication --}}
-                    <label for="passwordV">Re-enter Password</label>
-                    <input type="password" id="passwordVerify" class="form-control">
-                    <small id="passwordVHelp" class="form-text text-muted">
-                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain
-                        spaces, special characters, or emoji.
-                    </small>
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <textarea type="text" class="form-control" name="body"
+                            placeholder="A short description will be nice." rows="4"></textarea>
+                        <small class="form-text text-muted">This will be a short description about yourself.</small>
+                    </div>
 
+                    <div class="form-group">
+                        <label>LinkedIn Profile</label>
+                        <input type="text" class="form-control" name="lprofile"
+                            placeholder="Enter Your LinkedIn Profile">
+                        <small class="form-text text-muted">Help us understand you a better.</small>
+                    </div>
+
+                    <div class="form-group required">
+
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-control" required="true">
+                        <small id="passwordHelp" class="form-text text-muted">
+                            Your password must be 8-20 characters long, contain letters and numbers, and must not
+                            contain
+                            spaces, special characters, or emoji.
+                        </small>
+
+                        {{!-- field for password vrefication --}}
+                        <label for="passwordV">Re-enter Password</label>
+                        <input type="password" id="passwordVerify" class="form-control" required="true">
+                        <small id="passwordVHelp" class="form-text text-muted">
+                            Your password must be 8-20 characters long, contain letters and numbers, and must not
+                            contain
+                            spaces, special characters, or emoji.
+                        </small>
+
+                    </div>
                     <button type="submit" class="btn btn-dark">Submit</button>
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                    <button class="btn signupButton" type="submit">Submit form</button>
+                    <button type="button" class="btn btn-success">ubmit form</button>
 
-                </form>
+                    btn-success
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+                    <hr><br>
+
+
 
             </div>
 
         </div>
+    </div>
 
-        {{> gttButtonPartial}}
 
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
-        <hr><br>
+    {{> gttButtonPartial}}
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+    <hr><br>
+
 
 
 

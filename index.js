@@ -27,6 +27,11 @@ app.get('/signup', (req, res) => {
     })
 })
 
+app.post('/signup', (req, res) => {
+
+    res.send("Signup Succesfull hua !")
+})
+
 // app.get('/login', (req, res) => {
 
 //     res.render('login', {
