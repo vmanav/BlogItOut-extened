@@ -6,6 +6,8 @@ app.use('/', express.static(__dirname + '/public'))
 app.use('/scripts', express.static(__dirname + '/scripts'))
 app.set('view engine', 'hbs')
 
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
 // registering hbs partials
 hbs.registerPartials(__dirname + '/views/partials')
 
@@ -23,13 +25,37 @@ app.get('/signup', (req, res) => {
     res.render('signup', {
         title: "Sign Up",
         signup: false,
-        login: true
+        login: true,
+        alertMsg: 'Signup Failure Test'
     })
 })
 
 app.post('/signup', (req, res) => {
+    // res.send("Signup Succesfull hua !")
+    const obj = {
+        fname: req.body.fname,
+        lname: req.body.lname,
+        email: req.body.email,
+        number: req.body.number,
+        bio: req.body.bio,
+        lprofile: req.body.lprofile,
+        password: req.body.password,
+        passwordVerify: req.body.passwordVerify,
+    }
+    // console.log(obj)
+    // res.send(obj)
+    // Add User To database
 
-    res.send("Signup Succesfull hua !")
+    // If Error Show Error -> render signupPage with a msg
+    // res.render('signup', {
+    //     title: "Sign Up",
+    //     signup: false,
+    //     login: true,
+    //     alertMsg: 'Signup Failure Test'
+    // })
+    
+    // NO Error
+    // render(Login with msg)
 })
 
 // app.get('/login', (req, res) => {
