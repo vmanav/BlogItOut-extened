@@ -26,7 +26,7 @@ app.get('/signup', (req, res) => {
         title: "Sign Up",
         signup: false,
         login: true,
-        alertMsg: 'Signup Failure Test'
+        signUpError: true
     })
 })
 
@@ -53,19 +53,20 @@ app.post('/signup', (req, res) => {
     //     login: true,
     //     alertMsg: 'Signup Failure Test'
     // })
-    
+
     // NO Error
     // render(Login with msg)
 })
 
-// app.get('/login', (req, res) => {
+app.get('/login', (req, res) => {
 
-//     res.render('login', {
-//         title: "Log In",
-//         login: true,
-//         signup: false
-//     })
-// })
+    res.render('login', {
+        title: "Log In",
+        login: false,
+        signup: true,
+        logInError: true
+    })
+})
 
 // Testing newFile fo hbs Partials
 app.get('/newFile', (req, res) => {

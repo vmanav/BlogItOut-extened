@@ -5,223 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home Page</title>
-
-    <!-- bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <!-- my script -->
-    <script src="/scripts/indexScript.js"></script>
-
-    <!-- font awesom 5 kit code -->
-    <script src="https://kit.fontawesome.com/e00a1e7cf5.js" crossorigin="anonymous"></script>
-
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* << navbar CSS */
-
-        /* change the brand and text color */
-        .navbar-custom .navbar-brand {
-            color: rgba(255, 255, 255, .8);
-        }
-
-        /* change the link color */
-        .navbar-custom .navbar-nav .nav-link {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* change the color of active or hovered links */
-        .navbar-custom .nav-item.active .nav-link,
-        .navbar-custom .nav-item:hover .nav-link {
-            color: #ffffff;
-        }
-
-        .signupButton:hover {
-            border: 1px solid white;
-            /* background-color: #696773; */
-        }
-
-        .loginButton {
-            background-color: #01BAEF;
-            /* #FFFCF9;  */
-            border: 1px transparent solid;
-            /* color: #343A40; */
-            color: white;
-        }
-
-        .loginButton:hover {
-            background-color: #C7E8F3;
-            transition: 0.2s;
-            color: #005972;
-        }
-
-        /* nav bar CSS >> */
-
-        .container1 {
-            background: url("/bg1.jpg");
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container2 {
-            height: 100vh;
-            background-color: #F7F4F3;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container2-in1 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background-color: #28231C;
-            height: 80%;
-            min-width: 90%;
-        }
-
-        .container2-in1-in1 {
-            background-color: #F7F4F3;
-            height: 80%;
-            position: relative;
-        }
-
-        .trendingBlogsContainer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .trendingCard {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            background-color: white;
-            height: 100%;
-            width: 90%;
-            border-radius: 7px;
-            overflow: hidden;
-            text-align: justify;
-        }
-
-        #goToTopButton {
-            border: 2px solid #01161E;
-            background-color: #01161E;
-            color: #F7F3E3;
-            border-radius: 15px;
-            font-size: 1.2rem;
-        }
-
-        #goToTopButton a {
-            color: #F7F3E3;
-        }
-
-        #goToTopButton:hover {
-            border: 2px solid #01161E;
-            background-color: #F7F3E3;
-            color: #01161E;
-            transition: 0.4s;
-        }
-
-        #goToTopButton:hover a {
-            color: #01161E;
-        }
-
-        .goToTopButton-hidden {
-            position: fixed;
-            bottom: -100px;
-            right: 35px;
-            transition: 0.4s;
-        }
-
-        .goToTopButton-visible {
-            position: fixed;
-            bottom: 70px;
-            right: 35px;
-            transition: 0.8s;
-        }
-    </style>
-</head>
-
-<body>
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-custom p-0" id="myNavbar">
-        <a class="navbar-brand ml-3" href="#">
-            <!-- <img src="" width="30" height="30" class="d-inline-block align-top" alt=""> -->
-            <b><i>B-I-O</i></b>
-        </a>
-        <div class="collapse navbar-collapse ">
-            <ul class="navbar-nav ml-3">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">All Posts</a>
-                </li>
-            </ul>
-
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="#" id="singUp">
-                        <button type="button" class="btn text-light signupButton">Sign Up</button>
-                    </a>
-                </li>
-                <li class="nav-item mx-2 loginClass">
-                    <a class="nav-link" href="#" id="logIn">
-                        <button type="button" class="btn btn-light loginButton">Log In</button>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container1">
-        Login PAGE
-    </div>
-
-
-    <a href="#">
-        <div class="px-2 py-3 goToTopButton-hidden" id="goToTopButton">
-            <i class="fas fa-long-arrow-alt-up"></i>
-        </div>
-    </a>
-
-
-</body>
-
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
         {{#if title}}
         BIO - {{title}}
@@ -229,6 +12,7 @@
         BIO
         {{/if}}
     </title>
+
 
     <!-- bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -254,7 +38,7 @@
             background-color: #74776B;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
         }
 
@@ -263,6 +47,7 @@
             color: black;
             min-width: 100%;
             position: relative;
+            min-height: 100%;
 
         }
 
@@ -311,6 +96,10 @@
 
 <body>
 
+
+
+
+
     <div class="container-fluid main p-5">
         <div class="inside-main">
 
@@ -321,102 +110,37 @@
                 </a>
             </div>
 
-            {{#if alertMsg}}
-            <div class="alert alert-danger text-center" role="alert">
-                Error While Signing you up ! - Please try again.
+            {{#if logInError}}
+            <div class="alert alert-danger text-center  m-0" role="alert">
+                Error While Logging you In ! - Please try again.
             </div>
             {{/if}}
 
             <div class="heading h2" style="background-color: burlywood; text-align: center">
-                Sign Up
+                Log In
             </div>
 
 
             <div class="container p-4">
-                {{!-- style="background-color: lightseagreen"> --}}
+
+                {{!-- style="background-color: lightseagreen" --}}
 
                 <form action="/signup" method="POST">
 
                     <div class="form-group required">
-                        <div class="form-row">
-                            <div class="col">
-                                <label>First Name</label>
-                                <input type="text" class="form-control" name="fname" placeholder="Enter Your First Name"
-                                    required="true">
-                            </div>
-                            <div class="col">
-                                <label>Last Name</label>
-                                <input type="text" class="form-control" name="lname" placeholder="Enter Your Last Name"
-                                    required="true">
-                            </div>
-                        </div>
-                        <small class="form-text text-muted">This will be also be the Author name.</small>
-                    </div>
-
-
-                    {{!-- <label>Full Name</label> --}}
-                    {{!-- <input type="text" class="form-control" name="name" placeholder="Enter Your Full Name"> --}}
-                    {{!-- <small class="form-text text-muted">This will be also be the Author name.</small> --}}
-
-                    <div class="form-group required">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" class="form-control" id="email" placeholder="Enter email" required="true">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your Email with anyone
-                            else.</small>
-                    </div>
-
-                    <div class="form-group required">
-                        <label>Contact Number</label>
-                        <input type="text" class="form-control" name="number" placeholder="Enter Your Contact Number">
-                        <small class="form-text text-muted">We'll never share your Contact Information with anyone
-                            else.</small>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label>Bio</label>
-                        <textarea type="text" class="form-control" name="bio"
-                            placeholder="A short description will be nice." rows="4"></textarea>
-                        <small class="form-text text-muted">This will be a short description about yourself.</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label>LinkedIn Profile</label>
-                        <input type="text" class="form-control" name="lprofile"
-                            placeholder="https://www.linkedin.com/in/username/">
-                        <small class="form-text text-muted">Help us understand you better.</small>
                     </div>
 
                     <div class="form-group required">
 
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" required="true">
-                        <small id="passwordHelp" class="form-text text-muted">
-                            Your password must be 8-20 characters long, contain letters and numbers, and must not
-                            contain spaces, special characters, or emoji.
-                        </small>
-                        <br>
-                        {{!-- field for password vrefication --}}
-                        <label for="passwordV">Re-enter Password</label>
-                        <input type="password" id="passwordVerify" name="passwordVerify" class="form-control"
-                            required="true">
-                        <small id="passwordVHelp" class="form-text text-muted">
-                            Your passwords must match.
-                        </small>
-
-                    </div>
-
-                    <div class="form-group" id="termsOfUse">
-                        <label class="text-secondary" for="password">
-                            By clicking Sign Up, you agree to our
-                            <span class="font-italic">
-                                <a href="#" class="text-danger">Terms of Use</a>
-                            </span>.
-                        </label>
+                        <input type="password" id="password" name="password" class="form-control"
+                            placeholder="Enter Password" required="true">
                     </div>
 
                     <div class="text-center">
-                        <button class="btn signupButton" type="submit">Sign Up</button>
+                        <button class="btn signupButton" type="submit">Log In</button>
                     </div>
 
                 </form>
@@ -428,6 +152,8 @@
 
     {{!-- Partial for Go-To-Top Button --}}
     {{> gttButtonPartial}}
+
+
 
 
 </body>
