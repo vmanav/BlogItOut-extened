@@ -8,7 +8,7 @@ const { addNewUser } = require('./database')
 
 app.use('/', express.static(__dirname + '/public'))
 app.use('/scripts', express.static(__dirname + '/scripts'))
-app.set('view engine', 'hbs')
+app.set('view engine', 'hbs')   
 
 // registering hbs partials
 hbs.registerPartials(__dirname + '/views/partials')
