@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true
-    }, lastName: {
+    },
+    lastName: {
         type: String,
         required: true,
         trim: true
@@ -25,7 +26,7 @@ const userSchema = new mongoose.Schema({
     bio: {
         type: String,
     },
-    LinkedInProfile: {
+    linkedInProfile: {
         type: String,
         trim: true
     },
@@ -37,7 +38,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // Creating Mongoose Model from userSchema
-var User = mongoose.model('User', userSchema);
+var User = mongoose.model('User', userSchema, 'users'); // 'users' -> Collection Name
 
 module.exports = {
     User
