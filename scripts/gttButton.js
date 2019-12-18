@@ -2,7 +2,6 @@
 
 $(() => {
 
-
     window.onscroll = function () {
         scrollFunction()
     };

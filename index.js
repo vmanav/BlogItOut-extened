@@ -4,7 +4,6 @@ const app = express();
 var session = require('express-session')
 
 
-
 // const { addNewUser } = require('./database')
 
 
@@ -21,7 +20,7 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 
 const mongoose = require('mongoose')
 // Url to connect to db 'naya-db'
-const dbURL = 'mongodb://localhost:27017/naya-db';
+const dbURL = 'mongodb://localhost:27017/biodb';
 
 mongoose.connect(dbURL, {
     // useMongoClient: true,  -- NOT NESSACRY
@@ -42,9 +41,9 @@ app.use(
         secret: 'Stupify is the secret',
         resave: false,
         saveUninitialized: false,
-        // cookie: {
-        //     maxAge: 1000 * 60, // keeeps logged in for 30 seconds
-        // },
+        cookie: {
+            maxAge: 1000 * 30, // keeeps logged in for 30 seconds
+        },
     })
 )
 
@@ -72,9 +71,7 @@ app.get('/signup', (req, res) => {
 
 app.post('/signup', (req, res) => {
 
-    // mongoose to use hi nahi hua bhai yaha
-
-    console.log("Email ->", req.body.email)
+    // console.log("Email ->", req.body.email)
 
     var newUser = new User({
         firstName: req.body.fname,
@@ -89,11 +86,39 @@ app.post('/signup', (req, res) => {
     // res.send(newUser)
 
     newUser.save(function (err) {
-        if (err)
+        if (err) {
             console.log(err)
+            console.log("---------")
+            console.log(err.errmsg)
+            console.log("---------")
+            console.log(err.errmsg.split(" ")[1])
+            console.log(err.errmsg.split(" ")[7])
+            // If Error Show Error -> render signupPage with a msg
+            // res.render('signup', {
+            //     title: "Sign Up",
+            //     signup: false,
+            //     login: true,
+            //     alertMsg: 'Signup Failure Test'
+            // })
 
-        else
+            // res.render('signup', {
+            //     title: "Sign Up",
+            //     signUpError: true,
+            //     alertMsg: ''
+            // })
+
+        }
+        else {
             console.log("Record Saved in Database.")
+            // NO Error
+            // succesfullSignup
+            res.render('login', {
+                title: "Log In",
+                login: false,
+                signup: true,
+                succesfullSignup: true
+            })
+        }
     });
 
 
@@ -214,4 +239,6 @@ app.get('/dashboard', isLoggedIn, (req, res) => {
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log("Application running on : http://localhost:3000/")
+    console.log("Signup on : http://localhost:3000/signup")
+    console.log("Login on : http://localhost:3000/login")
 })
