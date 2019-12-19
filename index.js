@@ -2,10 +2,10 @@ const express = require('express');
 const hbs = require('hbs')
 const app = express();
 var session = require('express-session')
+var flash = require('connect-flash')
 
 
 // const { addNewUser } = require('./database')
-
 
 app.use('/', express.static(__dirname + '/public'))
 app.use('/scripts', express.static(__dirname + '/scripts'))
@@ -13,6 +13,9 @@ app.set('view engine', 'hbs')
 
 // registering hbs partials
 hbs.registerPartials(__dirname + '/views/partials')
+
+
+app.use(flash())
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
@@ -47,7 +50,6 @@ app.use(
     })
 )
 
-
 // after session middleware
 app.use(passport.initialize())
 app.use(passport.session())
@@ -70,7 +72,6 @@ app.get('/signup', (req, res) => {
 })
 
 app.post('/signup', (req, res) => {
-
     // console.log("Email ->", req.body.email)
 
     var newUser = new User({
@@ -82,36 +83,46 @@ app.post('/signup', (req, res) => {
         linkedInProfile: req.body.lprofile,
         password: req.body.password,
     });
+    console.log("The New User =>")
     console.log(newUser)
     // res.send(newUser)
 
     newUser.save(function (err) {
         if (err) {
-            console.log(err)
-            console.log("---------")
-            console.log(err.errmsg)
-            console.log("---------")
-            console.log(err.errmsg.split(" ")[1])
-            console.log(err.errmsg.split(" ")[7])
-            // If Error Show Error -> render signupPage with a msg
-            // res.render('signup', {
-            //     title: "Sign Up",
-            //     signup: false,
-            //     login: true,
-            //     alertMsg: 'Signup Failure Test'
-            // })
 
-            // res.render('signup', {
-            //     title: "Sign Up",
-            //     signUpError: true,
-            //     alertMsg: ''
-            // })
+            // duplicate  email error
+            console.log("This is the error ->");
+            console.log(err);
+
+            alertMsg = "";
+            if (err.errmsg == `E11000 duplicate key error collection: biodb.users index: email_1 dup key: { : "zmanav.1999@gmail.com" }`) {
+                // console.log("Account Already Exisist")
+                alertMsg = "Account Already Exisist"
+            }
+            console.log(alertMsg)
+            // console.log("---------")
+            // console.log(err.errmsg.split(" ")[1])
+            // console.log(err.errmsg.split(" ")[7])
+            // If Error Show Error -> render signupPage with a msg
+
+            // NOTE : Render maybe a Error PAge instaed of a Signup Page so that the user can go back and the form data is not lost
+
+            res.render('signup', {
+                title: "Sign Up",
+                signUpError: true,
+                alertMsg: alertMsg
+            })
+            res.render('signup', {
+                title: "Sign Up",
+                signUpError: true,
+                alertMsg: alertMsg
+            })
 
         }
         else {
+            // NO Error - succesfullSignup
             console.log("Record Saved in Database.")
-            // NO Error
-            // succesfullSignup
+
             res.render('login', {
                 title: "Log In",
                 login: false,
@@ -120,36 +131,6 @@ app.post('/signup', (req, res) => {
             })
         }
     });
-
-
-
-    // db.collection('manuKiColl').insertOne({
-    //     fname: req.body.fname,
-    //     lname: req.body.lname,
-    //     email: req.body.email,   
-    //     number: req.body.number,
-    //     bio: req.body.bio,
-    //     lprofile: req.body.lprofile,
-    //     password: req.body.password,
-    //     passwordVerify: req.body.passwordVerify
-    // })
-
-    // ------------------------------------------------------------
-
-
-    // res.send("Signup Succesfull hua !")
-    // const obj = {
-    //     fname: req.body.fname,
-    //     lname: req.body.lname,
-    //     email: req.body.email,
-    //     number: req.body.number,
-    //     bio: req.body.bio,
-    //     lprofile: req.body.lprofile,
-    //     password: req.body.password,
-    //     passwordVerify: req.body.passwordVerify
-    // }
-    // console.log(obj)
-    // res.send(obj)
 
     // Add User To database using 'addNewUser' from database.js
     // addNewUser({
@@ -163,37 +144,31 @@ app.post('/signup', (req, res) => {
     //     passwordVerify: req.body.passwordVerify
     // })
 
-    // If Error Show Error -> render signupPage with a msg
-    // res.render('signup', {
-    //     title: "Sign Up",
-    //     signup: false,
-    //     login: true,
-    //     alertMsg: 'Signup Failure Test'
-    // })
-
-
-    // // NO Error
-    // // succesfullSignup
-    // res.render('login', {
-    //     title: "Log In",
-    //     login: false,
-    //     signup: true,
-    //     succesfullSignup: true
-    // })
 
 })
 
 app.get('/login', (req, res) => {
 
+    if (alertMsg = req.flash().error) {
+        console.log("flash exists")
+        
+        console.log(alertMsg)
+        alertMsg = alertMsg[0]
+    }
+    else {
+        alertMsg = null
+    }
+
     res.render('login', {
         title: "Log In",
-        logInError: true
+        alertMsg: alertMsg
     })
 })
 
 app.post('/login', passport.authenticate('local', {
     successRedirect: '/dashboard',
     failureRedirect: '/login',
+    failureFlash: 'Invalid username or password.'
 }),
 )
 

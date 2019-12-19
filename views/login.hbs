@@ -110,9 +110,9 @@
                 </a>
             </div>
 
-            {{#if logInError}}
+            {{#if alertMsg}}
             <div class="alert alert-danger text-center  m-0" role="alert">
-                Error While Logging you In ! - Please try again.
+                Error! - {{alertMsg}} - Please try again.
             </div>
             {{/if}}
 
