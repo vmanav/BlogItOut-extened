@@ -4,7 +4,7 @@ const app = express();
 var session = require('express-session')
 var flash = require('connect-flash')
 
-
+const PORT = 3000;
 // const { addNewUser } = require('./database')
 
 app.use('/', express.static(__dirname + '/public'))
@@ -151,7 +151,7 @@ app.get('/login', (req, res) => {
 
     if (alertMsg = req.flash().error) {
         console.log("flash exists")
-        
+
         console.log(alertMsg)
         alertMsg = alertMsg[0]
     }
@@ -190,7 +190,19 @@ app.get('/about', (req, res) => {
 
 function isLoggedIn(req, res, next) {
     if (req.user) {
-        console.log("`req.user` EXISTS", req.user)
+        console.log("req.user exists ->");
+        console.log(req.user);
+        // req.user = {
+        //     _id: 5dfafc384c65b425faf5fb71,
+        //     firstName: 'Manav',
+        //     lastName: 'Verma',
+        //     contactNo: '8851729421',
+        //     email: 'zmanav.1999@gmail.com',
+        //     bio: 'aaaaaaaaaaaaaa',
+        //     linkedInProfile: 'bbbbbbbbbb',
+        //     password: 'nalksahs',
+        //     __v: 0
+        // }
         return next()
     }
     res.redirect('/login')
@@ -202,16 +214,6 @@ app.get('/dashboard', isLoggedIn, (req, res) => {
 })
 
 
-// // Testing newFile fo hbs Partials
-// app.get('/newFile', (req, res) => {
-//     // res.send("Blog It Out REBORN")
-
-//     res.render('newFile', {
-//         login: true,
-//         signup: true,
-//     })
-// })
-const PORT = 3000;
 app.listen(PORT, () => {
     console.log("Application running on : http://localhost:3000/")
     console.log("Signup on : http://localhost:3000/signup")

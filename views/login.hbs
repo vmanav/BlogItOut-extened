@@ -26,6 +26,9 @@
     <!-- my script -->
     <script src="/scripts/gttButton.js"></script>
 
+    <!-- script for goBack Button -->
+    <script src="/scripts/goBack.js"></script>
+
     <!-- font awesom 5 kit code -->
     <script src="https://kit.fontawesome.com/e00a1e7cf5.js" crossorigin="anonymous"></script>
 
@@ -105,9 +108,12 @@
 
             <div class="px-3 py-2"
                 style="color: black; background-color: white; position: absolute; top: -20px; left: -45px;">
-                <a href="/">
+                <button id="goBackButton">
                     <i class="fas fa-arrow-left"></i>
-                </a>
+                </button>
+                {{!-- <a href="/">
+                    <i class="fas fa-arrow-left"></i>
+                </a> --}}
             </div>
 
             {{#if alertMsg}}
