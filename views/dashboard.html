@@ -1,3 +1,5 @@
+<!-- visit : https://bootstrapious.com/p/bootstrap-sidebar -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,6 +35,10 @@
         .navbar {
             display: inline-block;
             min-height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+
             /* max-height: 100vh; */
 
         }
@@ -43,7 +49,7 @@
 
     <div class="d-flex" id="main">
 
-        <nav id="sidebar" class="navbar navbar-light p-3 position-fixed" style="border: 2px solid red; background-color: yellow;">
+        <nav id="sidebar" class="navbar navbar-light p-3" style="border: 2px solid red; background-color: yellow;">
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbarContentsCollapsed">
                 <i class="fas fa-bars"></i>
