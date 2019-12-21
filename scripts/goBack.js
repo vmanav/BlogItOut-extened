@@ -3,7 +3,7 @@ $(() => {
     // Add thsi code to Signup and Login files
     // <button onclick="goBack()">Go Back</button>
 
-    alert("goBAck vali script loaded")
+    // alert("goBAck vali script loaded")
 
     // function printHi() {
     //     console.log("Hi")
