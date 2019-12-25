@@ -50,6 +50,10 @@
             opacity: 0.9;
         }
 
+        .toggleButtons {
+            border: 0px;
+        }
+
         .hiddenButtons {
             display: none;
             transition: all 0.2s ease-in-out;
@@ -64,7 +68,7 @@
 
     <div class="d-flex" id="main">
 
-        <nav id="sidebar" class="navbar p-3">
+        <nav id="sidebar" class="navbar navbar-dark p-3">
 
             <!-- togglerButoon -->
             <div style="text-align:center;">
@@ -82,7 +86,8 @@
                 <!-- closeButton -->
                 <button class="navbar-toggler toggleButtons hiddenButtons" type="button" data-toggle="collapse"
                     data-target=".navbarContentsCollapsed">
-                    <i class="fas fa-caret-left"></i>
+                    <!-- <i class="fas fa-caret-left"></i> -->
+                    <i class="fas fa-chevron-left"></i>
                 </button>
             </div>
             <!-- <button class="navbar-toggler toggleButtons hiddenButtons" type="button" data-toggle="collapse"
@@ -97,40 +102,63 @@
                 <li class="nav-item active">
                     <!-- <i class="fas fa-home"></i> -->
                     <a class="nav-link text-center" href="#">
-                        <i class="fas fa-home"></i>
-
+                        <i class="fab fa-jedi-order"></i>
                         <span class="sidebarTexts collapse navbar-collapse navbarContentsCollapsed">
-                            <span>Home</span>
+                            <span>Dashboard</span>
                         </span>
-                        <!-- <span class="collapse navbar-collapse navbarContentsCollapsed">Home</span> -->
                     </a>
                 </li>
 
                 <li class="nav-item active">
                     <!-- <i class="fas fa-home"></i> -->
                     <a class="nav-link text-center" href="#">
-                        <i class="fas fa-home"></i>
-
+                        <i class="fas fa-user"></i>
                         <span class="sidebarTexts collapse navbar-collapse navbarContentsCollapsed">
-                            <span>Home</span>
+                            <span>Profile</span>
                         </span>
-                        <!-- <span class="collapse navbar-collapse navbarContentsCollapsed">Home</span> -->
                     </a>
                 </li>
+
                 <li class="nav-item active">
                     <!-- <i class="fas fa-home"></i> -->
                     <a class="nav-link text-center" href="#">
-                        <i class="fas fa-home"></i>
-
+                        <i class="far fa-plus-square"></i>
                         <span class="sidebarTexts collapse navbar-collapse navbarContentsCollapsed">
-                            <span>Home</span>
+                            <span>New Blog</span>
                         </span>
-                        <!-- <span class="collapse navbar-collapse navbarContentsCollapsed">Home</span> -->
                     </a>
                 </li>
 
+                <li class="nav-item active">
+                    <!-- <i class="fas fa-home"></i> -->
+                    <a class="nav-link text-center" href="#">
+                        <i class="far fa-folder-open"></i>
+                        <span class="sidebarTexts collapse navbar-collapse navbarContentsCollapsed">
+                            <span>Profile</span>
+                        </span>
+                    </a>
+                </li>
 
-                <!-- <i class="far fa-user"></i> -->
+                <li class="nav-item active">
+                    <!-- <i class="fas fa-home"></i> -->
+                    <a class="nav-link text-center" href="#">
+                        <i class="fas fa-folder-open"></i>
+                        <span class="sidebarTexts collapse navbar-collapse navbarContentsCollapsed">
+                            <span>Profile</span>
+                        </span>
+                    </a>
+                </li>
+
+                <li class="nav-item active">
+                    <!-- <i class="fas fa-home"></i> -->
+                    <a class="nav-link text-center" href="#">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="sidebarTexts collapse navbar-collapse navbarContentsCollapsed">
+                            <span>Signout</span>
+                        </span>
+                    </a>
+                </li>
+
 
             </ul>
 
