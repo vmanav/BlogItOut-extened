@@ -38,20 +38,31 @@
             position: fixed;
             top: 0;
             left: 0;
+            min-width: 80px;
+
 
             /* max-height: 100vh; */
 
         }
+
+        .grayed {
+            background-color: yellow;
+        }
     </style>
+
+    <script src="dashnav.js"></script>
+
+
 </head>
 
 <body>
 
     <div class="d-flex" id="main">
 
-        <nav id="sidebar" class="navbar navbar-light p-3" style="border: 2px solid red; background-color: yellow;">
+        <nav id="sidebar" class="navbar navbar-light p-3" style="background-color: lightgoldenrodyellow;">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbarContentsCollapsed">
+            <button class="navbar-toggler" id="toggleButton" type="button" data-toggle="collapse"
+                data-target=".navbarContentsCollapsed">
                 <i class="fas fa-bars"></i>
             </button>
 
@@ -66,6 +77,14 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <!-- <i class="fas fa-home"></i> -->
+                    <a class="nav-link text-center" href="#">
+                        <i class="far fa-user"></i>
+                        <span class="collapse navbar-collapse navbarContentsCollapsed">Profile</span>
+                    </a>
+                </li>
+                <!-- 
                 <li class="nav-item active">
                     <i class="far fa-user"></i>
                     <a class="nav-link collapse navbar-collapse navbarContentsCollapsed" href="#">
@@ -95,7 +114,7 @@
                     <i class="far fa-user"></i>
                     <a class="nav-link collapse navbar-collapse navbarContentsCollapsed" href="#">
                         Profile</a>
-                </li>
+                </li> -->
 
 
             </ul>
@@ -115,7 +134,8 @@
             </ul> -->
 
         </nav>
-        <div>
+
+        <div id="content">
 
             What is Lorem Ipsum?
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
@@ -192,38 +212,19 @@
 
     </div>
 
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            // let mrg = $('#sidebar').innerWidth()
+            // console.log(mrg)
+
+            // $('#content').css('margin-left', mrg + 'px');
+
+        });
+
+    </script>
+
 </body>
 
 </html>
-
-
-<!-- 
-What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-but also the leap into electronic typesetting, remaining essentially unchanged. It was
-popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-and more recently with desktop publishing software like Aldus PageMaker including versions of
-Lorem Ipsum.
-
-Why do we use it?
-It is a long established fact that a reader will be distracted by the readable content of a page
-when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-distribution of letters, as opposed to using 'Content here, content here', making it look like
-readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as
-their default model text, and a search for 'lorem ipsum' will uncover many web sites still in
-their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on
-purpose (injected humour and the like).
-
-Where does it come from?
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a
-Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin
-words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in
-classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32
-and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
-written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
-Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
-section 1.10.32.
- -->
