@@ -1,0 +1,118 @@
+<!-- visit : https://bootstrapious.com/p/bootstrap-sidebar -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- font awesom 5 kit code -->
+    <script src="https://kit.fontawesome.com/e00a1e7cf5.js" crossorigin="anonymous"></script>
+
+    <!-- my script -->
+    <script src="scripts/dashnav.js"></script>
+
+    <style>
+        #main {
+            background-color: #F7F4F3;
+            min-height: 100vh;
+            word-wrap: break-word;
+        }
+
+        /* pageContent ki css */
+        .card {
+            /* shadow  */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        #pageContent {
+            min-height: 100vh;
+            display: block;
+        }
+
+        .blackCont {
+            /* word-wrap: break-word; */
+            background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(32, 45, 58, 1) 0%, rgba(90, 92, 106, 1) 81.3%);
+            border-radius: 0% 100% 100% 0% / 0% 50% 50% 100%;
+        }
+
+        .offWhiteContainer {
+            background-color: #F7F4F3;
+            border-radius: 100% 0% 0% 100% / 50% 100% 0% 50%
+        }
+    </style>
+
+    {{> dashnavStyling}}
+
+
+
+</head>
+
+<body>
+
+    <div class="d-flex" id="main">
+
+        <!-- sidebar here -->
+        {{> dashnavPartial}}
+
+
+        <div id="pageContent" class="p-3">
+
+            <!-- welcome user -->
+            <div class="card p-2 h5" style="display: inline;">
+                Welcome to BIO, NAME!
+            </div>
+            <hr>
+
+            <!-- dashbaord content -->
+
+            <div class="blackCont d-flex flex-column justify-content-center align-items-center p-5">
+
+                <div class="offWhiteContainer d-flex flex-column justify-content-center align-items-center p-5">
+
+                    <div class="card p-2 h4 mt-4 mb-4" style="display: inline; color: black;">
+                        Trending on BIO.
+                    </div>
+                    <div class="card p-4 mt-4 mb-4"
+                        style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); color:white;text-align: justify;">
+
+                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

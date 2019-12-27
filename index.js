@@ -209,7 +209,8 @@ function isLoggedIn(req, res, next) {
     console.log("Redirected via checkLoggedIn() function ---->")
 }
 
-app.get('/dashboard', isLoggedIn, (req, res) => {
+app.get('/dashboard', (req, res) => {
+    // , isLoggedIn, (req, res) => {
     res.render('dashboard')
 })
 
@@ -218,4 +219,5 @@ app.listen(PORT, () => {
     console.log("Application running on : http://localhost:3000/")
     console.log("Signup on : http://localhost:3000/signup")
     console.log("Login on : http://localhost:3000/login")
+    console.log("Dashboard on : http://localhost:3000/dashboard")
 })

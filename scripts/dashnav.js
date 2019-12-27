@@ -31,7 +31,7 @@ $(() => {
         // Disable tooltips
         // $('[data-toggle="tooltip"]').tooltip('enable')
 
-        $("#content").toggleClass("grayed");
+        $("#pageContent").toggleClass("grayed");
         $(".nav-link").toggleClass("text-center");
         $(".toggleButtons").toggleClass("hiddenButtons");
 
@@ -43,7 +43,9 @@ $(() => {
         console.log("called")
         let mrg = $('#sidebar').innerWidth()
         $('#pageContent').css('margin-left', mrg + 'px');
-        // $('#content').css('width', mrg + 'px');
+        $('#pageContent').css('width', $(window).width() - mrg + 'px');
+
+
 
     }
 
