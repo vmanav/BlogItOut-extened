@@ -42,7 +42,9 @@ $(() => {
     function setWidth() {
         console.log("called")
         let mrg = $('#sidebar').innerWidth()
-        $('#content').css('margin-left', mrg + 'px');
+        $('#pageContent').css('margin-left', mrg + 'px');
+        // $('#content').css('width', mrg + 'px');
+
     }
 
 })
