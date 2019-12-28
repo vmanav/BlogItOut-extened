@@ -35,6 +35,8 @@ mongoose.connect(dbURL, {
 var db = mongoose.connection;
 
 var { User } = require('./models/user')
+var { Blog } = require('./models/blog')
+
 
 const passport = require('./passportConfig')
 
@@ -45,7 +47,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            maxAge: 1000 * 30, // keeeps logged in for 30 seconds
+            maxAge: 1000 * 60, // keeeps logged in for 30 seconds
         },
     })
 )
@@ -144,7 +146,6 @@ app.post('/signup', (req, res) => {
     //     passwordVerify: req.body.passwordVerify
     // })
 
-
 })
 
 app.get('/login', (req, res) => {
@@ -209,15 +210,78 @@ function isLoggedIn(req, res, next) {
     console.log("Redirected via checkLoggedIn() function ---->")
 }
 
-app.get('/dashboard', (req, res) => {
-    // , isLoggedIn, (req, res) => {
-    res.render('dashboard')
+app.get('/post', (req, res) => {
+    // const blogId = req.query.blogId;
+    // console.log(blogId)
+
 })
 
 
+
+app.get('/dashboard', isLoggedIn, (req, res) => {
+    // , (req, res) => {
+
+    // console.log("logging req.user in /dashboard")
+    // console.log(req.user);
+
+    // console.log("---------------------------------------");
+    res.render('dashboard', {
+        firstName: req.user.firstName,
+    })
+})
+
+
+app.get('/addBlog', isLoggedIn, (req, res) => {
+    // , (req, res) => {
+    res.render('addBlog', {
+        firstName: req.user.firstName,
+        lastName: req.user.lastName
+    })
+})
+
+
+app.post('/addBlog', (req, res) => {
+
+    let author = req.user.firstName + " " + req.user.lastName;
+    let likesArray = [];
+
+    var newBlog = new Blog({
+        blogTitle: req.body.title,
+        blogBody: req.body.body,
+        author: author,
+        blogTags: req.body.tags,
+        likesArray: likesArray,
+        likesCount: 0,
+        authorId: req.user._id
+    });
+
+    console.log("new Blog ->")
+    console.log(newBlog)
+
+    newBlog.save(function (err) {
+        if (err) {
+            console.log("This is the error ->");
+            console.log(err);
+        }
+        else {
+            // NO Error -
+            console.log("Blog added.")
+            console.log('/?blog=' + newBlog._id)
+            res.redirect('/dashboard/?blog=' + newBlog._id)
+            // render to the new blog
+        }
+    })
+
+
+})
+
+// for all linkks in the dashboadr the user should be checked in 
+
 app.listen(PORT, () => {
-    console.log("Application running on : http://localhost:3000/")
-    console.log("Signup on : http://localhost:3000/signup")
+    // console.log("Application running on : http://localhost:3000/")
+    // console.log("Signup on : http://localhost:3000/signup")
     console.log("Login on : http://localhost:3000/login")
     console.log("Dashboard on : http://localhost:3000/dashboard")
+    console.log("Add New Blog on : http://localhost:3000/addBlog")
+
 })

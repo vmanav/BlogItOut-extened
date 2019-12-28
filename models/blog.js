@@ -26,7 +26,11 @@ const blogSchema = new mongoose.Schema({
     },
     likesCount: {
         type: Number,
+    },
+    authorId: {
+        type: Object,
     }
+
 });
 
 // Creating Mongoose Model from blogSchema
