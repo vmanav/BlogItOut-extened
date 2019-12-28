@@ -47,7 +47,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            maxAge: 1000 * 60, // keeeps logged in for 30 seconds
+            maxAge: 1000 * 180, // keeeps logged in for 30 seconds
         },
     })
 )
@@ -57,6 +57,8 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.get('/', (req, res) => {
+
+    console.log("get @ `/`");
 
     res.render('index', {
         title: "Homepage",
@@ -210,17 +212,13 @@ function isLoggedIn(req, res, next) {
     console.log("Redirected via checkLoggedIn() function ---->")
 }
 
-app.get('/post', (req, res) => {
-    // const blogId = req.query.blogId;
-    // console.log(blogId)
-
-})
-
-
 
 app.get('/dashboard', isLoggedIn, (req, res) => {
     // , (req, res) => {
 
+    console.log('get @ dashboard...')
+    const blogId = req.query.blogId
+    console.log(blogId)
     // console.log("logging req.user in /dashboard")
     // console.log(req.user);
 
@@ -228,6 +226,13 @@ app.get('/dashboard', isLoggedIn, (req, res) => {
     res.render('dashboard', {
         firstName: req.user.firstName,
     })
+})
+
+
+app.get('/post', (req, res) => {
+    // const blogId = req.query.blogId;
+    // console.log(blogId)
+
 })
 
 
@@ -266,8 +271,12 @@ app.post('/addBlog', (req, res) => {
         else {
             // NO Error -
             console.log("Blog added.")
-            console.log('/?blog=' + newBlog._id)
-            res.redirect('/dashboard/?blog=' + newBlog._id)
+            // console.log('/?blog=' + newBlog._id)
+            // redirect
+
+
+            // redirect to a post page intead of dashboard
+            res.redirect('/dashboard/?blogId=' + newBlog._id)
             // render to the new blog
         }
     })
