@@ -1,6 +1,7 @@
 $(() => {
 
     alert("dahnav.js loaded")
+    console.log("dahnav.js loaded")
     // set
     setWidth();
 

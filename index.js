@@ -8,7 +8,9 @@ const PORT = 3000;
 // const { addNewUser } = require('./database')
 
 app.use('/', express.static(__dirname + '/public'))
+
 app.use('/scripts', express.static(__dirname + '/scripts'))
+
 app.set('view engine', 'hbs')
 
 // registering hbs partials
@@ -213,37 +215,36 @@ function isLoggedIn(req, res, next) {
 }
 
 
-app.get('/dashboard', isLoggedIn, (req, res) => {
+
+app.get('/dashboard', (req, res) => {
+    // , isLoggedIn
     // , (req, res) => {
 
-    console.log('get @ dashboard...')
+    console.log('get @ dashboard 1')
     const blogId = req.query.blogId
-    console.log(blogId)
+    if (blogId) { console.log("blogId -", blogId) }
     // console.log("logging req.user in /dashboard")
     // console.log(req.user);
 
     // console.log("---------------------------------------");
     res.render('dashboard', {
-        firstName: req.user.firstName,
+        // firstName: req.user.firstName,
     })
 })
 
+// app.get('/post', (req, res) => {
+//     // const blogId = req.query.blogId;
+//     // console.log(blogId)
+// })
 
-app.get('/post', (req, res) => {
-    // const blogId = req.query.blogId;
-    // console.log(blogId)
-
-})
-
-
-app.get('/addBlog', isLoggedIn, (req, res) => {
+app.get('/dashboard/addBlog', (req, res) => {
+    // , isLoggedIn
     // , (req, res) => {
     res.render('addBlog', {
-        firstName: req.user.firstName,
-        lastName: req.user.lastName
+        // firstName: req.user.firstName,
+        // lastName: req.user.lastName
     })
 })
-
 
 app.post('/addBlog', (req, res) => {
 
@@ -274,14 +275,11 @@ app.post('/addBlog', (req, res) => {
             // console.log('/?blog=' + newBlog._id)
             // redirect
 
-
             // redirect to a post page intead of dashboard
             res.redirect('/dashboard/?blogId=' + newBlog._id)
             // render to the new blog
         }
     })
-
-
 })
 
 // for all linkks in the dashboadr the user should be checked in 
