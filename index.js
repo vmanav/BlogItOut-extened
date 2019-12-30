@@ -58,6 +58,9 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
+// Dashboard Router
+const { dashboardRouter } = require('./dashboard')
+
 app.get('/', (req, res) => {
 
     console.log("get @ `/`");
@@ -214,8 +217,10 @@ function isLoggedIn(req, res, next) {
     console.log("Redirected via checkLoggedIn() function ---->")
 }
 
-app.get('/dashboard', (req, res) => {
-    // , isLoggedIn
+// Routing to dashboardRouter
+app.use('/dashboard', isLoggedIn, dashboardRouter)
+
+app.get('/dashboard', isLoggedIn, (req, res) => {
     // , (req, res) => {
 
     console.log('get @ dashboard 1')
@@ -225,21 +230,21 @@ app.get('/dashboard', (req, res) => {
     // console.log(req.user);
 
     res.render('dashboard', {
-        // firstName: req.user.firstName,
+        firstName: req.user.firstName,
     })
 })
 
+// Post route for Not Logged in users
 // app.get('/post', (req, res) => {
 //     // const blogId = req.query.blogId;
 //     // console.log(blogId)
 // })
 
-app.get('/dashboard/addBlog', (req, res) => {
-    // , isLoggedIn
+app.get('/dashboard/addBlog', isLoggedIn, (req, res) => {
     // , (req, res) => {
     res.render('addBlog', {
-        // firstName: req.user.firstName,
-        // lastName: req.user.lastName
+        firstName: req.user.firstName,
+        lastName: req.user.lastName
     })
 })
 
