@@ -9,17 +9,43 @@ dashboardRouter.get('/', (req, res) => {
     // , (req, res) => {
 
     const blogId = req.query.blogId
-    if (blogId) { console.log("blogId -", blogId) }
+    console.log("blogId -", blogId)
 
+    if (blogId) {
+        console.log("query exists")
+
+        Blog.find({
+            _id: blogId
+        }, function (err, docs) {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                // console.log("docs")
+                // console.log(docs)
+                // console.log(typeof docs)
+                // console.log("---")
+
+                console.log(docs[0])
+                res.render('dashboard', {
+                    firstName: req.user.firstName,
+                    post: docs[0]
+                })
+            }
+        })
+    }
+    else {
+        res.render('dashboard', {
+            firstName: req.user.firstName,
+        })
+
+    }
     // find the Blog as per the BlogId and render it on dashboard
 
 
     // console.log("logging req.user in /dashboard")
     // console.log(req.user);
 
-    res.render('dashboard', {
-        firstName: req.user.firstName,
-    })
 })
 
 dashboardRouter.get('/addBlog', (req, res) => {
