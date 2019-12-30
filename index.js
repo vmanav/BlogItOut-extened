@@ -214,8 +214,6 @@ function isLoggedIn(req, res, next) {
     console.log("Redirected via checkLoggedIn() function ---->")
 }
 
-
-
 app.get('/dashboard', (req, res) => {
     // , isLoggedIn
     // , (req, res) => {
@@ -226,7 +224,6 @@ app.get('/dashboard', (req, res) => {
     // console.log("logging req.user in /dashboard")
     // console.log(req.user);
 
-    // console.log("---------------------------------------");
     res.render('dashboard', {
         // firstName: req.user.firstName,
     })
