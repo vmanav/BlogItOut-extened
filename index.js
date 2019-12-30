@@ -198,8 +198,8 @@ app.get('/about', (req, res) => {
 
 function isLoggedIn(req, res, next) {
     if (req.user) {
-        console.log("req.user exists ->");
-        console.log(req.user);
+        console.log("`req.user` exists.");
+        // console.log(req.user);
         // req.user = {
         //     _id: 5dfafc384c65b425faf5fb71,
         //     firstName: 'Manav',
@@ -220,69 +220,12 @@ function isLoggedIn(req, res, next) {
 // Routing to dashboardRouter
 app.use('/dashboard', isLoggedIn, dashboardRouter)
 
-app.get('/dashboard', isLoggedIn, (req, res) => {
-    // , (req, res) => {
-
-    console.log('get @ dashboard 1')
-    const blogId = req.query.blogId
-    if (blogId) { console.log("blogId -", blogId) }
-    // console.log("logging req.user in /dashboard")
-    // console.log(req.user);
-
-    res.render('dashboard', {
-        firstName: req.user.firstName,
-    })
-})
-
 // Post route for Not Logged in users
 // app.get('/post', (req, res) => {
 //     // const blogId = req.query.blogId;
 //     // console.log(blogId)
 // })
 
-app.get('/dashboard/addBlog', isLoggedIn, (req, res) => {
-    // , (req, res) => {
-    res.render('addBlog', {
-        firstName: req.user.firstName,
-        lastName: req.user.lastName
-    })
-})
-
-app.post('/addBlog', (req, res) => {
-
-    let author = req.user.firstName + " " + req.user.lastName;
-    let likesArray = [];
-
-    var newBlog = new Blog({
-        blogTitle: req.body.title,
-        blogBody: req.body.body,
-        author: author,
-        blogTags: req.body.tags,
-        likesArray: likesArray,
-        likesCount: 0,
-        authorId: req.user._id
-    });
-
-    console.log("new Blog ->")
-    console.log(newBlog)
-
-    newBlog.save(function (err) {
-        if (err) {
-            console.log("This is the error ->");
-            console.log(err);
-        }
-        else {
-            // NO Error -
-            console.log("Blog added.")
-            // console.log('/?blog=' + newBlog._id)
-            // redirect
-
-            // redirect to a post page intead of dashboard
-            res.redirect('/dashboard/?blogId=' + newBlog._id)
-            // render to the new blog
-        }
-    })
-})
 
 // for all linkks in the dashboadr the user should be checked in 
 
@@ -294,3 +237,26 @@ app.listen(PORT, () => {
     console.log("Add New Blog on : http://localhost:3000/addBlog")
 
 })
+
+
+// app.get('/dashboard', isLoggedIn, (req, res) => {
+//     // , (req, res) => {
+
+//     console.log('get @ dashboard 1')
+//     const blogId = req.query.blogId
+//     if (blogId) { console.log("blogId -", blogId) }
+//     // console.log("logging req.user in /dashboard")
+//     // console.log(req.user);
+
+//     res.render('dashboard', {
+//         firstName: req.user.firstName,
+//     })
+// })
+
+// app.get('/dashboard/addBlog', isLoggedIn, (req, res) => {
+//     // , (req, res) => {
+//     res.render('addBlog', {
+//         firstName: req.user.firstName,
+//         lastName: req.user.lastName
+//     })
+// })
