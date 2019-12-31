@@ -32,10 +32,12 @@ mongoose.connect(dbURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
+    useFindAndModify: false
 })
 
 var db = mongoose.connection;
 
+// Models
 var { User } = require('./models/user')
 var { Blog } = require('./models/blog')
 
@@ -233,13 +235,33 @@ app.post('/like', (req, res) => {
         authorName: authorName
     }
     // console.log("updating now")
-    Model.findOneAndUpdate({ _id: blogId }, { $push: { newLike: newLike } }, () => {
+
+    // Liking post
+
+    // Blog.findOneAndUpdate({ _id: blogId }, { $push: { likesArray: newLike } }, () => {
+    //     console.log("check kar upadte hua kya?")
+    // })
+
+    // Disliking post
+
+    Blog.findOneAndUpdate({ _id: blogId }, { $pull: { likesArray: { authorId: authorId } } }, () => {
         console.log("check kar upadte hua kya?")
     })
 
+    // Disliking post - ALTERNATIVE
 
+    // Blog.findByIdAndUpdate(
+    //     blogId,
+    //     { $pull: { likesArray: { authorId: authorId } } }, (err, model) => {
+    //         if (err) {
+    //             console.log(err);
+    //             // return res.send(err);
+    //         }
+    //         console.log("Succ")
+    //         // return res.json(model);
+    //     })
 
-res.send("Liked Post")
+    res.send("Liked Post")
 })
 
 function isLoggedIn(req, res, next) {
@@ -281,7 +303,7 @@ app.listen(PORT, () => {
     // console.log("Signup on : http://localhost:3000/signup")
     console.log("Login on : http://localhost:3000/login")
     console.log("Dashboard on : http://localhost:3000/dashboard")
-    console.log("Add New Blog on : http://localhost:3000/addBlog")
+    // console.log("Add New Blog on : http://localhost:3000/addBlog")
 
 })
 
