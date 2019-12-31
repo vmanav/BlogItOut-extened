@@ -180,6 +180,7 @@ app.post('/login', passport.authenticate('local', {
 }),
 )
 
+// CRAEATE LOGOUT FUNCTIONALITY
 app.get('/logout', function (req, res) {
     req.logout();
 
@@ -194,6 +195,51 @@ app.get('/about', (req, res) => {
     // res.send("Blog It Out REBORN")
 
     res.render('about')
+})
+
+app.post('/like', (req, res) => {
+    console.log('`post` @ `/like`.');
+
+    // console.log(req.body.authorId);
+    // console.log(req.body.authorName);
+    // console.log(req.body.blogId);
+    // console.log(req.body.like);
+
+    let authorId = req.body.authorId;
+    let authorName = req.body.authorName;
+    let blogId = req.body.blogId;
+    let like = req.body.like;
+
+
+    // console.log("finding blog")
+    // Blog.find({
+    //     _id: blogId
+    // }, function (err, docs) {
+    //     if (err) {
+    //         console.log(err)
+    //     }
+    //     else {
+    //         // console.log("docs")
+    //         // console.log(docs)
+    //         // console.log(typeof docs)
+    //         // console.log("---")
+    //         console.log(docs[0])
+
+    //     }
+    // })
+
+    let newLike = {
+        authorId: authorId,
+        authorName: authorName
+    }
+    // console.log("updating now")
+    Model.findOneAndUpdate({ _id: blogId }, { $push: { newLike: newLike } }, () => {
+        console.log("check kar upadte hua kya?")
+    })
+
+
+
+res.send("Liked Post")
 })
 
 function isLoggedIn(req, res, next) {
