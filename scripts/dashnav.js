@@ -8,12 +8,12 @@ $(() => {
     // $(".collapse").on('show.bs.collapse', function () {
     //     alert('The collapsible content is about to be shown.');
     // });
-    (function () {
-        // $('[data-toggle="tooltip"]').tooltip()
-        $('[data-toggle="tooltip"]').tooltip('enable')
 
-    }
-    );
+    // $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip('enable');
+
+
+
 
     $('.nav-item').hover(
         function () { $(this).addClass('active') },

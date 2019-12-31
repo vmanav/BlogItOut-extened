@@ -25,18 +25,18 @@ dashboardRouter.get('/', (req, res) => {
                 // console.log(docs)
                 // console.log(typeof docs)
                 // console.log("---")
-
                 console.log(docs[0])
                 res.render('dashboard', {
-                    firstName: req.user.firstName,
+                    // firstName: req.user.firstName,
                     post: docs[0]
                 })
             }
         })
+
     }
     else {
         res.render('dashboard', {
-            firstName: req.user.firstName,
+            // firstName: req.user.firstName,
         })
 
     }

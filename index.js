@@ -218,7 +218,8 @@ function isLoggedIn(req, res, next) {
 }
 
 // Routing to dashboardRouter
-app.use('/dashboard', isLoggedIn, dashboardRouter)
+app.use('/dashboard', dashboardRouter)
+// , isLoggedIn
 
 // Post route for Not Logged in users
 // app.get('/post', (req, res) => {

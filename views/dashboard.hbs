@@ -25,6 +25,9 @@
     <!-- my script for dashboard side-navbar -->
     <script src="../scripts/dashnav.js"></script>
 
+    <!-- my script for likePost -->
+    <script src="../scripts/likePost.js"></script>
+
     <style>
         #main {
             background-color: #F7F4F3;
@@ -58,6 +61,38 @@
             background-color: #F7F4F3;
             border-radius: 100% 0% 0% 100% / 50% 100% 0% 50%
         }
+
+        #post {
+            background-color: white;
+        }
+
+        #likePost {
+            transform: scale(1.1);
+        }
+
+        #likePost:hover {
+            color: #FF7733;
+            transform: scale(1.4);
+            transition: 0.3s;
+        }
+
+        #likePost:active {
+
+            transform: scale(1.1);
+            transition: 0.1s;
+        }
+
+        .grayColored {
+            color: #232C33;
+        }
+
+        .redColored {
+            color: #C70210;
+        }
+
+        .tooltip {
+            z-index: 99999;
+        }
     </style>
 
     {{> dashnavStyling}}
@@ -87,90 +122,125 @@
             <hr>
 
             {{#if post}}
-            <div>
-                {{post.blogTitle}}
-                <br>
-                {{post.blogBody}} 
-                <br>
-                blogBody:
-                {{post.author}}
-                <br>
+            <div id="post" class="p-3 mt-5 mb-5 card">
+                <p class="h3 text-center">
+                    {{post.blogTitle}}
+                </p>
+                <hr>
+                <p class="text-justify">
+                    {{post.blogBody}}
+                    post post post post post post post post
+                    post post post post post post post post
+                    <br>
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    <br>
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    <br>
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    <br>
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    <br>
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    post post post post post post post post
+                    <br>
+                </p>
+                <hr>
+                <p class="text-left">
+                    {{post.author}}
+                </p>
+
+                {{!-- add like box --}}
+                <p>
+                    <i class="fas fa-heart grayColored" id="likePost" data-toggle="tooltip" title="Like Me!"></i>
+                </p>
+
             </div>
+            <hr>
+
             {{/if}}
+
             {{!-- 
             <div>
-
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-                post post post post post post post post
-
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
+                post post post post post post post post post post post post post post post post
             </div> --}}
 
-
-
-
             <!-- dashbaord content -->
-            <div class="blackCont d-flex flex-column justify-content-center align-items-center p-5">
+            <div class="blackCont d-flex flex-column justify-content-center align-items-center p-5 mt-5">
 
                 <div class="offWhiteContainer d-flex flex-column justify-content-center align-items-center p-5">
 
@@ -181,15 +251,25 @@
                         style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); color:white;text-align: justify;">
 
                         Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body
                         Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body
                         Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body
                         Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body
                         Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
+                        Trending Blog Body Trending Blog Body Trending Blog Body
 
                     </div>
                 </div>
