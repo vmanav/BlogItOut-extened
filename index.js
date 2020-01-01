@@ -199,20 +199,30 @@ app.get('/about', (req, res) => {
     res.render('about')
 })
 
-app.post('/likeOrNot', (req, res) => {
-    console.log('`post` @ `/likeOrNot`.');
+app.get('/checkLikedOrNot', (req, res) => {
+    console.log('get @ ')
+
+    res.render('about')
+})
+
+
+app.post('/like', (req, res) => {
+    console.log('`post` @ `/like`.');
 
     // console.log("req.body variables....")
     // console.log(req.body.authorId);
     // console.log(req.body.authorName);
     // console.log(req.body.blogId);
-    // console.log(req.body.likeOrNot);
+    // console.log(req.body.like);
     // console.log("-----------")
+    // console.log("`req.user` --->", req.user);
 
-    let authorId = req.body.authorId;
-    let authorName = req.body.authorName;
+    let userId = req.user._id;
+    let userName = req.user.firstName + ' ' + req.user.lastName;
     let blogId = req.body.blogId;
-    let likeOrNot = req.body.likeOrNot;
+    let like = req.body.like;
+    // console.log("userId", userId);
+    // console.log("userName", userName);
 
     // console.log("finding blog")
     // Blog.find({
@@ -230,34 +240,35 @@ app.post('/likeOrNot', (req, res) => {
 
     //     }
     // })
-    console.log("likeOrNot value - ", likeOrNot)
-    // console.log("typeof likeOrNot", typeof likeOrNot)
+    console.log("like value - ", like)
+    // console.log("typeof like", typeof like)
 
-    if (likeOrNot == "like") {
-        console.log("LIKE CASE ---------")
+    if (like == "like") {
+        // Liking post
+        // console.log("LIKE CASE ---------")
 
         let newLike = {
-            authorId: authorId,
-            authorName: authorName
+            userId: userId,
+            userName: userName
         }
-        // Liking post
 
         Blog.findOneAndUpdate({ _id: blogId }, { $push: { likesArray: newLike } }, () => {
             console.log("Post Liked ..?")
+            res.send("Liked Post")
         })
     }
-    else if (likeOrNot == "dislike") {
-        console.log("DISLIKE CASE ---------")
+    else if (like == "dislike") {
         // Disliking post
+        // console.log("DISLIKE CASE ---------")
 
-        Blog.findOneAndUpdate({ _id: blogId }, { $pull: { likesArray: { authorId: authorId } } }, () => {
+        Blog.findOneAndUpdate({ _id: blogId }, { $pull: { likesArray: { userId: userId } } }, () => {
             console.log("Post Disliked ..?")
+            res.send("Disliked Post")
         })
 
     }
 
     // Disliking post - ALTERNATIVE
-
     // Blog.findByIdAndUpdate(
     //     blogId,
     //     { $pull: { likesArray: { authorId: authorId } } }, (err, model) => {
@@ -268,10 +279,9 @@ app.post('/likeOrNot', (req, res) => {
     //         console.log("Succ")
     //         // return res.json(model);
     //     })
-
-    res.send("Liked Post")
 })
 
+// Function to check if a user if logged in or not 
 function isLoggedIn(req, res, next) {
     if (req.user) {
         console.log("`req.user` exists.");
@@ -294,8 +304,7 @@ function isLoggedIn(req, res, next) {
 }
 
 // Routing to dashboardRouter
-app.use('/dashboard', dashboardRouter)
-// , isLoggedIn
+app.use('/dashboard', isLoggedIn, dashboardRouter)
 
 // Post route for Not Logged in users
 // app.get('/post', (req, res) => {

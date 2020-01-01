@@ -4,6 +4,25 @@ $(() => {
     // When a user Opens a blog check if the post is liked by the user or not and
     // according to that assing a class "grayColored" OR "redColored"
 
+    // make a get request on `/checkLikedOrNot`
+    let blogId = window.location.href.split('=')[1];
+    if (blogId) {
+        console.log("blogId exixts - ", blogId);
+        let requestUrl = '/checkLikedOrNot' + '/?blogId=' + blogId;
+        console.log("requestUrl", requestUrl);
+
+        $.get(requestUrl, function (data) {
+            console.log("Data Recieved - ");
+            console.log(data);
+        })
+            .fail(() => {
+
+                alert("Unable to retrive data.");
+            })
+    }
+    else {
+        console.log("blogId doesn't exixts.");
+    }
 
 
     let likePost = $('#likePost');
@@ -20,8 +39,10 @@ $(() => {
         // console.log(url)
         // console.log(url.split('=')[1])
         let blogId = url.split('=')[1];
-        let authorId = $('#authorId').text().trim();
-        let authorName = $('#authorName').text().trim()
+
+        // let authorId = $('#authorId').text().trim();
+        // let authorName = $('#authorName').text().trim()
+
         // console.log("authorId -")
         // console.log(authorId)
         // if (redColored class exists then => LIKE)
@@ -29,12 +50,10 @@ $(() => {
         // LIKE
         if (likePost.hasClass("redColored")) {
             $.post(
-                '/likeOrNot',
+                '/like',
                 {
-                    authorId: authorId,
-                    authorName: authorName,
                     blogId: blogId,
-                    likeOrNot: "like",
+                    like: "like",
                 },
                 (data) => {
                     console.log("data :>", data)
@@ -46,12 +65,10 @@ $(() => {
         else if (likePost.hasClass("grayColored")) {
             // DISLIKE
             $.post(
-                '/likeOrNot',
+                '/like',
                 {
-                    authorId: authorId,
-                    authorName: authorName,
                     blogId: blogId,
-                    likeOrNot: "dislike",
+                    like: "dislike",
                 },
                 (data) => {
                     console.log("data :>", data)
