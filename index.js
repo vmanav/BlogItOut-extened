@@ -199,19 +199,20 @@ app.get('/about', (req, res) => {
     res.render('about')
 })
 
-app.post('/like', (req, res) => {
-    console.log('`post` @ `/like`.');
+app.post('/likeOrNot', (req, res) => {
+    console.log('`post` @ `/likeOrNot`.');
 
+    // console.log("req.body variables....")
     // console.log(req.body.authorId);
     // console.log(req.body.authorName);
     // console.log(req.body.blogId);
-    // console.log(req.body.like);
+    // console.log(req.body.likeOrNot);
+    // console.log("-----------")
 
     let authorId = req.body.authorId;
     let authorName = req.body.authorName;
     let blogId = req.body.blogId;
-    let like = req.body.like;
-
+    let likeOrNot = req.body.likeOrNot;
 
     // console.log("finding blog")
     // Blog.find({
@@ -229,24 +230,31 @@ app.post('/like', (req, res) => {
 
     //     }
     // })
+    console.log("likeOrNot value - ", likeOrNot)
+    // console.log("typeof likeOrNot", typeof likeOrNot)
 
-    let newLike = {
-        authorId: authorId,
-        authorName: authorName
+    if (likeOrNot == "like") {
+        console.log("LIKE CASE ---------")
+
+        let newLike = {
+            authorId: authorId,
+            authorName: authorName
+        }
+        // Liking post
+
+        Blog.findOneAndUpdate({ _id: blogId }, { $push: { likesArray: newLike } }, () => {
+            console.log("Post Liked ..?")
+        })
     }
-    // console.log("updating now")
+    else if (likeOrNot == "dislike") {
+        console.log("DISLIKE CASE ---------")
+        // Disliking post
 
-    // Liking post
+        Blog.findOneAndUpdate({ _id: blogId }, { $pull: { likesArray: { authorId: authorId } } }, () => {
+            console.log("Post Disliked ..?")
+        })
 
-    // Blog.findOneAndUpdate({ _id: blogId }, { $push: { likesArray: newLike } }, () => {
-    //     console.log("check kar upadte hua kya?")
-    // })
-
-    // Disliking post
-
-    Blog.findOneAndUpdate({ _id: blogId }, { $pull: { likesArray: { authorId: authorId } } }, () => {
-        console.log("check kar upadte hua kya?")
-    })
+    }
 
     // Disliking post - ALTERNATIVE
 
