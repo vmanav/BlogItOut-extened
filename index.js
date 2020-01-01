@@ -199,11 +199,47 @@ app.get('/about', (req, res) => {
     res.render('about')
 })
 
-app.get('/checkLikedOrNot', (req, res) => {
-    console.log('get @ ')
 
-    res.render('about')
+app.get('/checkLikedOrNot', (req, res) => {
+    console.log('get @ /checkLikedOrNot ');
+
+    const blogId = req.query.blogId
+    console.log("blogId -", blogId)
+
+    // console.log("req.user -",req.user);
+    let checkLike = {
+        userId: req.user._id,
+        userName: req.user.firstName + ' ' + req.user.lastName,
+    }
+    console.log("checkLike - ", checkLike);
+
+    Blog.findById(blogId, function (err, result) {
+        if (err) {
+            console.log(err);
+
+        }
+        if (result) {
+            console.log("result - ", result);
+            console.log("result - ", result.likesArray);
+            if (result.likesArray.some(like => like.userId === checkLike.userId)) {
+                console.log("Object found inside the array.");
+            }
+            else {
+                console.log("Object not found.");
+            }
+
+        }
+        else {
+            console.log("No Data Found.");
+        }
+
+    });
+
+
+
+
 })
+
 
 
 app.post('/like', (req, res) => {
