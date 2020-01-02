@@ -206,6 +206,12 @@ app.get('/checkLikedOrNot', (req, res) => {
     const blogId = req.query.blogId
     console.log("blogId -", blogId)
 
+    // console.log("typeof req.user._id - ");
+    // console.log(typeof req.user._id);
+    // if (req.user._id == "5dfafc384c65b425faf5fb71") {
+    //     console.log("REQ.USER._ID MATCHES ------------------")
+    // }
+
     // console.log("req.user -",req.user);
     let checkLike = {
         userId: req.user._id,
@@ -219,13 +225,20 @@ app.get('/checkLikedOrNot', (req, res) => {
 
         }
         if (result) {
-            console.log("result - ", result);
+            // console.log("result - ", result);
             console.log("result - ", result.likesArray);
-            if (result.likesArray.some(like => like.userId === checkLike.userId)) {
+            // let x = result.likesArray;
+            if (result.likesArray.some(like => JSON.stringify(like.userId) == JSON.stringify(checkLike.userId))) {
                 console.log("Object found inside the array.");
+                res.send({
+                    found: true
+                })
             }
             else {
                 console.log("Object not found.");
+                res.send({
+                    found: false
+                })
             }
 
         }
@@ -359,6 +372,28 @@ app.listen(PORT, () => {
     // console.log("Add New Blog on : http://localhost:3000/addBlog")
 
 })
+
+// // JS some comparion of object
+
+// if (x.some((like) => {
+//     // like.userId == checkLike.userId
+//     console.log("like =")
+//     console.log(like)
+//     console.log(like.userId)
+//     console.log(typeof like.userId)
+//     console.log(JSON.stringify(like.userId))
+//     console.log(typeof JSON.stringify(like.userId))
+//     console.log("checkLike - ", checkLike);
+//     console.log(checkLike.userId)
+//     console.log(typeof checkLike.userId)
+//     if (like.userId === checkLike.userId) {
+//         console.log("DONO EQUAL HAI...")
+//     }
+// })) {
+//     console.log("Object found inside the array.");
+// }
+
+
 
 
 // app.get('/dashboard', isLoggedIn, (req, res) => {

@@ -14,6 +14,14 @@ $(() => {
         $.get(requestUrl, function (data) {
             console.log("Data Recieved - ");
             console.log(data);
+            if (data.found == true) {
+                alert("TRUE");
+                $('#likePost').addClass("redColored");
+            }
+            else {
+                alert("FALSE");
+                $('#likePost').addClass("grayColored");
+            }
         })
             .fail(() => {
 
