@@ -24,11 +24,11 @@ const blogSchema = new mongoose.Schema({
     likesArray: {
         type: Array
     },
-    likesCount: {
-        type: Number,
-    },
     authorId: {
         type: Object,
+    },
+    datePosted: {
+        type: Date,
     }
 
 });

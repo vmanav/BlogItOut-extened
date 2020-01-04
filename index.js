@@ -17,6 +17,18 @@ app.set('view engine', 'hbs')
 hbs.registerPartials(__dirname + '/views/partials')
 
 
+// HBS helpers
+
+// helper th slit the Date recieved from Mongodb and show only usefull Data
+hbs.registerHelper('splitDate', function (data) {
+    var part = data.toString().split(" ");
+    splittedDate = part[1] + " " + part[2] + " " + part[3];
+    return splittedDate;
+});
+
+// ---------------------------------------
+
+// flash middleware
 app.use(flash())
 
 app.use(express.json())

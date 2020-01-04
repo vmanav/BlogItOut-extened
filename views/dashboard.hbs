@@ -34,7 +34,23 @@
     <!-- my script for likePost -->
     <script src="../scripts/likePost.js"></script>
 
+    <!-- my gttButton -->
+    <script src="../scripts/gttButton.js"></script>
+
+    {{!-- <script>
+        hbs.registerHelper('splitDate', function (date) {
+            var part = date.split(" ");
+            splittedDate = part[1] + " " + part[2] + " " + part[3];
+            return splittedDate;
+        }); --}}
+
+        
+    </script>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         #main {
             background-color: #F7F4F3;
             min-height: 100vh;
@@ -99,11 +115,19 @@
         .tooltip {
             z-index: 99999;
         }
+
+        a#trendingLink {
+            color: white;
+        }
+
+        a#trendingLink:hover {
+            text-decoration: none;
+        }
     </style>
 
     {{> dashnavStyling}}
 
-
+    {{> gttButtonStyling}}
 
 </head>
 
@@ -132,8 +156,11 @@
                 <p class="h3 text-center">
                     {{post.blogTitle}}
                 </p>
-                <hr>
-                <p class="text-justify">
+                <p class="h6 text-center text-uppercase font-italic font-weight-light mt-2">
+                    [ {{post.blogTags}} ]
+                </p>
+                <hr class="mb-3">
+                <p class="text-justify mt-3">
                     {{post.blogBody}}
                     post post post post post post post post
                     post post post post post post post post
@@ -180,19 +207,6 @@
                     post post post post post post post post
                     post post post post post post post post
                     post post post post post post post post
-                    <br>
-                    post post post post post post post post
-                    post post post post post post post post
-                    post post post post post post post post
-                    post post post post post post post post
-                    post post post post post post post post
-                    <br>
-                    post post post post post post post post
-                    post post post post post post post post
-                    post post post post post post post post
-                    post post post post post post post post
-                    post post post post post post post post
-                    post post post post post post post post
                     post post post post post post post post
                     post post post post post post post post
                     post post post post post post post post
@@ -201,6 +215,13 @@
                     <br>
                 </p>
                 <hr>
+
+                {{!-- DATE POSTED FOR A POST --}}
+
+                <p class="text-right font-italic font-weight-light" id="datePosted">
+                    {{{ splitDate post.datePosted}}}
+                </p>
+
                 <p class="text-left" id="authorName">
                     {{post.author}}
                 </p>
@@ -208,7 +229,6 @@
                 <p class="text-left d-none" id="authorId">
                     {{post.authorId}}
                 </p>
-
 
                 {{!-- add like box --}}
                 <p>
@@ -258,31 +278,25 @@
                     <div class="card p-2 h4 mt-4 mb-4" style="display: inline; color: black;">
                         Trending on BIO.
                     </div>
-                    <div class="card p-4 mt-4 mb-4"
-                        style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); color:white;text-align: justify;">
 
-                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body
-                        Trending Blog Body Trending Blog Body Trending Blog Body
+                    {{!-- NOTE  --}}
+                    {{!-- Now we have to add the link of te Trending blog here --}}
+                    {{!-- Jab bhi dashboard render hoga tab ye most trending blog bhi render hoga  --}}
+                    <a href="#" id="trendingLink">
+                        <div class="card p-4 mt-4 mb-4"
+                            style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); color:white;text-align: justify;">
 
-                    </div>
+                            Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog
+                            Body
+                            Trending Blog Body Trending Blog Body Trending Blog Body
+                            Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog
+                            Body
+                            Trending Blog Body Trending Blog Body Trending Blog Body
+                            Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog
+                            Body
+                            Trending Blog Body Trending Blog Body Trending Blog Body
+                        </div>
+                    </a>
                 </div>
             </div>
 
@@ -290,6 +304,9 @@
 
 
     </div>
+
+    {{!-- Partial for Go-To-Top Button --}}
+    {{> gttButtonPartial}}
 
 </body>
 

@@ -50,7 +50,7 @@ dashboardRouter.get('/', (req, res) => {
 
 dashboardRouter.get('/addBlog', (req, res) => {
     // , (req, res) => {
-
+       
     res.render('addBlog', {
         firstName: req.user.firstName,
         lastName: req.user.lastName
@@ -62,6 +62,9 @@ dashboardRouter.post('/addBlog', (req, res) => {
 
     let author = req.user.firstName + " " + req.user.lastName;
     let likesArray = [];
+    
+    let datePosted = new Date();
+    console.log(datePosted);
 
     var newBlog = new Blog({
         blogTitle: req.body.title,
@@ -69,8 +72,8 @@ dashboardRouter.post('/addBlog', (req, res) => {
         author: author,
         blogTags: req.body.tags,
         likesArray: likesArray,
-        likesCount: 0,
-        authorId: req.user._id
+        authorId: req.user._id,
+        datePosted: datePosted
     });
 
     console.log("new Blog ->")
@@ -93,5 +96,16 @@ dashboardRouter.post('/addBlog', (req, res) => {
         }
     })
 })
+
+
+dashboardRouter.get('/userBlogs', (req, res) => {
+    // , (req, res) => {
+
+    res.render('userBlogs', {
+        // firstName: req.user.firstName,
+        // lastName: req.user.lastName
+    })
+})
+
 
 module.exports = { dashboardRouter }

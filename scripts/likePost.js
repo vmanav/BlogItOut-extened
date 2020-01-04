@@ -15,11 +15,11 @@ $(() => {
             console.log("Data Recieved - ");
             console.log(data);
             if (data.found == true) {
-                alert("TRUE");
+                console.log("TRUE");
                 $('#likePost').addClass("redColored");
             }
             else {
-                alert("FALSE");
+                console.log("FALSE");
                 $('#likePost').addClass("grayColored");
             }
         })
