@@ -50,7 +50,7 @@ dashboardRouter.get('/', (req, res) => {
 
 dashboardRouter.get('/addBlog', (req, res) => {
     // , (req, res) => {
-       
+
     res.render('addBlog', {
         firstName: req.user.firstName,
         lastName: req.user.lastName
@@ -62,7 +62,7 @@ dashboardRouter.post('/addBlog', (req, res) => {
 
     let author = req.user.firstName + " " + req.user.lastName;
     let likesArray = [];
-    
+
     let datePosted = new Date();
     console.log(datePosted);
 
@@ -101,10 +101,46 @@ dashboardRouter.post('/addBlog', (req, res) => {
 dashboardRouter.get('/userBlogs', (req, res) => {
     // , (req, res) => {
 
-    res.render('userBlogs', {
-        // firstName: req.user.firstName,
-        // lastName: req.user.lastName
-    })
+
+    const userId = req.query.userId
+    console.log("userId -", userId)
+
+    if (userId) {
+        console.log("query exists")
+
+        Blog.find({
+            authorId: userId
+        }, function (err, docs) {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                console.log("docs")
+                console.log(docs)
+                // console.log(typeof docs)
+                // console.log("---")
+                console.log(docs[0])
+
+                res.render('userBlogs', {
+                    firstName: req.user.firstName,
+                    // post: docs[0]
+                })
+            }
+        })
+
+    }
+    else {
+        console.log("userId not in query");
+        res.render('userBlogs', {
+            // firstName: req.user.firstName,
+            oopsMessage: true
+        })
+
+    }
+
+    // res.render('userBlogs', {
+    //     firstName: req.user.firstName,
+    // })
 })
 
 
