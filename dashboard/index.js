@@ -1,5 +1,8 @@
 const express = require('express')
 
+var ObjectId = require('mongodb').ObjectID
+
+
 const dashboardRouter = express.Router()
 
 var { Blog } = require('../models/blog')
@@ -10,6 +13,7 @@ dashboardRouter.get('/', (req, res) => {
 
     const blogId = req.query.blogId
     console.log("blogId -", blogId)
+    // console.log("typeof blogId", typeof blogId)
 
     if (blogId) {
         console.log("query exists")
@@ -101,25 +105,33 @@ dashboardRouter.post('/addBlog', (req, res) => {
 dashboardRouter.get('/userBlogs', (req, res) => {
     // , (req, res) => {
 
+    console.log('get @ `/userBlogs`.');
 
     const userId = req.query.userId
     console.log("userId -", userId)
+    console.log("typeof userId", typeof userId)
 
     if (userId) {
         console.log("query exists")
+        // authorId: 5dfafc384c65b425faf5fb71,
 
         Blog.find({
-            authorId: userId
-        }, function (err, docs) {
+            // authorId: userId
+            // authorId: "5e0c5416f3deb43b2580d3b6",
+            authorId: ObjectId(userId),
+
+            // author: 'Abhsihersk Verma',
+            // _id: "5e0c8d9f15dda9591bc9a263",
+        }, function (err, data) {
             if (err) {
                 console.log(err)
             }
             else {
-                console.log("docs")
-                console.log(docs)
+                console.log("data aya -")
+                console.log(data)
                 // console.log(typeof docs)
                 // console.log("---")
-                console.log(docs[0])
+                // console.log(docs[0])
 
                 res.render('userBlogs', {
                     firstName: req.user.firstName,
