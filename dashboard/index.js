@@ -10,6 +10,7 @@ var { Blog } = require('../models/blog')
 
 dashboardRouter.get('/', (req, res) => {
     // , (req, res) => {
+    console.log("get @ /dashboard")
 
     const blogId = req.query.blogId
     console.log("blogId -", blogId)
@@ -115,39 +116,54 @@ dashboardRouter.get('/userBlogs', (req, res) => {
         console.log("query exists")
         // authorId: 5dfafc384c65b425faf5fb71,
 
-        Blog.find({
-            // authorId: userId
-            // authorId: "5e0c5416f3deb43b2580d3b6",
-            authorId: ObjectId(userId),
+        // authorId: userId
 
-            // author: 'Abhsihersk Verma',
-            // _id: "5e0c8d9f15dda9591bc9a263",
+        Blog.find({
+            authorId: ObjectId(userId),
         }, function (err, data) {
+
             if (err) {
-                console.log(err)
+                console.log(err);
+                res.render('userBlogs', {
+                    // firstName: req.user.firstName,
+                    oopsMessage: true,
+                    message: "We can't seem to find the page you're looking for."
+                })
+
             }
             else {
-                console.log("data aya -")
-                console.log(data)
-                // console.log(typeof docs)
-                // console.log("---")
-                // console.log(docs[0])
+                console.log("data -");
+                console.log(data);
 
-                res.render('userBlogs', {
-                    firstName: req.user.firstName,
-                    // post: docs[0]
-                })
+                if (data.length == 0) {
+                    console.log("Empty Array.");
+
+                    res.render('userBlogs', {
+                        // firstName: req.user.firstName,
+                        oopsMessage: true,
+                        message: "No Blogs found for the user."
+                    })
+                }
+                else {
+
+                    console.log("rendering data.");
+                    res.render('userBlogs', {
+                        firstName: req.user.firstName,
+                        listOfBlogs: data
+                    })
+                }
             }
         })
 
     }
     else {
+
         console.log("userId not in query");
         res.render('userBlogs', {
             // firstName: req.user.firstName,
-            oopsMessage: true
+            oopsMessage: true,
+            message: "We can't seem to find the page you're looking for."
         })
-
     }
 
     // res.render('userBlogs', {
