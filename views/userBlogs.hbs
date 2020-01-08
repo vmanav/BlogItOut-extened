@@ -31,6 +31,10 @@
             --main-blacktext-color: #262626;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         #main {
             background-color: #F7F4F3;
             min-height: 100vh;
@@ -101,9 +105,7 @@
             <hr>
 
             {{#if oopsMessage}}
-
             {{> oopsMessage}}
-
             {{/if}}
 
             {{#each listOfBlogs as |chunk|}}
@@ -113,9 +115,13 @@
                     <p class="h3 text-center">
                         {{chunk.blogTitle}}
                     </p>
+
+                    {{#if chunk.blogTags}}
                     <p class="h6 text-center text-uppercase font-italic font-weight-light">
                         [ {{chunk.blogTags}} ]
                     </p>
+                    {{/if}}
+
                     {{#if chunk.datePosted}}
                     <p class="text-right font-italic font-weight-light" id="datePosted">
                         {{{ splitDate chunk.datePosted}}}

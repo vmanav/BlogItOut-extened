@@ -23,38 +23,46 @@ dashboardRouter.get('/', (req, res) => {
             _id: blogId
         }, function (err, docs) {
             if (err) {
-                console.log(err)
+                console.log(err);
+                res.render('dashboard', {
+                    firstName: req.user.firstName,
+                    oopsMessage: true,
+                    message: "We can't seem to find the page you're looking for."
+                })
             }
             else {
                 // console.log("docs")
                 // console.log(docs)
-                // console.log(typeof docs)
-                // console.log("---")
-                console.log(docs[0])
-                res.render('dashboard', {
-                    // firstName: req.user.firstName,
-                    post: docs[0]
-                })
+                if (docs.length == 0) {
+                    console.log("Empty Array.");
+
+                    res.render('dashboard', {
+                        firstName: req.user.firstName,
+                        oopsMessage: true,
+                        message: "We can't seem to find the page you're looking for."
+                    })
+                }
+                else {
+                    console.log(docs[0])
+                    res.render('dashboard', {
+                        firstName: req.user.firstName,
+                        post: docs[0]
+                    })
+                }
             }
         })
 
     }
     else {
         res.render('dashboard', {
-            // firstName: req.user.firstName,
+            firstName: req.user.firstName,
         })
 
     }
-    // find the Blog as per the BlogId and render it on dashboard
-
-
-    // console.log("logging req.user in /dashboard")
-    // console.log(req.user);
 
 })
 
 dashboardRouter.get('/addBlog', (req, res) => {
-    // , (req, res) => {
 
     res.render('addBlog', {
         firstName: req.user.firstName,
@@ -97,14 +105,12 @@ dashboardRouter.post('/addBlog', (req, res) => {
 
             // redirect to a post page intead of dashboard
             res.redirect('/dashboard/?blogId=' + newBlog._id)
-            // render to the new blog
         }
     })
 })
 
 
 dashboardRouter.get('/userBlogs', (req, res) => {
-    // , (req, res) => {
 
     console.log('get @ `/userBlogs`.');
 
@@ -115,7 +121,6 @@ dashboardRouter.get('/userBlogs', (req, res) => {
     if (userId) {
         console.log("query exists")
         // authorId: 5dfafc384c65b425faf5fb71,
-
         // authorId: userId
 
         Blog.find({
@@ -125,7 +130,7 @@ dashboardRouter.get('/userBlogs', (req, res) => {
             if (err) {
                 console.log(err);
                 res.render('userBlogs', {
-                    // firstName: req.user.firstName,
+                    firstName: req.user.firstName,
                     oopsMessage: true,
                     message: "We can't seem to find the page you're looking for."
                 })
@@ -139,7 +144,7 @@ dashboardRouter.get('/userBlogs', (req, res) => {
                     console.log("Empty Array.");
 
                     res.render('userBlogs', {
-                        // firstName: req.user.firstName,
+                        firstName: req.user.firstName,
                         oopsMessage: true,
                         message: "No Blogs found for the user."
                     })
@@ -160,15 +165,12 @@ dashboardRouter.get('/userBlogs', (req, res) => {
 
         console.log("userId not in query");
         res.render('userBlogs', {
-            // firstName: req.user.firstName,
+            firstName: req.user.firstName,
             oopsMessage: true,
             message: "We can't seem to find the page you're looking for."
         })
     }
 
-    // res.render('userBlogs', {
-    //     firstName: req.user.firstName,
-    // })
 })
 
 
