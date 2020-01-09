@@ -16,6 +16,9 @@ app.set('view engine', 'hbs')
 // registering hbs partials
 hbs.registerPartials(__dirname + '/views/partials')
 
+// bcrypt setup
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 // HBS helpers
 
@@ -95,65 +98,69 @@ app.get('/signup', (req, res) => {
 })
 
 app.post('/signup', (req, res) => {
-    // console.log("Email ->", req.body.email)
+    
+    bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
 
-    var newUser = new User({
-        firstName: req.body.fname,
-        lastName: req.body.lname,
-        contactNo: req.body.number,
-        email: req.body.email,
-        bio: req.body.bio,
-        linkedInProfile: req.body.lprofile,
-        password: req.body.password,
-    });
-    console.log("The New User =>")
-    console.log(newUser)
-    // res.send(newUser)
+        var newUser = new User({
+            firstName: req.body.fname,
+            lastName: req.body.lname,
+            contactNo: req.body.number,
+            email: req.body.email,
+            bio: req.body.bio,
+            linkedInProfile: req.body.lprofile,
+            password: hash,
+        });
+        console.log("The New User =>")
+        console.log(newUser)
 
-    newUser.save(function (err) {
-        if (err) {
 
-            // duplicate  email error
-            console.log("This is the error ->");
-            console.log(err);
+        newUser.save(function (err) {
+            if (err) {
 
-            alertMsg = "";
-            if (err.errmsg == `E11000 duplicate key error collection: biodb.users index: email_1 dup key: { : "zmanav.1999@gmail.com" }`) {
-                // console.log("Account Already Exisist")
-                alertMsg = "Account Already Exisist"
+                // duplicate  email error
+                console.log("This is the error ->");
+                console.log(err);
+
+                alertMsg = "";
+                if (err.errmsg == `E11000 duplicate key error collection: biodb.users index: email_1 dup key: { : "zmanav.1999@gmail.com" }`) {
+                    // console.log("Account Already Exisist")
+                    alertMsg = "Account Already Exisist"
+                }
+                console.log(alertMsg)
+                // console.log("---------")
+                // console.log(err.errmsg.split(" ")[1])
+                // console.log(err.errmsg.split(" ")[7])
+                // If Error Show Error -> render signupPage with a msg
+
+                // NOTE : Render maybe a Error PAge instaed of a Signup Page so that the user can go back and the form data is not lost
+
+                res.render('signup', {
+                    title: "Sign Up",
+                    signUpError: true,
+                    alertMsg: alertMsg
+                })
+                res.render('signup', {
+                    title: "Sign Up",
+                    signUpError: true,
+                    alertMsg: alertMsg
+                })
+
             }
-            console.log(alertMsg)
-            // console.log("---------")
-            // console.log(err.errmsg.split(" ")[1])
-            // console.log(err.errmsg.split(" ")[7])
-            // If Error Show Error -> render signupPage with a msg
+            else {
+                // NO Error - succesfullSignup
+                console.log("Record Saved in Database.")
 
-            // NOTE : Render maybe a Error PAge instaed of a Signup Page so that the user can go back and the form data is not lost
+                res.render('login', {
+                    title: "Log In",
+                    login: false,
+                    signup: true,
+                    succesfullSignup: true
+                })
+            }
+        });
 
-            res.render('signup', {
-                title: "Sign Up",
-                signUpError: true,
-                alertMsg: alertMsg
-            })
-            res.render('signup', {
-                title: "Sign Up",
-                signUpError: true,
-                alertMsg: alertMsg
-            })
-
-        }
-        else {
-            // NO Error - succesfullSignup
-            console.log("Record Saved in Database.")
-
-            res.render('login', {
-                title: "Log In",
-                login: false,
-                signup: true,
-                succesfullSignup: true
-            })
-        }
-    });
+    })
+    
 
     // Add User To database using 'addNewUser' from database.js
     // addNewUser({

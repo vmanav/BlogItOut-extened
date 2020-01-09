@@ -4,7 +4,11 @@ const LocalStrategy = require('passport-local').Strategy
 
 const { User } = require('./models/user')
 
-// * { usernameField: 'email' } * --> tells passport that the usernameField is the 'email' FileReader.
+// bcrypt setup
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
+// * { usernameField: 'email' } * --> tells passport that the usernameField is the 'email' field.
 
 passport.use(
     new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
@@ -24,12 +28,31 @@ passport.use(
                     console.log("-----------no user exists-----------")
                     return done(null, false);
                 }
-                if (user.password != password) {
-                    console.log("-----------PASSWORDS do not macth-----------")
-                    return done(null, false);
-                }
+                
+                // Users Exists beyond this 
 
-                return done(null, user);
+                console.log("Eneterd password - ", password);
+                console.log("Database ka user.password - ", user.password);
+
+                bcrypt.compare(password, user.password, function (err, response) {
+
+                    if (response == false) {
+                        console.log("PASSWORDS do not macth");
+                        return done(null, false);
+                    }
+                    else {
+                        console.log("PASSWORDS MATCH");
+                        return done(null, user);
+                    }
+                })
+
+                // old code
+                // if (user.password != password) {
+                //     console.log("-----------PASSWORDS do not macth-----------")
+                //     return done(null, false);
+                // }
+                // return done(null, user);
+
             });
     }
     )
