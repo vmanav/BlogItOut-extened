@@ -29,6 +29,11 @@ hbs.registerHelper('splitDate', function (data) {
     return splittedDate;
 });
 
+hbs.registerHelper('countLikes', function (data) {
+    console.log("data ki length - ", data.length)
+    return data.length;
+});
+
 // ---------------------------------------
 
 // flash middleware

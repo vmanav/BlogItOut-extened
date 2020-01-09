@@ -34,6 +34,8 @@ $(() => {
 
 
     let likePost = $('#likePost');
+    let likesCount = $('#likesCount');
+
     likePost.click(() => {
 
         console.log("clicked on likePost");
@@ -64,8 +66,13 @@ $(() => {
                     like: "like",
                 },
                 (data) => {
-                    console.log("data :>", data)
+                    // SUCCESSFULLY LIKED
 
+                    console.log("data :>", data);
+                    likes = likesCount.text().trim();
+                    likseInt = Number(likes);
+                    likseInt++;
+                    likesCount.text(likseInt);
                 }
                 // this 'data' is the whole tasks array recieved
             )
@@ -79,18 +86,20 @@ $(() => {
                     like: "dislike",
                 },
                 (data) => {
+                    // SUCCESSFULLY LIKED
                     console.log("data :>", data)
+
+                    likes = likesCount.text().trim();
+                    likseInt = Number(likes);
+                    likseInt--;
+                    likesCount.text(likseInt);
                 }
                 // this 'data' is the whole tasks array recieved
             )
 
         }
 
-
         // if (grayColored class exists then => UNLIKE)
     })
-
-
-
 
 })
