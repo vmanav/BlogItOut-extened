@@ -166,7 +166,6 @@ app.post('/signup', (req, res) => {
 
     })
     
-
     // Add User To database using 'addNewUser' from database.js
     // addNewUser({
     //     fname: req.body.fname,
@@ -178,7 +177,6 @@ app.post('/signup', (req, res) => {
     //     password: req.body.password,
     //     passwordVerify: req.body.passwordVerify
     // })
-
 })
 
 app.get('/login', (req, res) => {
@@ -271,9 +269,6 @@ app.get('/checkLikedOrNot', (req, res) => {
         }
 
     });
-
-
-
 
 })
 
@@ -379,12 +374,18 @@ function isLoggedIn(req, res, next) {
 // Routing to dashboardRouter
 app.use('/dashboard', isLoggedIn, dashboardRouter)
 
+// --------------------------------------------------------
+
 // Post route for Not Logged in users
 // app.get('/post', (req, res) => {
 //     // const blogId = req.query.blogId;
 //     // console.log(blogId)
 // })
 
+// Show post to not logged in users
+// Show that to like it you have to logg in
+
+// --------------------------------------------------------
 
 // for all linkks in the dashboadr the user should be checked in 
 

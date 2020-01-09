@@ -7,7 +7,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blogs</title>
+    <title>
+        {{#if allBlogs}}
+        All Blogs
+        {{else}}
+        BIO - Blog
+        {{/if}}
+    </title>
 
     <!-- bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -99,7 +105,11 @@
                 {{#if firstName}}
                 {{firstName}} 's Blogs
                 {{else}}
+                {{#if allBlogs}}
+                All Blogs
+                {{else}}
                 Mortal's Blogs
+                {{/if}}
                 {{/if}}
             </div>
             <hr>
@@ -109,8 +119,9 @@
             {{/if}}
 
             {{#each listOfBlogs as |chunk|}}
+
             <a href="/dashboard/?blogId={{chunk._id}}" class="blogLinks">
-                <div class="p-3 m-3 card text-right" style="width: 60%;">
+                <div class="p-3 m-3 card text-right" style="width: 85%;">
 
                     <p class="h3 text-center">
                         {{chunk.blogTitle}}
@@ -125,6 +136,12 @@
                     {{#if chunk.datePosted}}
                     <p class="text-right font-italic font-weight-light" id="datePosted">
                         {{{ splitDate chunk.datePosted}}}
+                    </p>
+                    {{/if}}
+
+                    {{#if author}}
+                    <p class="text-left">
+                        {{chunk.author}}
                     </p>
                     {{/if}}
 

@@ -111,6 +111,7 @@ dashboardRouter.post('/addBlog', (req, res) => {
 
 
 dashboardRouter.get('/userBlogs', (req, res) => {
+    console.log('get @ /userBlogs')
 
     const userId = req.user._id;
     console.log("userId -", userId)
@@ -119,10 +120,10 @@ dashboardRouter.get('/userBlogs', (req, res) => {
     if (userId) {
         console.log("query exists")
         // authorId: 5dfafc384c65b425faf5fb71,
-        // authorId: userId
+        // authorId: ObjectId(userId),
 
         Blog.find({
-            authorId: ObjectId(userId),
+            authorId: userId
         }, function (err, data) {
 
             if (err) {
@@ -160,7 +161,6 @@ dashboardRouter.get('/userBlogs', (req, res) => {
 
     }
     else {
-
         console.log("userId not in query");
         res.render('userBlogs', {
             firstName: req.user.firstName,
@@ -171,5 +171,48 @@ dashboardRouter.get('/userBlogs', (req, res) => {
 
 })
 
+dashboardRouter.get('/allBlogs', (req, res) => {
+    // Render All Blogs
+
+    Blog.find({
+
+    }, function (err, data) {
+
+        if (err) {
+            console.log(err);
+            res.render('userBlogs', {
+                allBlogs: true,
+                oopsMessage: true,
+                message: "We can't seem to find the page you're looking for."
+            })
+
+        }
+        else {
+            console.log("data -");
+            console.log(data);
+
+            if (data.length == 0) {
+                console.log("Empty Array.");
+
+                res.render('userBlogs', {
+                    allBlogs: true,
+                    oopsMessage: true,
+                    message: "No Blogs found."
+                })
+            }
+            else {
+
+                console.log("rendering data.");
+                res.render('userBlogs', {
+                    allBlogs: true,
+                    author: true,
+                    listOfBlogs: data
+                })
+            }
+        }
+    })
+
+})
 
 module.exports = { dashboardRouter }
+
