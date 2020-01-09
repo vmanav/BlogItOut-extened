@@ -112,9 +112,7 @@ dashboardRouter.post('/addBlog', (req, res) => {
 
 dashboardRouter.get('/userBlogs', (req, res) => {
 
-    console.log('get @ `/userBlogs`.');
-
-    const userId = req.query.userId
+    const userId = req.user._id;
     console.log("userId -", userId)
     console.log("typeof userId", typeof userId)
 
