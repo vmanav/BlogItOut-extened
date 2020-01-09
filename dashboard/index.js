@@ -54,14 +54,11 @@ dashboardRouter.get('/', (req, res) => {
 
     }
     else {
-        res.render('dashboard', {
-            firstName: req.user.firstName,
-        })
-
-    }
+       
 
 })
 
+// Add New Blog
 dashboardRouter.get('/addBlog', (req, res) => {
 
     res.render('addBlog', {
@@ -69,7 +66,6 @@ dashboardRouter.get('/addBlog', (req, res) => {
         lastName: req.user.lastName
     })
 })
-
 
 dashboardRouter.post('/addBlog', (req, res) => {
 

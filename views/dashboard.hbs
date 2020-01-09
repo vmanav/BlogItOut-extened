@@ -9,10 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
         {{#if post}}
-        BIO - Blog
+        {{post.blogTitle}}
         {{else}}
-        BIO Dashbaord
-
+        Dashbaord
         {{/if}}
     </title>
 
@@ -285,6 +284,8 @@
             </div> --}}
 
             <!-- dashbaord content -->
+
+            {{#if trendingBlog}}
             <div class="blackCont d-flex flex-column justify-content-center align-items-center p-5 mt-5">
 
                 <div class="offWhiteContainer d-flex flex-column justify-content-center align-items-center p-5">
@@ -313,6 +314,7 @@
                     </a>
                 </div>
             </div>
+            {{/if}}
 
         </div>
 

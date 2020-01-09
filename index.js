@@ -22,7 +22,7 @@ const saltRounds = 10;
 
 // HBS helpers
 
-// helper th slit the Date recieved from Mongodb and show only usefull Data
+// helper splits the Date recieved from Mongodb and show only usefull Data
 hbs.registerHelper('splitDate', function (data) {
     var part = data.toString().split(" ");
     splittedDate = part[1] + " " + part[2] + " " + part[3];
@@ -33,8 +33,6 @@ hbs.registerHelper('countLikes', function (data) {
     console.log("data ki length - ", data.length)
     return data.length;
 });
-
-// ---------------------------------------
 
 // flash middleware
 app.use(flash())
@@ -55,12 +53,9 @@ mongoose.connect(dbURL, {
     useFindAndModify: false
 })
 
-var db = mongoose.connection;
-
 // Models
 var { User } = require('./models/user')
 var { Blog } = require('./models/blog')
-
 
 const passport = require('./passportConfig')
 
@@ -84,9 +79,7 @@ app.use(passport.session())
 const { dashboardRouter } = require('./dashboard')
 
 app.get('/', (req, res) => {
-
-    console.log("get @ `/`");
-
+    // console.log("get @ `/`");
     res.render('index', {
         title: "Homepage",
         login: true,
@@ -103,7 +96,7 @@ app.get('/signup', (req, res) => {
 })
 
 app.post('/signup', (req, res) => {
-    
+
     bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
 
         var newUser = new User({
@@ -165,7 +158,7 @@ app.post('/signup', (req, res) => {
         });
 
     })
-    
+
     // Add User To database using 'addNewUser' from database.js
     // addNewUser({
     //     fname: req.body.fname,
@@ -210,14 +203,13 @@ app.get('/logout', function (req, res) {
 
     req.session.destroy(function (err) {
         // destroys session for whatever user is logged in.
-        res.redirect('/home');
+        res.redirect('/');
     })
 })
 
 // About Page
 app.get('/about', (req, res) => {
     // res.send("Blog It Out REBORN")
-
     res.render('about')
 })
 
@@ -314,7 +306,6 @@ app.post('/like', (req, res) => {
     if (like == "like") {
         // Liking post
         // console.log("LIKE CASE ---------")
-
         let newLike = {
             userId: userId,
             userName: userName
@@ -354,22 +345,24 @@ function isLoggedIn(req, res, next) {
     if (req.user) {
         console.log("`req.user` exists.");
         // console.log(req.user);
-        // req.user = {
-        //     _id: 5dfafc384c65b425faf5fb71,
-        //     firstName: 'Manav',
-        //     lastName: 'Verma',
-        //     contactNo: '8851729421',
-        //     email: 'zmanav.1999@gmail.com',
-        //     bio: 'aaaaaaaaaaaaaa',
-        //     linkedInProfile: 'bbbbbbbbbb',
-        //     password: 'nalksahs',
-        //     __v: 0
-        // }
+
         return next()
     }
     res.redirect('/login')
     console.log("Redirected via checkLoggedIn() function ---->")
 }
+
+// req.user = {
+//     _id: 5dfafc384c65b425faf5fb71,
+//     firstName: 'Manav',
+//     lastName: 'Verma',
+//     contactNo: '8851729421',
+//     email: 'zmanav.1999@gmail.com',
+//     bio: 'aaaaaaaaaaaaaa',
+//     linkedInProfile: 'bbbbbbbbbb',
+//     password: 'nalksahs',
+//     __v: 0
+// }
 
 // Routing to dashboardRouter
 app.use('/dashboard', isLoggedIn, dashboardRouter)
