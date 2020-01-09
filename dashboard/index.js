@@ -54,7 +54,39 @@ dashboardRouter.get('/', (req, res) => {
 
     }
     else {
-       
+        console.log("id query doesn't exists");
+
+        // Find the Ternding Blog and render it 
+        // 1. YA to likesCount karke ek field rakhni hogi
+        // -> LIKE and DISLIKE pe remove that field.
+        Blog.find({
+
+        }, function (err, data) {
+            if (err) {
+                // Error
+
+                console.log("error");
+                console.log(err);
+                res.render('dashboard', {
+                    firstName: req.user.firstName,
+                    oopsMessage: true,
+                    message: "We can't seem to find the page you're looking for."
+                })
+            }
+            else {
+                // No Error
+
+
+                console.log("data - ");
+                console.log(data);
+
+                // res.render('dashboard', {
+                //     firstName: req.user.firstName,
+                //     trendingBlog: yahaBHEJO
+                // })
+            }
+        })
+    }
 
 })
 

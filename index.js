@@ -311,6 +311,8 @@ app.post('/like', (req, res) => {
             userName: userName
         }
 
+        // AB YAHA PE ADD TO THE LIKES COUNT WHEN POST IS LIKED
+
         Blog.findOneAndUpdate({ _id: blogId }, { $push: { likesArray: newLike } }, () => {
             console.log("Post Liked ..?")
             res.send("Liked Post")
