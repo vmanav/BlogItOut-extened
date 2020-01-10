@@ -246,6 +246,7 @@
                     <span id="likesCount" class="font-italic font-weight-bold">
                         {{post.likesCount}}
                     </span>
+
                 </p>
 
             </div>
@@ -253,40 +254,9 @@
 
             {{/if}}
 
-            {{!-- 
-            <div>
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-                post post post post post post post post post post post post post post post post
-            </div> --}}
-
-            <!-- dashbaord content -->
 
             {{#if trendingBlog}}
-            <div class="blackCont d-flex flex-column justify-content-center align-items-center p-5 mt-5">
+            <div class="blackCont d-flex flex-column justify-content-center align-items-center p-5 mt-3">
 
                 <div class="offWhiteContainer d-flex flex-column justify-content-center align-items-center p-5">
 
@@ -297,21 +267,43 @@
                     {{!-- NOTE  --}}
                     {{!-- Now we have to add the link of te Trending blog here --}}
                     {{!-- Jab bhi dashboard render hoga tab ye most trending blog bhi render hoga  --}}
-                    <a href="#" id="trendingLink">
+                    <a href="/dashboard/?blogId={{trendingBlog._id}}" id="trendingLink">
                         <div class="card p-4 mt-4 mb-4"
                             style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); color:white;text-align: justify;">
 
-                            Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog
-                            Body
-                            Trending Blog Body Trending Blog Body Trending Blog Body
-                            Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog
-                            Body
-                            Trending Blog Body Trending Blog Body Trending Blog Body
-                            Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog Body Trending Blog
-                            Body
-                            Trending Blog Body Trending Blog Body Trending Blog Body
+                            <p class="h3 text-center">
+                                {{trendingBlog.blogTitle}}
+                            </p>
+
+                            {{#if trendingBlog.blogTags}}
+                            <p class="h6 text-center text-uppercase font-italic font-weight-light">
+                                [ {{trendingBlog.blogTags}} ]
+                            </p>
+                            {{/if}}
+
+                            <hr>
+                            {{#if trendingBlog.blogBody}}
+                            <p class="text-justify mt-3">
+                                {{trendingBlog.blogBody}}
+                            </p>
+                            <hr>
+                            {{/if}}
+
+                            {{#if trendingBlog.datePosted}}
+                            <p class="text-right font-italic font-weight-light" id="datePosted">
+                                {{{ splitDate trendingBlog.datePosted}}}
+                            </p>
+                            {{/if}}
+
+                            {{#if trendingBlog.author}}
+                            <p class="text-left">
+                                {{trendingBlog.author}}
+                            </p>
+                            {{/if}}
+
                         </div>
                     </a>
+
                 </div>
             </div>
             {{/if}}

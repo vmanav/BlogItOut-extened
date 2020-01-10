@@ -29,6 +29,11 @@ hbs.registerHelper('splitDate', function (data) {
     return splittedDate;
 });
 
+hbs.registerHelper('trimmIt', function (data) {
+    var trimmed = data.toString().substring(0, 300) + '...';
+    return trimmed;
+});
+
 // hbs.registerHelper('countLikes', function (data) {
 //     console.log("data ki length - ", data.length)
 //     return data.length;
@@ -80,11 +85,42 @@ const { dashboardRouter } = require('./dashboard')
 
 app.get('/', (req, res) => {
     // console.log("get @ `/`");
-    res.render('index', {
-        title: "Homepage",
-        login: true,
-        signup: true,
-    })
+
+    // find trenfing blog an d redner that
+    Blog.find({}).sort({ likesCount: -1 }).limit(1).exec(function (err, data) {
+        if (err) {
+            console.log("error - ", err);
+            res.render('index', {
+                title: "Homepage",
+                oopsMessage: true,
+                message: "There seems to be an internal error.",
+                login: true,
+                signup: true,
+            })
+
+        }
+        else {
+            console.log("data - ", data);
+
+            if (data.length == 0) {
+                console.log("Empty Array.");
+
+                res.render('index', {
+                    oopsMessage: true,
+                    message: "We can't seem to find the page you're looking for."
+                })
+            }
+            else {
+
+                res.render('index', {
+                    trendingBlog: data[0]
+                })
+            }
+        }
+
+    });
+
+
 })
 
 app.get('/signup', (req, res) => {
