@@ -29,10 +29,10 @@ hbs.registerHelper('splitDate', function (data) {
     return splittedDate;
 });
 
-hbs.registerHelper('countLikes', function (data) {
-    console.log("data ki length - ", data.length)
-    return data.length;
-});
+// hbs.registerHelper('countLikes', function (data) {
+//     console.log("data ki length - ", data.length)
+//     return data.length;
+// });
 
 // flash middleware
 app.use(flash())
@@ -306,41 +306,47 @@ app.post('/like', (req, res) => {
     if (like == "like") {
         // Liking post
         // console.log("LIKE CASE ---------")
+
         let newLike = {
             userId: userId,
             userName: userName
         }
-
-        // AB YAHA PE ADD TO THE LIKES COUNT WHEN POST IS LIKED
-
-        Blog.findOneAndUpdate({ _id: blogId }, { $push: { likesArray: newLike } }, () => {
-            console.log("Post Liked ..?")
+        Blog.findOneAndUpdate({ _id: blogId }, {
+            $push: { likesArray: newLike },
+            $inc: { likesCount: 1 }
+        }, () => {
+            // console.log("Post Liked ..?")
             res.send("Liked Post")
         })
+
     }
     else if (like == "dislike") {
         // Disliking post
         // console.log("DISLIKE CASE ---------")
 
-        Blog.findOneAndUpdate({ _id: blogId }, { $pull: { likesArray: { userId: userId } } }, () => {
-            console.log("Post Disliked ..?")
+        Blog.findOneAndUpdate({ _id: blogId }, {
+            $pull: { likesArray: { userId: userId } },
+            $inc: { likesCount: -1 }
+        }, () => {
+            // console.log("Post Disliked ..?")
             res.send("Disliked Post")
         })
 
     }
-
-    // Disliking post - ALTERNATIVE
-    // Blog.findByIdAndUpdate(
-    //     blogId,
-    //     { $pull: { likesArray: { authorId: authorId } } }, (err, model) => {
-    //         if (err) {
-    //             console.log(err);
-    //             // return res.send(err);
-    //         }
-    //         console.log("Succ")
-    //         // return res.json(model);
-    //     })
 })
+
+// Disliking post - ALTERNATIVE
+// Blog.findByIdAndUpdate(
+//     blogId,
+//     { $pull: { likesArray: { authorId: authorId } } }, (err, model) => {
+//         if (err) {
+//             console.log(err);
+//             // return res.send(err);
+//         }
+//         console.log("Succ")
+//         // return res.json(model);
+//     })
+
 
 // Function to check if a user if logged in or not 
 function isLoggedIn(req, res, next) {
@@ -392,29 +398,6 @@ app.listen(PORT, () => {
     // console.log("Add New Blog on : http://localhost:3000/addBlog")
 
 })
-
-// // JS some comparion of object
-
-// if (x.some((like) => {
-//     // like.userId == checkLike.userId
-//     console.log("like =")
-//     console.log(like)
-//     console.log(like.userId)
-//     console.log(typeof like.userId)
-//     console.log(JSON.stringify(like.userId))
-//     console.log(typeof JSON.stringify(like.userId))
-//     console.log("checkLike - ", checkLike);
-//     console.log(checkLike.userId)
-//     console.log(typeof checkLike.userId)
-//     if (like.userId === checkLike.userId) {
-//         console.log("DONO EQUAL HAI...")
-//     }
-// })) {
-//     console.log("Object found inside the array.");
-// }
-
-
-
 
 // app.get('/dashboard', isLoggedIn, (req, res) => {
 //     // , (req, res) => {
