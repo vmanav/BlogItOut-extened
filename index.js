@@ -107,13 +107,17 @@ app.get('/', (req, res) => {
 
                 res.render('index', {
                     oopsMessage: true,
-                    message: "We can't seem to find the page you're looking for."
+                    message: "We can't seem to find the page you're looking for.",
+                    login: true,
+                    signup: true,
                 })
             }
             else {
 
                 res.render('index', {
-                    trendingBlog: data[0]
+                    trendingBlog: data[0],
+                    login: true,
+                    signup: true,
                 })
             }
         }
