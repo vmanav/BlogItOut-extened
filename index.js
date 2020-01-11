@@ -298,37 +298,16 @@ app.get('/checkLikedOrNot', (req, res) => {
 app.post('/like', (req, res) => {
     console.log('`post` @ `/like`.');
 
-    // console.log("req.body variables....")
-    // console.log(req.body.authorId);
-    // console.log(req.body.authorName);
-    // console.log(req.body.blogId);
-    // console.log(req.body.like);
-    // console.log("-----------")
     // console.log("`req.user` --->", req.user);
 
     let userId = req.user._id;
     let userName = req.user.firstName + ' ' + req.user.lastName;
     let blogId = req.body.blogId;
     let like = req.body.like;
+
     // console.log("userId", userId);
     // console.log("userName", userName);
 
-    // console.log("finding blog")
-    // Blog.find({
-    //     _id: blogId
-    // }, function (err, docs) {
-    //     if (err) {
-    //         console.log(err)
-    //     }
-    //     else {
-    //         // console.log("docs")
-    //         // console.log(docs)
-    //         // console.log(typeof docs)
-    //         // console.log("---")
-    //         console.log(docs[0])
-
-    //     }
-    // })
     console.log("like value - ", like)
     // console.log("typeof like", typeof like)
 
@@ -427,62 +406,3 @@ app.listen(PORT, () => {
     // console.log("Add New Blog on : http://localhost:3000/addBlog")
 
 })
-
-// app.get('/dashboard', isLoggedIn, (req, res) => {
-//     // , (req, res) => {
-
-//     console.log('get @ dashboard 1')
-//     const blogId = req.query.blogId
-//     if (blogId) { console.log("blogId -", blogId) }
-//     // console.log("logging req.user in /dashboard")
-//     // console.log(req.user);
-
-//     res.render('dashboard', {
-//         firstName: req.user.firstName,
-//     })
-// })
-
-// app.get('/dashboard/addBlog', isLoggedIn, (req, res) => {
-//     // , (req, res) => {
-//     res.render('addBlog', {
-//         firstName: req.user.firstName,
-//         lastName: req.user.lastName
-//     })
-// })
-
-
-// app.post('/addBlog', (req, res) => {
-
-//     let author = req.user.firstName + " " + req.user.lastName;
-//     let likesArray = [];
-
-//     var newBlog = new Blog({
-//         blogTitle: req.body.title,
-//         blogBody: req.body.body,
-//         author: author,
-//         blogTags: req.body.tags,
-//         likesArray: likesArray,
-//         likesCount: 0,
-//         authorId: req.user._id
-//     });
-
-//     console.log("new Blog ->")
-//     console.log(newBlog)
-
-//     newBlog.save(function (err) {
-//         if (err) {
-//             console.log("This is the error ->");
-//             console.log(err);
-//         }
-//         else {
-//             // NO Error -
-//             console.log("Blog added.")
-//             // console.log('/?blog=' + newBlog._id)
-//             // redirect
-
-//             // redirect to a post page intead of dashboard
-//             res.redirect('/dashboard/?blogId=' + newBlog._id)
-//             // render to the new blog
-//         }
-//     })
-// })
