@@ -131,7 +131,7 @@ app.get('/signup', (req, res) => {
 
     res.render('signup', {
         title: "Sign Up",
-        signUpError: true
+        // signUpError: true
     })
 })
 
@@ -154,8 +154,8 @@ app.post('/signup', (req, res) => {
 
         newUser.save(function (err) {
             if (err) {
+                // Error
 
-                // duplicate  email error
                 console.log("This is the error ->");
                 console.log(err);
 
@@ -165,27 +165,16 @@ app.post('/signup', (req, res) => {
                     alertMsg = "Account Already Exisist"
                 }
                 console.log(alertMsg)
-                // console.log("---------")
-                // console.log(err.errmsg.split(" ")[1])
-                // console.log(err.errmsg.split(" ")[7])
-                // If Error Show Error -> render signupPage with a msg
-
-                // NOTE : Render maybe a Error PAge instaed of a Signup Page so that the user can go back and the form data is not lost
-
-                res.render('signup', {
-                    title: "Sign Up",
-                    signUpError: true,
-                    alertMsg: alertMsg
-                })
-                res.render('signup', {
-                    title: "Sign Up",
-                    signUpError: true,
-                    alertMsg: alertMsg
+                res.render('errPage', {
+                    oopsMessage: true,
+                    message: "Error - " + alertMsg,
+                    intsructions: "Please Go Back and Try Again."
                 })
 
             }
             else {
-                // NO Error - succesfullSignup
+                // NO Error
+
                 console.log("Record Saved in Database.")
 
                 res.render('login', {
@@ -198,19 +187,19 @@ app.post('/signup', (req, res) => {
         });
 
     })
-
-    // Add User To database using 'addNewUser' from database.js
-    // addNewUser({
-    //     fname: req.body.fname,
-    //     lname: req.body.lname,
-    //     email: req.body.email,
-    //     number: req.body.number,
-    //     bio: req.body.bio,
-    //     lprofile: req.body.lprofile,
-    //     password: req.body.password,
-    //     passwordVerify: req.body.passwordVerify
-    // })
 })
+
+// Add User To database using 'addNewUser' from database.js
+// addNewUser({
+//     fname: req.body.fname,
+//     lname: req.body.lname,
+//     email: req.body.email,
+//     number: req.body.number,
+//     bio: req.body.bio,
+//     lprofile: req.body.lprofile,
+//     password: req.body.password,
+//     passwordVerify: req.body.passwordVerify
+// })
 
 app.get('/login', (req, res) => {
 
