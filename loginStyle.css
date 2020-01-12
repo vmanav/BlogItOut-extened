@@ -3,7 +3,8 @@ html {
 }
 
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
+    overflow-x: hidden;
     margin: 0;
 }
 
@@ -11,8 +12,6 @@ canvas {
     border: 1px solid #000000;
     background-color: #343a40;
     /* setting up the height and wdht through javascript */
-    /* width:100%;
-            height:100%; */
     position: absolute;
     top: 0;
     left: 0;

@@ -26,6 +26,10 @@
     <script src="https://kit.fontawesome.com/e00a1e7cf5.js" crossorigin="anonymous"></script>
 
     <style>
+        .main {
+            min-height: 100vh;
+            background-color: green;
+        }
     </style>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -35,10 +39,155 @@
     <canvas id="myCanvas">
     </canvas>
 
-    
+
+    <div class="main d-flex flex-row justify-content-center align-items-center align-self-center">
+
+        <div class="container cover p-5 d-flex flex-row justify-content-center align-items-center" style="color: black">
+
+            <div class="container class p-4" style="background-color: white;">
+
+
+                <!-- main row for contents -->
+                <div class="row align-items-center" style="background-color: lightcoral">
+
+
+                    <div class="col-12 col-sm-4 order-sm-last" style="background-color: blue;">
+
+                        is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                        industry's
+                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                        scrambled it
+                        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
+                        including versions
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's
+                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                        scrambled it to make
+                        a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                        typesetting,
+                        remaining essentially unchanged. It w
+                        <!-- <div>
+                            New User
+                            <img src="./icons/icons-96.png" alt="">
+                        </div> -->
+                    </div>
+
+                    <div class="col-12 col-sm-8 order-sm-first" style="background-color: red;">
+
+                        {{#if alertMsg}}
+                        <div class="row">
+                            <div class="col">
+                                <div class="alert alert-danger text-center  m-0" role="alert">
+                                    Error! - {{alertMsg}} - Please try again.
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
+
+                        {{#if succesfullSignup}}
+                        <div class="row">
+                            <div class="col">
+                                <div class="alert alert-success text-center  m-0" role="alert">
+                                    Sign Up Succesfull ! - Please Log In To Continue.
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
+
+                        <div class="row">
+                            <div class="col-12">
+
+                                <!-- Ab Puar left vala sab kuch is column me  -->
+                                <div class="heading h2" style="background-color: burlywood; text-align: center">
+                                    Welcome Back,
+                                </div>
+
+                                <p>Plaese Log In to continue</p>
+
+                                <div class="container">
+
+                                    <form action="/login" method="POST">
+
+                                        <div class="form-row justify-content-center m-0">
+                                            <div class="form-group required text-center">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" name="email" class="form-control-plaintext myInput"
+                                                    id="email" required="true">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row justify-content-center m-0">
+
+                                            <div class="form-group required text-center">
+
+                                                <label for="password">Password</label>
+                                                <input type="password" id="password" name="password"
+                                                    class="form-control-plaintext myInput" required="true">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button class="btn loginButton pl-4 pr-4 mt-2" type="submit">Log In</button>
+                                        </div>
+
+                                        <p align="right">
+                                            <a href="#">Forgot Password ?</a>
+                                        </p>
+                                    </form>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
 
     <script src="./canvas.js"></script>
 
 </body>
 
 </html>
+<!-- 
+
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passat only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum. 
+    
+-->
