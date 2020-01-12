@@ -6,13 +6,11 @@ $(() => {
 
     var c = canvas.getContext('2d');
 
-
-
     var mouse = {
         x: undefined,
         y: undefined
     }
-    const maxRadius = 30;
+    const maxRadius = 15;
     // const minRadius = 2;
     var colorOptions = [
         '#025952',
