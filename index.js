@@ -11,6 +11,8 @@ app.use('/', express.static(__dirname + '/public'))
 
 app.use('/scripts', express.static(__dirname + '/scripts'))
 
+app.use('/icons', express.static(__dirname + '/icons'))
+
 app.set('view engine', 'hbs')
 
 // registering hbs partials
