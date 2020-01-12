@@ -5,18 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
-        {{#if title}}
-        BIO - {{title}}
-        {{else}}
-        BIO
-        {{/if}}
-    </title>
-
+    <title>LOGIN</title>
 
     <!-- bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+    {{!-- my CSS --}}
+    <link rel="stylesheet" href="/css/login.css">
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -32,142 +27,136 @@
     <!-- font awesom 5 kit code -->
     <script src="https://kit.fontawesome.com/e00a1e7cf5.js" crossorigin="anonymous"></script>
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
-        .main {
-            background-color: #74776B;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-        }
+    {{!-- HTML5 Canavs script --}}
+    <script src="/scripts/canvas.js"></script>
 
-        .inside-main {
-            background-color: #EDF0DA;
-            color: black;
-            min-width: 100%;
-            position: relative;
-            min-height: 100%;
-
-        }
-
-        /* Change The Colour of all links to black */
-        a {
-            color: black
-        }
-
-        a:visited {
-            color: black
-        }
-
-        a:hover,
-        a:active,
-        a:focus {
-            color: black;
-            text-decoration: none;
-
-        }
-
-        /* Signup Button at theend of form */
-        .signupButton {
-            background-color: #01BAEF;
-            /* #FFFCF9;  */
-            border: 1px transparent solid;
-            /* color: #343A40; */
-            color: white;
-        }
-
-        .signupButton:hover {
-            background-color: #C7E8F3;
-            transition: 0.2s;
-            color: #005972;
-        }
-
-
-        /* astersrik */
-        .form-group.required label:after {
-            content: "  *";
-            color: #dc3545;
-        }
-    </style>
-
-    {{> gttButtonStyling}}
 </head>
 
 <body>
+    <canvas id="myCanvas">
+    </canvas>
 
 
+    <div class="main d-flex flex-row justify-content-center align-items-center align-self-center">
 
+        <div class="container cover p-5 d-flex flex-row justify-content-center align-items-center" style="color: black">
 
+            <div class="container class" style="background-color: white;">
 
-    <div class="container-fluid main p-5">
-        <div class="inside-main">
+                <!-- main row for contents -->
+                <div class="row">
 
-            <div class="px-3 py-2"
-                style="color: black; background-color: white; position: absolute; top: -20px; left: -45px;">
-                <button id="goBackButton">
-                    <i class="fas fa-arrow-left"></i>
-                </button>
-                {{!-- <a href="/">
-                    <i class="fas fa-arrow-left"></i>
-                </a> --}}
-            </div>
+                    <div class="col-12 col-sm-4 order-sm-last" style="background-color: #343a40;">
 
-            {{#if alertMsg}}
-            <div class="alert alert-danger text-center  m-0" role="alert">
-                Error! - {{alertMsg}} - Please try again.
-            </div>
-            {{/if}}
+                        <div class="row mb-5 pt-3">
+                            <div class="col">
+                                <div class="text-center mt-3 mb-3">
+                                    <img src="/img/icons-96.png" alt="logo">
+                                </div>
 
-            {{#if succesfullSignup}}
-            <div class="alert alert-success text-center  m-0" role="alert">
-                Sign Up Succesfull ! - Please Log In.
-            </div>
-            {{/if}}
+                                <div class="text-center mt-3 mb-3">
+                                    <p>
+                                        New here?
+                                    </p>
+                                    <p>Signup and discover blogItOut</p>
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="heading h2" style="background-color: burlywood; text-align: center">
-                Log In
-            </div>
+                        <div class="row align-items-end">
+                            <div class="col align-self-end">
+                                <div class="text-center mt-3 mb-3">
+                                    <a href="/signup">
+                                        <button class="btn signupButton pl-4 pr-4 mt-2">Sign Up</button>
+                                    </a>
+                                </div>
+                            </div>
 
+                        </div>
 
-            <div class="container p-4">
-
-                {{!-- style="background-color: lightseagreen" --}}
-
-                <form action="/login" method="POST">
-
-                    <div class="form-group required">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter email"
-                            required="true">
                     </div>
 
-                    <div class="form-group required">
 
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" class="form-control"
-                            placeholder="Enter Password" required="true">
+                    <div class="col-12 col-sm-8 order-sm-first p-3">
+
+                        {{#if alertMsg}}
+                        <div class="row">
+                            <div class="col">
+                                <div class="alert alert-danger text-center  m-0" role="alert">
+                                    Error! - {{alertMsg}} - Please try again.
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
+
+                        {{#if succesfullSignup}}
+                        <div class="row">
+                            <div class="col">
+                                <div class="alert alert-success text-center  m-0" role="alert">
+                                    Sign Up Succesfull !
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
+
+                        <div class="row">
+                            <div class="col-12" style="color: #262B2F">
+
+                                <div class="heading h2 text-center">
+                                    Welcome Back,
+                                </div>
+
+                                <p class="text-center">Please Log In to continue</p>
+
+                                <div class="container mt-4">
+
+                                    <form action="/login" method="POST">
+
+                                        <div class="form-row justify-content-center m-0">
+                                            <div class="form-group required text-center">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" name="email" class="form-control-plaintext myInput"
+                                                    id="email" required="true">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row justify-content-center m-0">
+
+                                            <div class="form-group required text-center">
+
+                                                <label for="password">Password</label>
+                                                <input type="password" id="password" name="password"
+                                                    class="form-control-plaintext myInput" required="true">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button class="btn loginButton pl-4 pr-4 mt-2" type="submit">Log In</button>
+                                        </div>
+
+                                        <p align="right">
+                                            <a href="#" id="forgotPass">Forgot Password ?</a>
+                                        </p>
+                                    </form>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+
                     </div>
-
-                    <div class="text-center">
-                        <button class="btn signupButton" type="submit">Log In</button>
-                    </div>
-
-                </form>
-
+                </div>
             </div>
 
         </div>
     </div>
-
-    {{!-- Partial for Go-To-Top Button --}}
-    {{> gttButtonPartial}}
-
-
-
 
 </body>
 

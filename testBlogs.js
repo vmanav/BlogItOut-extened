@@ -1,3 +1,5 @@
+// NOT USED IN CURREMNT VERSION
+
 const mongoose = require('mongoose')
 // Url to connect to db 'naya-db'
 const dbURL = 'mongodb://localhost:27017/biodb';

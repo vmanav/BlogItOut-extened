@@ -11,7 +11,10 @@ app.use('/', express.static(__dirname + '/public'))
 
 app.use('/scripts', express.static(__dirname + '/scripts'))
 
-app.use('/icons', express.static(__dirname + '/icons'))
+app.use('/img', express.static(__dirname + '/img'))
+
+app.use('/css', express.static(__dirname + '/css'))
+
 
 app.set('view engine', 'hbs')
 

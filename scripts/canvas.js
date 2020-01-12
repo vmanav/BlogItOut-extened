@@ -13,11 +13,12 @@ $(() => {
     const maxRadius = 15;
     // const minRadius = 2;
     var colorOptions = [
-        '#025952',
-        '#FAE3BA',
-        '#F1523E',
+        '#FF5542',
         '#F27B35',
-        '#FCA521'
+        '#C5D86D',
+        '#FAE3BA',
+        '#FFAE00',
+        '#7EBDC2'
     ]
 
     window.addEventListener("mousemove", function (event) {
@@ -96,6 +97,7 @@ $(() => {
         }
 
     }
+
     function animate() {
         requestAnimationFrame(animate);
 
