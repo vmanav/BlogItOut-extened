@@ -39,6 +39,10 @@ hbs.registerHelper('trimmIt', function (data) {
     return trimmed;
 });
 
+hbs.registerHelper('json', function (content) {
+    return JSON.stringify(content);
+});
+
 // hbs.registerHelper('countLikes', function (data) {
 //     console.log("data ki length - ", data.length)
 //     return data.length;
@@ -386,7 +390,8 @@ function isLoggedIn(req, res, next) {
 // }
 
 // Routing to dashboardRouter
-app.use('/dashboard', isLoggedIn, dashboardRouter)
+app.use('/dashboard', dashboardRouter)
+// isLoggedIn,
 
 // --------------------------------------------------------
 

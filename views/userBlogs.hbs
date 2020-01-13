@@ -31,6 +31,9 @@
     <!-- my gttButton -->
     <script src="../../scripts/gttButton.js"></script>
 
+    {{!-- search Script --}}
+    <script src="../../scripts/searchForm.js"></script>
+
 
     <style>
         :root {
@@ -82,6 +85,14 @@
         a.blogLinks:hover {
             text-decoration: none;
         }
+
+
+
+        /* Highlight CSS */
+
+        .hl {
+            background: #ffc600;
+        }
     </style>
 
     {{> dashnavStyling}}
@@ -114,44 +125,64 @@
             </div>
             <hr>
 
+            {{!-- Serach Form --}}
+            <form class="search-form">
+                <input type="text" tabindex="1" id="search" class="search" placeholder="City or State">
+            </form>
+
+
             {{#if oopsMessage}}
             {{> oopsMessage}}
             {{/if}}
 
-            {{#each listOfBlogs as |chunk|}}
+            <div class="container" id="original">
+                {{#each listOfBlogs as |chunk|}}
 
-            <a href="/dashboard/?blogId={{chunk._id}}" class="blogLinks">
-                <div class="p-3 m-3 card" style="width: 85%;">
+                <a href="/dashboard/?blogId={{chunk._id}}" class="blogLinks">
+                    <div class="p-3 m-3 card" style="width: 85%;">
 
-                    <p class="h3 text-center">
-                        {{chunk.blogTitle}}
-                    </p>
+                        <p class="h3 text-center">
+                            {{chunk.blogTitle}}
+                        </p>
 
-                    {{#if chunk.blogTags}}
-                    <p class="h6 text-center text-uppercase font-italic font-weight-light">
-                        [ {{chunk.blogTags}} ]
-                    </p>
-                    {{/if}}
+                        {{#if chunk.blogTags}}
+                        <p class="h6 text-center text-uppercase font-italic font-weight-light">
+                            [ {{chunk.blogTags}} ]
+                        </p>
+                        {{/if}}
 
-                    <hr>
+                        <hr>
 
-                    {{#if chunk.datePosted}}
-                    <p class="text-right font-italic font-weight-light" id="datePosted">
-                        {{{ splitDate chunk.datePosted}}}
-                    </p>
-                    {{/if}}
+                        {{#if chunk.datePosted}}
+                        <p class="text-right font-italic font-weight-light" id="datePosted">
+                            {{{ splitDate chunk.datePosted}}}
+                        </p>
+                        {{/if}}
 
-                    {{#if author}}
-                    <p class="text-left">
-                        {{chunk.author}}
-                    </p>
-                    {{/if}}
+                        {{#if author}}
+                        <p class="text-left">
+                            {{chunk.author}}
+                        </p>
+                        {{/if}}
 
-                </div>
-            </a>
+                    </div>
+                </a>
 
-            {{/each}}
+                {{/each}}
+            </div>
 
+            <div class="container" class="suggestions" id="suggestions">
+                Suggestions will come here
+            </div>
+
+            <script>
+                console.log("hello i am the script")
+
+                var clientArray = {{{ json listOfBlogs }}};
+                //console.log("clientArray - ", clientArray);
+
+
+            </script>
         </div>
 
     </div>
