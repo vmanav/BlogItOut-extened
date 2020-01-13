@@ -86,19 +86,43 @@
             text-decoration: none;
         }
 
-
-
         /* Highlight CSS */
-
         .hl {
             background: #ffc600;
         }
+
+        /* Search Form CSS */
+        .search-form {}
+
+        input.search {
+            width: 50%;
+            border: 3px solid #EFEFEF;
+            border-radius: 1px;
+            font-size: 1.5rem;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+        }
+
+        .original a:nth-child(even) div {
+            transform: perspective(100px) rotateX(2deg) translateY(2px) scale(1.001);
+        }
+
+        .original a:nth-child(odd) div {
+            transform: perspective(100px) rotateX(-2deg) translateY(10px);
+        }
+
+        .suggestions a:nth-child(even) div {
+            transform: perspective(100px) rotateX(2deg) translateY(2px) scale(1.001);
+        }
+
+        .suggestions a:nth-child(odd) div {
+            transform: perspective(100px) rotateX(-2deg) translateY(10px);
+        }
+
     </style>
 
     {{> dashnavStyling}}
 
     {{> gttButtonStyling}}
-
 
 </head>
 
@@ -111,7 +135,7 @@
 
         <div id="pageContent" class="p-4">
 
-            <!-- Title -->
+            <!-- Title of Page -->
             <div class="card p-2 h5" style="display: inline;">
                 {{#if firstName}}
                 {{firstName}} 's Blogs
@@ -125,21 +149,30 @@
             </div>
             <hr>
 
-            {{!-- Serach Form --}}
-            <form class="search-form">
-                <input type="text" tabindex="1" id="search" class="search" placeholder="City or State">
-            </form>
+            {{!-- Search Form --}}
+            <div class="row">
+                <div class="col-12">
 
+                    <form class="search-form">
+                        <div class="form-group">
+                            <input type="text" tabindex="1" id="search" class="form-control search p-3 text-center"
+                                placeholder="Type Something">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
 
             {{#if oopsMessage}}
             {{> oopsMessage}}
             {{/if}}
 
-            <div class="container" id="original">
+            <div class="container original" id="original">
                 {{#each listOfBlogs as |chunk|}}
 
                 <a href="/dashboard/?blogId={{chunk._id}}" class="blogLinks">
-                    <div class="p-3 m-3 card" style="width: 85%;">
+                    {{!-- <div class="p-3 m-3 card" style="width: 85%;"> --}}
+                    <div class="p-3 m-1 card">
 
                         <p class="h3 text-center">
                             {{chunk.blogTitle}}
@@ -171,18 +204,20 @@
                 {{/each}}
             </div>
 
-            <div class="container" class="suggestions" id="suggestions">
-                Suggestions will come here
+            {{!-- Suggestions will come here --}}
+            <div class="container suggestions" id="suggestions">
+
             </div>
 
+            {{!-- Search Form Script --}}
+            {{!-- Accesing the rendered `listOfBlogs` from here --}}
             <script>
                 console.log("hello i am the script")
 
                 var clientArray = {{{ json listOfBlogs }}};
                 //console.log("clientArray - ", clientArray);
-
-
             </script>
+
         </div>
 
     </div>

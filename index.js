@@ -390,8 +390,8 @@ function isLoggedIn(req, res, next) {
 // }
 
 // Routing to dashboardRouter
-app.use('/dashboard', dashboardRouter)
-// isLoggedIn,
+app.use('/dashboard', isLoggedIn, dashboardRouter)
+
 
 // --------------------------------------------------------
 
