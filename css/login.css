@@ -7,6 +7,7 @@ body {
     overflow-x: hidden;
     margin: 0;
     background-color: #343a40;
+    color: #262B2F;
 }
 
 canvas {
@@ -33,7 +34,6 @@ canvas {
     border-style: solid;
     border-width: 0px 0px 1px 0px;
     border-color: #343a40;
-    color: #343a40;
     background-color: transparent;
     /* width: 100%; */
 }
@@ -50,9 +50,11 @@ canvas {
 }
 
 .loginButton:hover {
-    background-color: #00C7FF;
-    transition: 0.2s;
-    color: #004356;
+    background-color: transparent;
+    /* #00C7FF; */
+    border: 1.5px solid #343a40;
+    transition: 0.3s;
+    color: #262B2F;
 }
 
 .signupButton {
@@ -64,13 +66,14 @@ canvas {
 
 .signupButton:hover {
     background-color: white;
-    transition: 0.2s;
-    color: #343a40;
+    transition: 0.3s;
+    color: #262B2F;
 }
 
 .cover {
     background: rgba(247, 244, 243, .7);
 }
+
 a#forgotPass {
     color: #0089AF;
 }
@@ -78,5 +81,15 @@ a#forgotPass {
 a#forgotPass:hover {
     /* text-decoration: none; */
     text-decoration: underline;
+}
 
+.brandLink {
+    color: #262B2F;
+}
+
+.brandLink:hover {
+    text-decoration: none;
+    color: #262B2F;
+    text-shadow: 1px 1px 6px #FFFFFF;
+    transition: 0.3s;
 }
