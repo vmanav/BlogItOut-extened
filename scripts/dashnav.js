@@ -1,5 +1,11 @@
 $(() => {
 
+    $(window).on('resize', function () {
+        // EachTime someone resize window call setWidth()
+        setWidth();
+
+    });
+
     // alert("dahnav.js loaded")
     // console.log("dahnav.js loaded")
     // set
@@ -46,8 +52,6 @@ $(() => {
         let mrg = $('#sidebar').innerWidth()
         $('#pageContent').css('margin-left', mrg + 'px');
         $('#pageContent').css('width', $(window).width() - mrg + 'px');
-
-
 
     }
 

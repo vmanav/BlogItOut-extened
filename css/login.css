@@ -8,6 +8,7 @@ body {
     margin: 0;
     background-color: #343a40;
     color: #262B2F;
+    font-family: 'Roboto', sans-serif;
 }
 
 canvas {
@@ -17,6 +18,26 @@ canvas {
     top: 0;
     left: 0;
     z-index: -1;
+}
+
+.tangFont {
+    font-family: 'Pacifico', cursive;
+}
+
+.whiteGradient {
+    background: #EFEFBB;
+    background: -webkit-linear-gradient(to top, #D4D3DD, #EFEFBB);
+    background: linear-gradient(to top, #D4D3DD, #EFEFBB);
+}
+
+.redGradient {
+    background: #DE6262;
+    background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262);
+    background: linear-gradient(to bottom, #FFB88C, #DE6262);
+}
+
+.brandFont {
+    font-family: 'Satisfy', cursive;
 }
 
 .main {
@@ -85,11 +106,12 @@ a#forgotPass:hover {
 
 .brandLink {
     color: #262B2F;
+    text-shadow: 0.8px 0.8px 1px #FFFFFF;
 }
 
 .brandLink:hover {
     text-decoration: none;
     color: #262B2F;
-    text-shadow: 1px 1px 6px #FFFFFF;
     transition: 0.3s;
+    text-shadow: 1px 1px 6px #FFFFFF;
 }

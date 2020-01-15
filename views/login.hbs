@@ -44,35 +44,6 @@
     {{!-- alt --}}
     <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
 
-
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .tangFont {
-            font-family: 'Pacifico', cursive;
-
-        }
-
-        .whiteGradient {
-            background: #EFEFBB;
-            background: -webkit-linear-gradient(to top, #D4D3DD, #EFEFBB);
-            background: linear-gradient(to top, #D4D3DD, #EFEFBB);
-        }
-
-        .redGradient {
-            background: #DE6262;
-            background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262);
-            background: linear-gradient(to bottom, #FFB88C, #DE6262);
-        }
-
-        .brandFont {
-            font-family: 'Satisfy', cursive;
-
-        }
-    </style>
-
 </head>
 
 <body>
@@ -94,7 +65,7 @@
                         <div class="row mb-2 pt-2">
                             <div class="col">
                                 <div class="text-center">
-                                    <img src="/img/blogLogo_96.png" alt="logo">
+                                    <img src="/img/Logo_96.png" alt="logo">
                                     {{!-- <img src="/img/blogLogo_48.png" alt=""> --}}
                                     {{!-- <img src="/img/blogLogo_32.png" alt=""> --}}
                                 </div>
@@ -133,7 +104,7 @@
                         {{#if alertMsg}}
                         <div class="row">
                             <div class="col">
-                                <div class="alert alert-danger text-center  m-0" role="alert">
+                                <div class="alert alert-danger text-center mb-1" role="alert">
                                     Error! - {{alertMsg}} - Please try again.
                                 </div>
                             </div>
@@ -143,7 +114,7 @@
                         {{#if succesfullSignup}}
                         <div class="row">
                             <div class="col">
-                                <div class="alert alert-success text-center  m-0" role="alert">
+                                <div class="alert alert-success text-center mb-1" role="alert">
                                     Sign Up Succesfull !
                                 </div>
                             </div>
@@ -166,7 +137,7 @@
                                         <div class="form-row justify-content-center m-0">
                                             <div class="form-group required text-center">
                                                 {{!-- <label for="exampleInputEmail1">Email address</label> --}}
-                                                <input type="email" name="email"
+                                                <input type="email" name="email" tabindex="1"
                                                     class="form-control-plaintext myInput text-center"
                                                     placeholder="Email address" id="email" required="true">
                                             </div>
@@ -177,7 +148,7 @@
                                             <div class="form-group required">
 
                                                 {{!-- <label for="password">Password</label> --}}
-                                                <input type="password" id="password" name="password"
+                                                <input type="password" id="password" name="password" tabindex="2"
                                                     placeholder="Password"
                                                     class="form-control-plaintext myInput text-center" required="true">
                                             </div>
@@ -185,7 +156,7 @@
                                         </div>
 
                                         <div class="text-center">
-                                            <button class="btn loginButton pl-4 pr-4 mt-2" type="submit">Log In</button>
+                                            <button class="btn loginButton pl-4 pr-4 mt-2" type="submit" tabindex="3">Log In</button>
                                         </div>
 
                                         <p align="right">

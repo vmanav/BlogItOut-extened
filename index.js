@@ -80,7 +80,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            maxAge: 1000 * 180, // keeeps logged in for 30 seconds
+            maxAge: 1000 * 25000, // keeeps logged in for 30 seconds
         },
     })
 )
@@ -407,6 +407,15 @@ app.use('/dashboard', isLoggedIn, dashboardRouter)
 // --------------------------------------------------------
 
 // for all linkks in the dashboadr the user should be checked in 
+
+// About Page
+app.get('/test', (req, res) => {
+    // res.send("Blog It Out REBORN")
+    res.render('test')
+})
+
+
+
 
 app.listen(PORT, () => {
     // console.log("Application running on : http://localhost:3000/")

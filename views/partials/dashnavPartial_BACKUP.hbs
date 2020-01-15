@@ -4,31 +4,27 @@
 <nav id="sidebar" class="navbar navbar-dark p-3">
 
     <!-- togglerButoon -->
+    
+    <div style="text-align:center;">
+        <button class="navbar-toggler toggleButtons" type="button" data-toggle="collapse"
+            data-target=".navbarContentsCollapsed">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div> 
 
+    <div class="collapse navbar-collapse navbarContentsCollapsed">
 
-    <div class="row">
-        <div class="col-12">
-            <button class="navbar-toggler toggleButtons" type="button" data-toggle="collapse"
-                data-target=".navbarContentsCollapsed">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </div>
-    {{!-- </div> --}}
-
-    {{!-- <div class="conainer" style="background-color: red"> --}}
-    <div class="row collapse navbar-collapse navbarContentsCollapsed">
-        <div class="col-8">
-            <a class="navbar-brand brandLink" href="/">
-                <span class="brandFont" style="font-size :1.5em">BlogItOut.</span>
-            </a>
-        </div>
-        <div class="col-4">
-            <button class="navbar-toggler toggleButtons hiddenButtons" type="button" data-toggle="collapse"
-                data-target=".navbarContentsCollapsed">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-        </div>
+        <!-- BIO logo -->
+        <a class="text-center p-1" href="#">
+            <i class="fab fa-jedi-order"></i>
+        </a>
+        <!-- brand -->
+        <a class="navbar-brand" href="#">Blog-It-Out</a>
+        <!-- closeButton -->
+        <button class="navbar-toggler toggleButtons hiddenButtons" type="button" data-toggle="collapse"
+            data-target=".navbarContentsCollapsed">
+            <i class="fas fa-chevron-left"></i>
+        </button>
     </div>
 
     <!-- Navbar -->
@@ -36,9 +32,7 @@
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <a class="nav-link text-center" href="/dashboard">
-                <span>
-                    <img src="../../img/Logo_32.png" alt="Logo">
-                </span>
+                <i class="fab fa-jedi-order"></i>
                 <span class="sidebarTexts collapse navbar-collapse navbarContentsCollapsed">
                     <span>Dashboard</span>
                 </span>
@@ -56,22 +50,16 @@
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="New Blog">
             <a class="nav-link text-center" href="/dashboard/addBlog">
-                {{!-- <i class="far fa-plus-square"></i> --}}
-                <span>
-                    <img src="../../img/addBlog-32.png" alt="BlogItOut_Logo">
-                </span>
+                <i class="far fa-plus-square  "></i>
                 <span class="sidebarTexts collapse navbar-collapse navbarContentsCollapsed">
                     <span>New Blog</span>
                 </span>
             </a>
         </li>
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="All Blogs">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Profile">
             <a class="nav-link text-center" href="/dashboard/allBlogs">
-                {{!-- <i class="far fa-folder-open"></i> --}}
-                <span>
-                    <img src="../../img/allBlogs-32.png" alt="BlogItOut_Logo">
-                </span>
+                <i class="far fa-folder-open"></i>
                 <span class="sidebarTexts collapse navbar-collapse navbarContentsCollapsed">
                     <span>All Blogs</span>
                 </span>
@@ -80,10 +68,7 @@
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Your Blogs">
             <a class="nav-link text-center" href="/dashboard/userBlogs">
-                {{!-- <i class="fas fa-folder-open  "></i> --}}
-                <span>
-                    <img src="../../img/userBlogs-32.png" alt="BlogItOut_Logo">
-                </span>
+                <i class="fas fa-folder-open  "></i>
                 <span class="sidebarTexts collapse navbar-collapse navbarContentsCollapsed">
                     <span>Your Blogs</span>
                 </span>
@@ -92,16 +77,13 @@
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Signout">
             <a class="nav-link text-center" href="/logout">
-                {{!-- <i class="fas fa-sign-out-alt"></i> --}}
-                <span>
-                    <strong>
-                        <img src="../../img/logout-32.png" alt="BlogItOut_Logo">
-                    </strong>
-                </span>
+                <i class="fas fa-sign-out-alt"></i>
                 <span class="sidebarTexts collapse navbar-collapse navbarContentsCollapsed">
                     <span>Signout</span>
                 </span>
             </a>
         </li>
+
     </ul>
+
 </nav>

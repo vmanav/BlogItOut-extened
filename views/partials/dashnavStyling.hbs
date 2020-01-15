@@ -1,3 +1,6 @@
+{{!-- main branf font --}}
+<link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
+
 <style>
     .navbar {
         display: inline-block;
@@ -16,7 +19,7 @@
         background: black;
         transition: all 0.2s ease-in-out;
         z-index: 998;
-        opacity: 0.5;
+        opacity: 0.3;
     }
 
     i {
@@ -27,12 +30,12 @@
         font-size: 1.1em;
     }
 
-    li:hover {
-        background-color: darkkhaki;
+    .toggleButtons {
+        border: 0px transparent solid;
     }
 
-    .toggleButtons {
-        border: 10px;
+    .toggleButtons:hover {
+        color: white;
     }
 
     .hiddenButtons {
@@ -51,5 +54,20 @@
 
     .tooltip {
         z-index: 99999;
+    }
+
+    /* Brand Font */
+    .brandFont {
+        font-family: 'Satisfy', cursive;
+    }
+
+    .brandLink {
+        text-shadow: 0.5px 0.5px 1px #FFFFFF;
+    }
+
+    .brandLink:hover {
+        text-decoration: none;
+        transition: 0.3s;
+        text-shadow: 0.7px 0.7px 3px #FFFFFF;
     }
 </style>
