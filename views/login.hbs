@@ -100,22 +100,32 @@
 
 
                     <div class="col-12 col-sm-8 order-sm-first p-3 whiteGradient">
-
                         {{#if alertMsg}}
                         <div class="row">
                             <div class="col">
-                                <div class="alert alert-danger text-center mb-1" role="alert">
+                                <div class="alert alert-danger alert-dismissible fade show text-center mb-1"
+                                    role="alert">
+                                    <img src="../img/failure-48.png" alt="sad">&nbsp;
                                     Error! - {{alertMsg}} - Please try again.
+                                    <button class="close mt-2" type="button" data-dismiss="alert" aria-label="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                         {{/if}}
 
+                        <!-- when a new user Signs Up, Login page redners whith this Message -->
                         {{#if succesfullSignup}}
                         <div class="row">
                             <div class="col">
-                                <div class="alert alert-success text-center mb-1" role="alert">
-                                    Sign Up Succesfull !
+                                <div class="alert alert-success alert-dismissible fade show text-center mb-1"
+                                    role="alert">
+                                    <img src="../img/success-48.png" alt="happy">&nbsp;
+                                    Sign Up <strong>Succesfull</strong> !
+                                    <button class="close mt-2" type="button" data-dismiss="alert" aria-label="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +166,8 @@
                                         </div>
 
                                         <div class="text-center">
-                                            <button class="btn loginButton pl-4 pr-4 mt-2" type="submit" tabindex="3">Log In</button>
+                                            <button class="btn loginButton pl-4 pr-4 mt-2" type="submit"
+                                                tabindex="3">Log In</button>
                                         </div>
 
                                         <p align="right">

@@ -187,9 +187,6 @@ app.post('/signup', (req, res) => {
                 console.log("Record Saved in Database.")
 
                 res.render('login', {
-                    title: "Log In",
-                    login: false,
-                    signup: true,
                     succesfullSignup: true
                 })
             }
@@ -211,6 +208,8 @@ app.post('/signup', (req, res) => {
 // })
 
 app.get('/login', (req, res) => {
+
+    // Getting Flash Failure Message for Unsuccessfull Login
 
     if (alertMsg = req.flash().error) {
         console.log("flash exists")
@@ -303,10 +302,8 @@ app.get('/checkLikedOrNot', (req, res) => {
 })
 
 
-
 app.post('/like', (req, res) => {
     console.log('`post` @ `/like`.');
-
     // console.log("`req.user` --->", req.user);
 
     let userId = req.user._id;
@@ -391,22 +388,13 @@ function isLoggedIn(req, res, next) {
 
 // Routing to dashboardRouter
 app.use('/dashboard', isLoggedIn, dashboardRouter)
-
-
-// --------------------------------------------------------
-
-// Post route for Not Logged in users
-// app.get('/post', (req, res) => {
-//     // const blogId = req.query.blogId;
-//     // console.log(blogId)
-// })
-
-// Show post to not logged in users
-// Show that to like it you have to logg in
-
-// --------------------------------------------------------
-
 // for all linkks in the dashboadr the user should be checked in 
+
+
+// --------------------------------------------------------
+// Post route for Not Logged in users
+// --------------------------------------------------------
+
 
 // About Page
 app.get('/test', (req, res) => {
@@ -415,13 +403,10 @@ app.get('/test', (req, res) => {
 })
 
 
-
-
 app.listen(PORT, () => {
     // console.log("Application running on : http://localhost:3000/")
     // console.log("Signup on : http://localhost:3000/signup")
     console.log("Login on : http://localhost:3000/login")
     console.log("Dashboard on : http://localhost:3000/dashboard")
     // console.log("Add New Blog on : http://localhost:3000/addBlog")
-
 })
