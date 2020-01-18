@@ -62,7 +62,7 @@ $(() => {
 
             return `
             <a href="/dashboard/?blogId=${place._id}" class="blogLinks">
-                <div class="p-3 m-1 card">
+                <div class="p-3 m-1 cardEff">
 
                     <p class="h3 text-center">
                     ${blogTitle}

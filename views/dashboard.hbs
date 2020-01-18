@@ -56,13 +56,13 @@
         }
 
         /* pageContent ki css */
-        .card {
+        .cardEff {
             /* shadow  */
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             transition: 0.3s;
         }
 
-        .card:hover {
+        .cardEff:hover {
             box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.4);
         }
 
@@ -140,11 +140,11 @@
         <div id="pageContent" class="p-3">
 
             <!-- welcome user -->
-            <div class="card p-2 h5" style="display: inline;">
+            <div class="cardEff p-2 h5" style="display: inline;">
                 {{#if firstName}}
-                Welcome to BIO, {{firstName}}!
+                Welcome to BlogItOut, {{firstName}}!
                 {{else}}
-                Welcome to BIO, Mortal!
+                Welcome to BlogItOut, Mortal!
                 {{/if}}
             </div>
             <hr>
@@ -154,7 +154,7 @@
             {{/if}}
 
             {{#if post}}
-            <div id="post" class="p-3 mt-4 mb-5 card">
+            <div id="post" class="p-3 mt-4 mb-5 cardEff">
                 <p class="h3 text-center">
                     {{post.blogTitle}}
                 </p>
@@ -260,16 +260,18 @@
 
                 <div class="offWhiteContainer d-flex flex-column justify-content-center align-items-center p-5">
 
-                    <div class="card p-2 h4 mt-4 mb-4" style="display: inline; color: black;">
-                        Trending on BIO.
+                    <div class="cardEff p-2 h4 mt-4 mb-4" style="display: inline; color: black;">
+                        Trending on BlogItOut.
                     </div>
 
                     {{!-- NOTE  --}}
                     {{!-- Now we have to add the link of te Trending blog here --}}
                     {{!-- Jab bhi dashboard render hoga tab ye most trending blog bhi render hoga  --}}
                     <a href="/dashboard/?blogId={{trendingBlog._id}}" id="trendingLink">
-                        <div class="card p-4 mt-4 mb-4"
-                            style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); color:white;text-align: justify;">
+                        <div class="cardEff p-4 mt-4 mb-4" style="background: #0F2027;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
 
                             <p class="h3 text-center">
                                 {{trendingBlog.blogTitle}}

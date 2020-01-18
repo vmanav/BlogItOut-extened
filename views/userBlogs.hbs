@@ -11,7 +11,7 @@
         {{#if allBlogs}}
         All Blogs
         {{else}}
-        BIO - Blog
+        BlogItOut - Blog
         {{/if}}
     </title>
 
@@ -51,14 +51,14 @@
         }
 
         /* pageContent ki css */
-        .card {
+        .cardEff {
             /* shadow  */
             color: var(--main-blacktext-color);
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             transition: 0.3s;
         }
 
-        .card:hover {
+        .cardEff:hover {
             box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.4);
         }
 
@@ -136,7 +136,7 @@
         <div id="pageContent" class="p-4">
 
             <!-- Title of Page -->
-            <div class="card p-2 h5" style="display: inline;">
+            <div class="cardEff p-2 h5" style="display: inline;">
                 {{#if firstName}}
                 {{firstName}} 's Blogs
                 {{else}}
@@ -171,8 +171,8 @@
                 {{#each listOfBlogs as |chunk|}}
 
                 <a href="/dashboard/?blogId={{chunk._id}}" class="blogLinks">
-                    {{!-- <div class="p-3 m-3 card" style="width: 85%;"> --}}
-                    <div class="p-3 m-1 card">
+                    {{!-- <div class="p-3 m-3 cardEff" style="width: 85%;"> --}}
+                    <div class="p-3 m-1 cardEff">
 
                         <p class="h3 text-center">
                             {{chunk.blogTitle}}

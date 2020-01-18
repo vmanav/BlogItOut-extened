@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
         {{#if title}}
-        BIO - {{title}}
+        BlogItOut - {{title}}
         {{else}}
-        BIO
+        BlogItOut
         {{/if}}
     </title>
 
@@ -72,7 +72,7 @@
             align-items: center;
         }
 
-        .trendingCard {
+        .trendingcardEff {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             background-color: white;
             height: 100%;
@@ -83,13 +83,13 @@
         }
 
         /* pageContent ki css */
-        .card {
+        .cardEff {
             /* shadow  */
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             transition: 0.3s;
         }
 
-        .card:hover {
+        .cardEff:hover {
             box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.4);
         }
 
@@ -113,7 +113,7 @@
 
     <div class="container-fluid container1">
         <div class="container" style="text-align:center;color: white">
-            <h1>"BIO stands for Blog-It-Out."</h1>
+            <h1>"BlogItOut stands for Blog-It-Out."</h1>
         </div>
 
     </div>
@@ -138,7 +138,7 @@
                     {{#if trendingBlog}}
 
                     <a href="/dashboard/?blogId={{trendingBlog._id}}" id="trendingLink">
-                        <div class="card p-4 mt-4 mb-4"
+                        <div class="cardEff p-4 mt-4 mb-4"
                             style="background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114)); color:white;text-align: justify;">
 
                             <p class="h3 text-center">

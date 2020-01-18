@@ -116,7 +116,7 @@ app.get('/', (req, res) => {
 
                 res.render('index', {
                     oopsMessage: true,
-                    message: "We can't seem to find the page you're looking for.",
+                    message: "There seems to be an internal error.",
                     login: true,
                     signup: true,
                 })
@@ -132,7 +132,6 @@ app.get('/', (req, res) => {
         }
 
     });
-
 
 })
 
@@ -400,6 +399,12 @@ app.use('/dashboard', isLoggedIn, dashboardRouter)
 app.get('/test', (req, res) => {
     // res.send("Blog It Out REBORN")
     res.render('test')
+})
+
+// About Page
+app.get('/old', (req, res) => {
+    // res.send("Blog It Out REBORN")
+    res.render('my_index')
 })
 
 
