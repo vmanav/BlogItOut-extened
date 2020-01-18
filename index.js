@@ -404,7 +404,7 @@ app.get('/test', (req, res) => {
 // About Page
 app.get('/old', (req, res) => {
     // res.send("Blog It Out REBORN")
-    res.render('my_index')
+    res.render('signup_old')
 })
 
 

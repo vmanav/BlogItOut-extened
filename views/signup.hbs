@@ -21,6 +21,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+    {{!-- Fonts --}}
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+
+
     <!-- my script -->
     <script src="/scripts/gttButton.js"></script>
 
@@ -88,6 +92,10 @@
             content: "  *";
             color: #dc3545;
         }
+
+        .pacificoFont {
+            font-family: 'Pacifico', cursive;
+        }
     </style>
 
     {{> gttButtonStyling}}
@@ -104,120 +112,68 @@
 <body>
 
     <div class="container-fluid main p-5">
-        <div class="inside-main">
-
-            <div class="px-3 py-2"
-                style="color: black; background-color: white; position: absolute; top: -20px; left: -45px;">
-                <button id="goBackButton" tabindex="-1">
-                    <i class="fas fa-arrow-left"></i>
-                </button>
-                {{!-- <a href="/">
-                    <i class="fas fa-arrow-left"></i>
-                </a> --}}
-            </div>
+        <div class="container inside-main">
 
             {{#if signUpError}}
-            <div class="alert alert-danger text-center m-0" role="alert">
-                Error While Signing you up ! - {{alertMsg}}, Please try again.
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-danger alert-dismissible fade show text-center m-0" role="alert">
+                        <img src="../img/failure-48.png" alt="sad">&nbsp;
+                        Error While Signing you up ! - {{alertMsg}}, Please try again.
+                        <button class="close mt-2" type="button" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
             </div>
             {{/if}}
 
-            <div class="heading h2" style="background-color: burlywood; text-align: center">
-                Sign Up
-            </div>
 
+            <div class="row row-content">
+                <div class="col-12 h2 text-center pacificoFont">
+                    <h3>Sign Up</h3>
+                </div>
 
-            <div class="container p-4">
-                {{!-- style="background-color: lightseagreen"> --}}
+                <div class="col-10">
+                    <form action="/signup" method="POST">
 
-                <form action="/signup" method="POST">
-
-                    <div class="form-group required">
-                        <div class="form-row">
-                            <div class="col">
-                                <label>First Name</label>
-                                <input type="text" class="form-control" name="fname" placeholder="Enter Your First Name"
-                                    required="true">
+                        <div class="form-group row required">
+                            <label for="name" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" name="firstname" id="firstname"
+                                    placeholder="First Name">
                             </div>
-                            <div class="col">
-                                <label>Last Name</label>
-                                <input type="text" class="form-control" name="lname" placeholder="Enter Your Last Name"
-                                    required="true">
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" name="lastname" id="lastname"
+                                    placeholder="Last Name">
                             </div>
                         </div>
-                        <small class="form-text text-muted">This will be also be the Author name.</small>
-                    </div>
+
+                        <div class="form-group row required">
+                            <label for="exampleInputEmail1" class="col-sm-2 col-form-label">Email address</label>
+                            <div class="col-sm-10">
+                                <input name="email" type="email" class="form-control" id="email"
+                                    placeholder="Enter email" required="true">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your Email with
+                                    anyone
+                                    else.</small>
+                            </div>
+                        </div>
 
 
-                    {{!-- <label>Full Name</label> --}}
-                    {{!-- <input type="text" class="form-control" name="name" placeholder="Enter Your Full Name"> --}}
-                    {{!-- <small class="form-text text-muted">This will be also be the Author name.</small> --}}
-
-                    <div class="form-group required">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input name="email" type="email" class="form-control" id="email" placeholder="Enter email"
-                            required="true">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your Email with anyone
-                            else.</small>
-                    </div>
-
-                    <div class="form-group required">
-                        <label>Contact Number</label>
-                        <input type="text" class="form-control" name="number" placeholder="Enter Your Contact Number">
-                        <small class="form-text text-muted">We'll never share your Contact Information with anyone
-                            else.</small>
-                    </div>
+                        {{!-- YAHA PE NAYE BOXES --}}
 
 
-                    <div class="form-group">
-                        <label>BlogItOut</label>
-                        <textarea type="text" class="form-control" name="BlogItOut"
-                            placeholder="A short description will be nice." rows="4"></textarea>
-                        <small class="form-text text-muted">This will be a short description about yourself.</small>
-                    </div>
 
-                    <div class="form-group">
-                        <label>LinkedIn Profile</label>
-                        <input type="text" class="form-control" name="lprofile"
-                            placeholder="https://www.linkedin.com/in/username/">
-                        <small class="form-text text-muted">Help us understand you better.</small>
-                    </div>
 
-                    <div class="form-group required">
+                    </form>
+                </div>
 
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" required="true">
-                        <small id="passwordHelp" class="form-text text-muted">
-                            Your password must be 8-20 characters long, contain letters and numbers, and must not
-                            contain spaces, special characters, or emoji.
-                        </small>
-                        <br>
-                        {{!-- field for password vrefication --}}
-                        <label for="passwordV">Re-enter Password</label>
-                        <input type="password" id="passwordVerify" name="passwordVerify" class="form-control"
-                            required="true">
-                        <small id="passwordVHelp" class="form-text text-muted">
-                            Your passwords must match.
-                        </small>
-
-                    </div>
-
-                    <div class="form-group" id="termsOfUse">
-                        <label class="text-secondary" for="password">
-                            By clicking Sign Up, you agree to our
-                            <span class="font-italic">
-                                <a href="#" class="text-danger">Terms of Use</a>
-                            </span>.
-                        </label>
-                    </div>
-
-                    <div class="text-center">
-                        <button class="btn signupButton" type="submit">Sign Up</button>
-                    </div>
-
-                </form>
 
             </div>
+
+
+
 
         </div>
     </div>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        {{#if title}}
+        BlogItOut - {{title}}
+        {{else}}
+        BlogItOut
+        {{/if}}
+    </title>
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- my script -->
+    <script src="/scripts/gttButton.js"></script>
+
+    <!-- script for goBack Button -->
+    <script src="/scripts/goBack.js"></script>
+
+    <!-- font awesom 5 kit code -->
+    <script src="https://kit.fontawesome.com/e00a1e7cf5.js" crossorigin="anonymous"></script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .main {
+            background-color: #74776B;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .inside-main {
+            background-color: #EDF0DA;
+            color: black;
+            min-width: 100%;
+            position: relative;
+
+        }
+
+        /* Change The Colour of all links to black */
+        a {
+            color: black
+        }
+
+        a:visited {
+            color: black
+        }
+
+        a:hover,
+        a:active,
+        a:focus {
+            color: black;
+            text-decoration: none;
+
+        }
+
+        /* Signup Button at theend of form */
+        .signupButton {
+            background-color: #01BAEF;
+            /* #FFFCF9;  */
+            border: 1px transparent solid;
+            /* color: #343A40; */
+            color: white;
+        }
+
+        .signupButton:hover {
+            background-color: #C7E8F3;
+            transition: 0.2s;
+            color: #005972;
+        }
+
+        /* astersrik */
+        .form-group.required label:after {
+            content: "  *";
+            color: #dc3545;
+        }
+    </style>
+
+    {{> gttButtonStyling}}
+
+    <script>
+
+        function goBack() {
+            console.log("clicked")
+            window.history.back();
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container-fluid main p-5">
+        <div class="inside-main">
+
+            <div class="px-3 py-2"
+                style="color: black; background-color: white; position: absolute; top: -20px; left: -45px;">
+                <button id="goBackButton" tabindex="-1">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                {{!-- <a href="/">
+                    <i class="fas fa-arrow-left"></i>
+                </a> --}}
+            </div>
+
+            {{#if signUpError}}
+            <div class="alert alert-danger text-center m-0" role="alert">
+                Error While Signing you up ! - {{alertMsg}}, Please try again.
+            </div>
+            {{/if}}
+
+            <div class="heading h2" style="background-color: burlywood; text-align: center">
+                Sign Up
+            </div>
+
+
+            <div class="container p-4">
+                {{!-- style="background-color: lightseagreen"> --}}
+
+                <form action="/signup" method="POST">
+
+                    <div class="form-group required">
+                        <div class="form-row">
+                            <div class="col">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" name="fname" placeholder="Enter Your First Name"
+                                    required="true">
+                            </div>
+                            <div class="col">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" name="lname" placeholder="Enter Your Last Name"
+                                    required="true">
+                            </div>
+                        </div>
+                        <small class="form-text text-muted">This will be also be the Author name.</small>
+                    </div>
+
+
+                    {{!-- <label>Full Name</label> --}}
+                    {{!-- <input type="text" class="form-control" name="name" placeholder="Enter Your Full Name"> --}}
+                    {{!-- <small class="form-text text-muted">This will be also be the Author name.</small> --}}
+
+                    <div class="form-group required">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input name="email" type="email" class="form-control" id="email" placeholder="Enter email"
+                            required="true">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your Email with anyone
+                            else.</small>
+                    </div>
+
+                    <div class="form-group required">
+                        <label>Contact Number</label>
+                        <input type="text" class="form-control" name="number" placeholder="Enter Your Contact Number">
+                        <small class="form-text text-muted">We'll never share your Contact Information with anyone
+                            else.</small>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>BlogItOut</label>
+                        <textarea type="text" class="form-control" name="BlogItOut"
+                            placeholder="A short description will be nice." rows="4"></textarea>
+                        <small class="form-text text-muted">This will be a short description about yourself.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>LinkedIn Profile</label>
+                        <input type="text" class="form-control" name="lprofile"
+                            placeholder="https://www.linkedin.com/in/username/">
+                        <small class="form-text text-muted">Help us understand you better.</small>
+                    </div>
+
+                    <div class="form-group required">
+
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" required="true">
+                        <small id="passwordHelp" class="form-text text-muted">
+                            Your password must be 8-20 characters long, contain letters and numbers, and must not
+                            contain spaces, special characters, or emoji.
+                        </small>
+                        <br>
+                        {{!-- field for password vrefication --}}
+                        <label for="passwordV">Re-enter Password</label>
+                        <input type="password" id="passwordVerify" name="passwordVerify" class="form-control"
+                            required="true">
+                        <small id="passwordVHelp" class="form-text text-muted">
+                            Your passwords must match.
+                        </small>
+
+                    </div>
+
+                    <div class="form-group" id="termsOfUse">
+                        <label class="text-secondary" for="password">
+                            By clicking Sign Up, you agree to our
+                            <span class="font-italic">
+                                <a href="#" class="text-danger">Terms of Use</a>
+                            </span>.
+                        </label>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn signupButton" type="submit">Sign Up</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+    {{!-- Partial for Go-To-Top Button --}}
+    {{> gttButtonPartial}}
+
+
+</body>
+
+</html>
