@@ -10,9 +10,6 @@
   <a href="https://github.com/vmanav/BlogItOut-extened/blob/master/LICENSE" target="_blank">
     <img alt="License:  " src="https://img.shields.io/github/license/vmanav/BlogItOut" />
   </a>
-  <a href="https://twitter.com/ " target="_blank">
-    <img alt="Twitter:  " src="https://img.shields.io/twitter/follow/ .svg?style=social" />
-  </a>
 </p>
 
 > Full-fledged Blog Website.
@@ -27,20 +24,13 @@
 npm install
 ```
 
-## Run tests
-
-```sh
- 
-```
-
 ## Author
 
 👤 **Manav Verma**
 
 * Website: https://vmanav.github.io/
-* Twitter: [@ ](https://twitter.com/ )
 * Github: [@vmanav](https://github.com/vmanav)
-* LinkedIn: [@vmanav](https://linkedin.com/in/vmanav)
+* LinkedIn: [@vmanav](https://www.linkedin.com/in/vmanav/)
 
 ## 🤝 Contributing
 
@@ -50,9 +40,6 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 
 Give a ⭐️ if this project helped you!
 
-<a href="https://www.patreon.com/ ">
-  <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
-</a>
 
 ## 📝 License
 
