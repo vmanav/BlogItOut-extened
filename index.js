@@ -393,20 +393,19 @@ app.use('/dashboard', isLoggedIn, dashboardRouter)
 // --------------------------------------------------------
 // Post route for Not Logged in users
 // --------------------------------------------------------
-
+app.get('/allPosts', (req, res) => {
+    // res.send("Blog It Out REBORN")
+    res.render('errPage', {
+        oopsMessage: true,
+        message: "Error - Page will be available soon.",
+    })
+})
 
 // About Page
 app.get('/test', (req, res) => {
     // res.send("Blog It Out REBORN")
     res.render('test')
 })
-
-// About Page
-app.get('/old', (req, res) => {
-    // res.send("Blog It Out REBORN")
-    res.render('signup_old')
-})
-
 
 app.listen(PORT, () => {
     // console.log("Application running on : http://localhost:3000/")
