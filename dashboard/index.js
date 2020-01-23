@@ -179,7 +179,7 @@ dashboardRouter.get('/userBlogs', (req, res) => {
                 }
                 else {
 
-                    console.log("rendering data.");
+                    console.log("rendering data @`/userBlogs` ----");
                     res.render('userBlogs', {
                         firstName: req.user.firstName,
                         listOfBlogs: data
@@ -235,7 +235,6 @@ dashboardRouter.get('/allBlogs', (req, res) => {
                 console.log("rendering data.");
                 res.render('userBlogs', {
                     allBlogs: true,
-                    author: true,
                     listOfBlogs: data
                 })
             }
