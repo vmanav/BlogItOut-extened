@@ -43,7 +43,7 @@
             /* overflow: hidden; */
             overflow-x: hidden;
             margin: 0;
-            background-color: #343a40;
+            background-color: #F7F4F3;
             color: white;
             /* #262B2F;*/
             font-family: 'Roboto', sans-serif;
@@ -52,13 +52,10 @@
         canvas {
             background-color: #262B2F;
             /* setting up the height and wdht through javascript */
-
             position: absolute;
             top: 0;
             left: 0;
-
             color: white;
-
             z-index: -1;
         }
 
@@ -98,9 +95,13 @@
             background-color: #28231C;
         }
 
+        .aboutContainer {
+            min-height: 70vh;
+            background-color: #262B2F;
+        }
+
         .offWhiteContainer-2 {
             background-color: #F7F4F3;
-
         }
 
         a#trendingLink {
@@ -119,6 +120,12 @@
 
         .cardEff:hover {
             box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        .myfooter {
+            background-color: #343a40;
+            width: 100vw;
+            color: white;
         }
     </style>
 
@@ -219,259 +226,73 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
         </div>
 
     </div>
-    <div class="container text-justify p-4" style="color: white;">
-        <div class="row">
 
-            <div class="col-12 col-sm-4">
+    {{!-- About Container --}}
+    <div class="container text-justify p-4 aboutContainer d-flex flex-column justify-content-center" id="about"
+        style="color: white;">
+
+        <div class="row text-center">
+            <div class="col-12">
+                <h3>About <span class="brandFont">&nbsp;BlogItOut.</span></h3>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-12">
+                <hr style="border-top: 1px solid #F7F4F3;">
+            </div>
+        </div>
+
+        <div class="row pr-sm-3 m-3">
+            <div class="col-12 col-sm-7">
                 Donec sapien ante, feugiat cursus pulvinar aliquam, elementum non lacus. Aenean pretium nulla nisi,
-                tempus
-                molestie est luctus a. Pellentesque ex metus, aliquet at dolor ut, sagittis ultrices dolor. Fusce
-                efficitur
-                auctor rhoncus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam est elit, feugiat non enim
-                eu,
-                dictum porttitor tellus. Aliquam sollicitudin sapien urna, eu tempus arcu fermentum in. Fusce nisl
-                tortor,
-                pulvinar eu ante quis, accumsan eleifend mi. Maecenas pharetra mauris id quam fringilla cursus.
-                Curabitur
-                sodales tincidunt nunc, vitae tincidunt quam. Phasellus iaculis vehicula mollis.
-
-                Pellentesque a felis sagittis lacus tempus fringilla pellentesque a ante. Integer id finibus leo. Ut
-                ornare
-                urna
-                eget mauris pellentesque, et interdum nulla tincidunt. Vestibulum eu auctor dui. Praesent efficitur
-                iaculis
-                ex,
-                ac fringilla lorem imperdiet in. Etiam accumsan pellentesque sagittis. Aliquam erat volutpat. Nullam
-                mollis
-                mi
-                quis orci ornare facilisis. Donec eget dictum est, quis gravida lectus.
+                Donec sapien ante, feugiat cursus pulvinar aliquam, elementum non lacus. Aenean pretium nulla nisi,
+                Donec sapien ante, feugiat cursus pulvinar aliquam, elementum non lacus. Aenean pretium nulla nisi,
+                Donec sapien ante, feugiat cursus pulvinar aliquam, elementum non lacus. Aenean pretium nulla nisi,
             </div>
-            <div class="col-12 col-sm-4">
-                Etiam dictum, nulla id auctor venenatis, ex eros dapibus sem, id molestie nisi massa eget nisi. In quam
-                nulla,
-                luctus vitae varius eu, vulputate sit amet arcu. Class aptent taciti sociosqu ad litora torquent per
-                conubia
-                nostra, per inceptos himenaeos. Phasellus leo dui, pretium a egestas vitae, ullamcorper vel nibh. Aenean
-                posuere
-                sollicitudin ex in pretium. In molestie vitae dui sit amet accumsan. Etiam molestie aliquet magna, ut
-                malesuada
-                erat hendrerit ut. Etiam volutpat lorem quis vehicula rutrum. Nullam laoreet felis nec tincidunt mattis.
-                Duis
-                dapibus quis tortor sit amet viverra. Vestibulum ultrices porta neque sit amet tempor.
-
-                Ut eu orci efficitur, varius purus mattis, porta tortor. Pellentesque vel leo bibendum, tristique arcu
-                eu,
-                ornare nisi. Quisque volutpat euismod libero ut luctus. Curabitur ut interdum mi. Proin suscipit feugiat
-                ex,
-                eget malesuada massa pellentesque vel. Praesent nec urna non nibh blandit sollicitudin et in purus.
-                Morbi
-                eget
-                mauris ac lorem semper congue non et lectus. Sed eget ligula non diam suscipit euismod. Maecenas gravida
-                congue
-                hendrerit. Praesent eleifend lorem in nibh volutpat cursus. Vestibulum nec ullamcorper odio. Duis
-                lacinia
-                imperdiet velit. In interdum vitae purus ut molestie. Quisque semper vel arcu a porttitor. Duis molestie
-                lectus
-                massa, vel venenatis orci bibendum ac.
-
-                Aliquam maximus at lorem eu tincidunt. Aliquam auctor ullamcorper nisi. Pellentesque vitae dui eu velit
-                elementum feugiat. Sed commodo odio sit amet dolor egestas aliquet. Phasellus dapibus pharetra neque, in
-                dapibus
-                nisi fermentum consequat. Etiam faucibus commodo ligula at luctus. Duis tristique diam at dui suscipit
-                facilisis. Quisque posuere ex sed arcu tristique eleifend. In a turpis massa. Donec interdum venenatis
-                nulla
-                ac
-                faucibus.
-
-            </div>
-            <div class="col-12 col-sm-4">
-                Donec hendrerit dolor quis leo porta, a vestibulum lacus mollis. Mauris tincidunt lacinia tincidunt.
-                Quisque
-                sed
-                enim ut nunc maximus efficitur. Quisque sed auctor ipsum, et iaculis ex. Duis vitae diam convallis,
-                semper
-                magna
-                eu, semper nulla. Mauris lectus lorem, efficitur gravida ullamcorper eget, pellentesque eu dolor.
-                Integer
-                consectetur in urna eu venenatis. Duis eu velit ut justo varius maximus. Sed id dui rutrum elit finibus
-                ultrices
-                at quis lectus. Etiam sollicitudin, turpis at pellentesque tristique, risus nisi cursus magna, nec
-                cursus
-                lorem
-                neque id enim. Fusce tincidunt lacus in malesuada eleifend. Vestibulum rutrum massa ante, et venenatis
-                mauris
-                feugiat placerat.
-
-                Nulla facilisi. Praesent porta mauris libero, ut dictum metus eleifend id. Quisque mattis sit amet
-                tortor
-                vel
-                vestibulum. Suspendisse pharetra diam nulla, a ultricies elit sagittis pretium. Pellentesque laoreet
-                sodales
-                arcu a pellentesque. Quisque congue sem a ligula cursus ornare. Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Quisque scelerisque ex mi. Quisque id semper justo. Fusce bibendum efficitur sapien,
-                non
-                rutrum
-                eros aliquam vitae. In suscipit imperdiet molestie. Phasellus maximus, elit et aliquet vestibulum, velit
-                neque
-                pellentesque purus, in cursus ipsum dui id orci. Sed non urna turpis. Fusce lobortis, quam non faucibus
-                molestie, lacus ipsum suscipit ligula, vel cursus libero massa quis magna.
+            <div class="col-12 col-sm-5" style="background-color: #F7F4F3">
             </div>
 
         </div>
 
-        <div class="container-fluid text-justify p-4" style="background-color: #F7F4F3;color: #262B2F;">
+        <div class="row  pl-sm-3 m-3">
+            <div class="col-12 col-sm-5" style="background-color: #F7F4F3">
+            </div>
+            <div class="col-12 col-sm-7">
+                Donec sapien ante, feugiat cursus pulvinar aliquam, elementum non lacus. Aenean pretium nulla nisi,
+                Donec sapien ante, feugiat cursus pulvinar aliquam, elementum non lacus. Aenean pretium nulla nisi,
+                Donec sapien ante, feugiat cursus pulvinar aliquam, elementum non lacus. Aenean pretium nulla nisi,
+                Donec sapien ante, feugiat cursus pulvinar aliquam, elementum non lacus. Aenean pretium nulla nisi,
+            </div>
+        </div>
 
+        <div class="row text-center">
+            <div class="col-12">
+                <hr style="border-top: 1px solid #F7F4F3;">
+            </div>
+        </div>
+
+        {{!-- ----------------------- --}}
+    </div>
+
+    <div class="myfooter p-3 mt-5 text-center" style="font-size :1.1em">
+        <div class="container">
             <div class="row">
-                <div class="col-7">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut venenatis enim, in consectetur
-                    dui.
-                    Aliquam eu cursus erat. Curabitur sem ligula, aliquam non metus a, sollicitudin aliquam ligula.
-                    Integer
-                    aliquet
-                    leo rhoncus libero maximus condimentum. Cras eu malesuada sem. Phasellus congue, diam vehicula
-                    accumsan
-                    pellentesque, ante tortor dignissim erat, eget ullamcorper diam metus quis magna. Cras imperdiet
-                    mattis
-                    lectus
-                    ut faucibus. Vivamus iaculis tempor ligula et gravida. Duis ullamcorper odio at auctor faucibus.
-                    Praesent
-                    faucibus ac tortor tempus semper. Nunc dignissim augue nec ex dapibus rhoncus. Pellentesque viverra
-                    in
-                    nunc eget
-                    finibus. Vestibulum non nulla eleifend, convallis sem ut, sollicitudin dolor. In non viverra neque,
-                    a
-                    ultricies
-                    velit. Vivamus blandit porta faucibus. Fusce egestas gravida libero, ut sollicitudin arcu luctus at.
-
-                    Phasellus tincidunt ipsum metus, condimentum condimentum metus viverra vel. Nam in metus sed turpis
-                    facilisis
-                    luctus. Aliquam nisl dui, euismod ut felis quis, finibus vehicula dui. Sed at enim vitae ex
-                    tincidunt
-                    sodales at
-                    ac elit. Sed sollicitudin finibus odio, et pharetra eros rutrum sed. Duis blandit, nisi sit amet
-                    pellentesque
-                    lobortis, eros dui rutrum dui, et elementum arcu ligula placerat sapien. Praesent vitae turpis
-                    suscipit,
-                    sagittis orci nec, gravida turpis. Pellentesque dapibus ex id eros venenatis ullamcorper vitae in
-                    tellus.
-                    Pellentesque ornare tincidunt diam at mollis. Mauris dictum libero neque.
-
-                    Quisque massa odio, eleifend nec tellus ut, imperdiet sollicitudin ante. Aliquam viverra at risus a
-                    mattis.
-                    Curabitur sit amet enim vitae arcu consectetur pulvinar id vel elit. Donec pulvinar elit id ipsum
-                    fermentum
-                    lacinia. Praesent finibus, enim nec maximus placerat, dui ex fringilla urna, et blandit massa nulla
-                    ac
-                    eros.
-                    Vivamus tempor, urna nec malesuada molestie, tortor nibh aliquam odio, vitae convallis nibh libero
-                    vel
-                    augue.
-                    Praesent pretium varius dolor, vel tristique nisi sagittis eu.
-
-                    Donec sapien ante, feugiat cursus pulvinar aliquam, elementum non lacus. Aenean pretium nulla nisi,
-                    tempus
-                    molestie est luctus a. Pellentesque ex metus, aliquet at dolor ut, sagittis ultrices dolor. Fusce
-                    efficitur
-                    auctor rhoncus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam est elit, feugiat non
-                    enim
-                    eu,
-                    dictum porttitor tellus. Aliquam sollicitudin sapien urna, eu tempus arcu fermentum in. Fusce nisl
-                    tortor,
-                    pulvinar eu ante quis, accumsan eleifend mi. Maecenas pharetra mauris id quam fringilla cursus.
-                    Curabitur
-                    sodales tincidunt nunc, vitae tincidunt quam. Phasellus iaculis vehicula mollis.
-
-                    Pellentesque a felis sagittis lacus tempus fringilla pellentesque a ante. Integer id finibus leo. Ut
-                    ornare urna
-                    eget mauris pellentesque, et interdum nulla tincidunt. Vestibulum eu auctor dui. Praesent efficitur
-                    iaculis ex,
-                    ac fringilla lorem imperdiet in. Etiam accumsan pellentesque sagittis. Aliquam erat volutpat. Nullam
-                    mollis mi
-                    quis orci ornare facilisis. Donec eget dictum est, quis gravida lectus.
-
-                </div>
-                <div class="col-5">
-                    Etiam dictum, nulla id auctor venenatis, ex eros dapibus sem, id molestie nisi massa eget nisi. In
-                    quam
-                    nulla,
-                    luctus vitae varius eu, vulputate sit amet arcu. Class aptent taciti sociosqu ad litora torquent per
-                    conubia
-                    nostra, per inceptos himenaeos. Phasellus leo dui, pretium a egestas vitae, ullamcorper vel nibh.
-                    Aenean
-                    posuere
-                    sollicitudin ex in pretium. In molestie vitae dui sit amet accumsan. Etiam molestie aliquet magna,
-                    ut
-                    malesuada
-                    erat hendrerit ut. Etiam volutpat lorem quis vehicula rutrum. Nullam laoreet felis nec tincidunt
-                    mattis.
-                    Duis
-                    dapibus quis tortor sit amet viverra. Vestibulum ultrices porta neque sit amet tempor.
-
-                    Ut eu orci efficitur, varius purus mattis, porta tortor. Pellentesque vel leo bibendum, tristique
-                    arcu
-                    eu,
-                    ornare nisi. Quisque volutpat euismod libero ut luctus. Curabitur ut interdum mi. Proin suscipit
-                    feugiat
-                    ex,
-                    eget malesuada massa pellentesque vel. Praesent nec urna non nibh blandit sollicitudin et in purus.
-                    Morbi eget
-                    mauris ac lorem semper congue non et lectus. Sed eget ligula non diam suscipit euismod. Maecenas
-                    gravida
-                    congue
-                    hendrerit. Praesent eleifend lorem in nibh volutpat cursus. Vestibulum nec ullamcorper odio. Duis
-                    lacinia
-                    imperdiet velit. In interdum vitae purus ut molestie. Quisque semper vel arcu a porttitor. Duis
-                    molestie
-                    lectus
-                    massa, vel venenatis orci bibendum ac.
-
-                    Aliquam maximus at lorem eu tincidunt. Aliquam auctor ullamcorper nisi. Pellentesque vitae dui eu
-                    velit
-                    elementum feugiat. Sed commodo odio sit amet dolor egestas aliquet. Phasellus dapibus pharetra
-                    neque, in
-                    dapibus
-                    nisi fermentum consequat. Etiam faucibus commodo ligula at luctus. Duis tristique diam at dui
-                    suscipit
-                    facilisis. Quisque posuere ex sed arcu tristique eleifend. In a turpis massa. Donec interdum
-                    venenatis
-                    nulla ac
-                    faucibus.
-
-                    Donec hendrerit dolor quis leo porta, a vestibulum lacus mollis. Mauris tincidunt lacinia tincidunt.
-                    Quisque sed
-                    enim ut nunc maximus efficitur. Quisque sed auctor ipsum, et iaculis ex. Duis vitae diam convallis,
-                    semper magna
-                    eu, semper nulla. Mauris lectus lorem, efficitur gravida ullamcorper eget, pellentesque eu dolor.
-                    Integer
-                    consectetur in urna eu venenatis. Duis eu velit ut justo varius maximus. Sed id dui rutrum elit
-                    finibus
-                    ultrices
-                    at quis lectus. Etiam sollicitudin, turpis at pellentesque tristique, risus nisi cursus magna, nec
-                    cursus lorem
-                    neque id enim. Fusce tincidunt lacus in malesuada eleifend. Vestibulum rutrum massa ante, et
-                    venenatis
-                    mauris
-                    feugiat placerat.
-
-                    Nulla facilisi. Praesent porta mauris libero, ut dictum metus eleifend id. Quisque mattis sit amet
-                    tortor vel
-                    vestibulum. Suspendisse pharetra diam nulla, a ultricies elit sagittis pretium. Pellentesque laoreet
-                    sodales
-                    arcu a pellentesque. Quisque congue sem a ligula cursus ornare. Lorem ipsum dolor sit amet,
-                    consectetur
-                    adipiscing elit. Quisque scelerisque ex mi. Quisque id semper justo. Fusce bibendum efficitur
-                    sapien,
-                    non rutrum
-                    eros aliquam vitae. In suscipit imperdiet molestie. Phasellus maximus, elit et aliquet vestibulum,
-                    velit
-                    neque
-                    pellentesque purus, in cursus ipsum dui id orci. Sed non urna turpis. Fusce lobortis, quam non
-                    faucibus
-                    molestie, lacus ipsum suscipit ligula, vel cursus libero massa quis magna.s
+                <div class="col-12">
+                    <a href="#" id="trendingLink">
+                        <span class="brandFont">&nbsp;BlogItOut</span>
+                    </a>
+                    <span style="font-size :1.3em"><strong>&nbsp;|&nbsp;</strong></span>
+                    <i class="fas fa-code" style="color: white"></i> with <i class="fas fa-heart"
+                        style="color: red"></i> by
+                    <a style="color: white" id="trendingLink" href="http://github.com/vmanav/">
+                        <span class="brandFont">&nbsp;Manav Verma</span>
+                    </a>.
                 </div>
             </div>
-
         </div>
+
+
 </body>
 
 </html>
