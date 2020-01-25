@@ -4,11 +4,9 @@ const app = express();
 var session = require('express-session')
 var flash = require('connect-flash')
 
-const PORT = 3000;
-
-// Configuring dotenv file
-const dotenv = require('dotenv')
-dotenv.config();
+// heroku compatibility
+const PORT = process.env.PORT || 3000;
+// const { addNewUser } = require('./database')
 
 app.use('/', express.static(__dirname + '/public'))
 
@@ -59,7 +57,7 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 
 const mongoose = require('mongoose')
 // Url to connect to db 'naya-db'
-const dbURL = `mongodb+srv://${process.env.MONGODBATLAS_USER}:${process.env.MONGODBATLAS_PASS}@cluster0-xphh6.mongodb.net/biodb?retryWrites=true&w=majority`;
+const dbURL = 'mongodb://localhost:27017/biodb';
 
 mongoose.connect(dbURL, {
     // useMongoClient: true,  -- NOT NESSACRY
@@ -387,21 +385,55 @@ function isLoggedIn(req, res, next) {
 //     __v: 0
 // }
 
+// Post route for Not Logged in users
+app.get('/allPosts', (req, res) => {
+
+    Blog.find({
+
+    }, function (err, data) {
+
+        if (err) {
+            console.log(err);
+            res.render('allPosts', {
+                allBlogs: true,
+                oopsMessage: true,
+                message: "We can't seem to find the page you're looking for."
+            })
+
+        }
+        else {
+            console.log("data -");
+            console.log(data);
+
+            if (data.length == 0) {
+                console.log("Empty Array.");
+
+                res.render('allPosts', {
+                    allBlogs: true,
+                    oopsMessage: true,
+                    message: "No Blogs found."
+                })
+            }
+            else {
+
+                console.log("DATA RECVD", data);
+
+                console.log("rendering data @`/allPosts`.");
+                res.render('allPosts', {
+                    allBlogs: true,
+                    author: true,
+                    listOfBlogs: data
+                })
+            }
+        }
+    })
+
+})
+
 // Routing to dashboardRouter
 app.use('/dashboard', isLoggedIn, dashboardRouter)
 // for all linkks in the dashboadr the user should be checked in 
 
-
-// --------------------------------------------------------
-// Post route for Not Logged in users
-// --------------------------------------------------------
-app.get('/allPosts', (req, res) => {
-    // res.send("Blog It Out REBORN")
-    res.render('errPage', {
-        oopsMessage: true,
-        message: "Error - Page will be available soon.",
-    })
-})
 
 // About Page
 app.get('/test', (req, res) => {
