@@ -5,7 +5,7 @@ var session = require('express-session')
 var flash = require('connect-flash')
 
 // heroku compatibility
-const PORT = process.env.PORT || 3000;  
+const PORT = process.env.PORT || 3000;
 
 // Configuring dotenv file
 const dotenv = require('dotenv')
@@ -393,21 +393,58 @@ app.use('/dashboard', isLoggedIn, dashboardRouter)
 // for all linkks in the dashboadr the user should be checked in 
 
 
-// --------------------------------------------------------
 // Post route for Not Logged in users
-// --------------------------------------------------------
 app.get('/allPosts', (req, res) => {
-    // res.send("Blog It Out REBORN")
-    res.render('errPage', {
-        oopsMessage: true,
-        message: "Error - Page will be available soon.",
+
+    Blog.find({
+
+    }, function (err, data) {
+
+        if (err) {
+            console.log(err);
+            res.render('allPosts', {
+                allBlogs: true,
+                oopsMessage: true,
+                message: "We can't seem to find the page you're looking for."
+            })
+
+        }
+        else {
+            console.log("data -");
+            console.log(data);
+
+            if (data.length == 0) {
+                console.log("Empty Array.");
+
+                res.render('allPosts', {
+                    allBlogs: true,
+                    oopsMessage: true,
+                    message: "No Blogs found."
+                })
+            }
+            else {
+
+                console.log("DATA RECVD", data);
+
+                console.log("rendering data @`/allPosts`.");
+                res.render('allPosts', {
+                    allBlogs: true,
+                    author: true,
+                    listOfBlogs: data
+                })
+            }
+        }
     })
+
 })
 
 // About Page
-app.get('/test', (req, res) => {
-    // res.send("Blog It Out REBORN")
-    res.render('test')
+app.get('/terms', (req, res) => {
+
+    res.render('errPage', {
+        oopsMessage: true,
+        message: "Page will be available soon.",
+    })
 })
 
 app.listen(PORT, () => {
