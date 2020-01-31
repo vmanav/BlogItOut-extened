@@ -1,3 +1,6 @@
+// ONE WITH THE LOCAL MONGO DB DATABASE
+
+
 const express = require('express');
 const hbs = require('hbs')
 const app = express();
