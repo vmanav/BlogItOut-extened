@@ -1,4 +1,5 @@
-<h1 align="center">Welcome to BlogItOut 👋</h1>
+<h1 align="center">BlogItOut</h1>
+<h4 align="center">Online Blogging Platform</h4>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/vmanav/BlogItOut-extened#readme" target="_blank">
@@ -12,11 +13,18 @@
   </a>
 </p>
 
-> BlogItOut is a Node.js based Online Blogging Platform, where users can share their views and ideas on individual topics 	and Blog them out to the world of and readers.
 
+### 🏠 [Homepage](https://github.com/vmanav/BlogItOut-extened#readme)
+
+## About
+BlogItOut is a Node.js based Online Blogging Platform, where users can share their views and ideas on individual topics and Blog them out to the world of and readers. The functionalities supported are stated below :
+
+* Post Blogs Online.
+* Explore All Blogs.
+* Like Blogs.
+* Your Blogs listed seperately.
 
 ### ✨ Visit Here : [BlogItOut](https://blogitout.herokuapp.com)
-
 
 ## File Structure
 
@@ -58,6 +66,26 @@
 ├── index.js
 └── passportConfig.js
 ```
+
+## Gallery
+
+Snapshots of project.
+
+|![Landing Page](/public/landing.gif)|
+|:-------:|
+|*Landing Page*|
+![Trending Blogs](./public/trending.png)
+|*Trending Blogs*|
+![Login Page](./public/login.gif)
+|*Login Page*|
+![BlogItOut Dashboard ](./public/dashboard.png)
+|*BlogItOut Dashboard*|
+![New Blog](./public/addNewBlog.png)
+|*New Blog*|
+![Search All Blogs](./public/searchAllBlogs.png)
+|*Search All Blogs*|
+![User Blogs](./public/userBlogs.png)
+|*User Blogs*|
 
 ## Author
 
