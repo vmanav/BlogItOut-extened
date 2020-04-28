@@ -69,8 +69,6 @@ BlogItOut is a Node.js based Online Blogging Platform, where users can share the
 
 ## Gallery
 
-Snapshots of project.
-
 |![Landing Page](/public/landing.gif)|
 |:-------:|
 |*Landing Page*|
